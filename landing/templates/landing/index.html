@@ -1,0 +1,538 @@
+{% load staticfiles %}
+{% load hosts %}
+<!DOCTYPE html>
+<html lang="zxx" class="js">
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="Softnio">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="ICO Crypto is a modern and elegant landing page, created for ICO Agencies and digital crypto currency investment website.">
+	<!-- Fav Icon  -->
+	<link rel="shortcut icon" href="{% static 'images/favicon.png' %}">
+	<!-- Site Title  -->
+	<title>Blockcred</title>
+	<!-- Vendor Bundle CSS -->
+	<link rel="stylesheet" href="{% static 'css/vendor.bundle.css' %}">
+	<!-- Custom styles for this template -->
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'css/theme.css' %}">
+	
+</head>
+
+<body class="theme-light is-smooth-effect" data-spy="scroll" data-target="#mainnav" data-offset="80">
+
+	<!-- Header --> 
+	<header class="site-header is-sticky">
+
+		<!-- Place Particle Js -->
+		<div id="particles-js" class="particles-container particles-js"></div>
+
+		<!-- Navbar -->
+		<div class="navbar navbar-expand-lg is-transparent" id="mainnav">
+			<nav class="container">
+				<a class="navbar-brand animated" data-animate="fadeInDown" data-delay=".65" href="index.html">
+					<img class="logo logo-dark" alt="logo" src="{% static 'images/blockcred-logo-dark.png' %}">
+					<img class="logo logo-light" alt="logo" src="{% static 'images/blockcred-logo-white.png' %}">
+				</a>
+
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle">
+					<span class="navbar-toggler-icon">
+						<span class="ti ti-align-justify"></span>
+					</span>
+				</button>
+
+				<div class="collapse navbar-collapse justify-content-end" id="navbarToggle">
+					<ul class="navbar-nav animated" data-animate="fadeInDown" data-delay=".9">
+						<li class="nav-item"><a class="nav-link menu-link" href="#intro">What is?<span class="sr-only">(current)</span></a></li>
+						<li class="nav-item"><a class="nav-link menu-link" href="#features">Features</a></li>
+						<li class="nav-item"><a class="nav-link menu-link" href="#how">How?</a></li>
+						<li class="nav-item"><a class="nav-link menu-link" href="#philosophy">Our Philosophy</a></li>
+						<li class="nav-item"><a class="nav-link menu-link" href="#why">Why?</a></li>
+                        <li class="nav-item"><a class="nav-link menu-link" href="#roadmap">Roadmap</a></li>
+						<li class="nav-item"><a class="nav-link menu-link" href="{% host_url 'faq' host 'landing' %}">FAQs</a></li>
+						<li class="nav-item"><a class="nav-link menu-link" href="#contact">Contact</a></li>
+					</ul>
+                    <ul class="navbar-nav navbar-btns">
+						<li class="nav-item"><a class="btn btn-sm" href="{% url 'issue-cert' %}">Proof of Concept</a></li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+		<!-- End Navbar -->
+
+		<!-- Banner/Slider -->
+		<div id="header" class="banner banner-full banner-curb d-flex align-items-center">
+			<div class="container">
+				<div class="banner-content">
+					<div class="row align-items-center">
+						<div class="col-lg-6 col-md-12">
+							<div class="header-txt tab-center mobile-center">
+								<h1 class="animated text-uppercase" data-animate="fadeInUp" data-delay="1.25">We transfer your career history to a Blockchain wallet.</h1>
+								<ul class="btns animated" data-animate="fadeInUp" data-delay="1.45">
+									<li><a href="{% url 'issue-cert' %}" class="btn">Proof of Concept</a></li>
+								</ul>
+							</div>
+						</div><!-- .col  -->
+						<div class="col-lg-6 col-md-12">
+							<div class="res-m-btm animated" data-animate="fadeInUp" data-delay=".1">
+                                <img src="{% static 'images/header-image-light.png' %}" alt="graph">
+                            </div>
+						</div><!-- .col  -->
+					</div><!-- .row  -->
+				</div><!-- .banner-content  -->
+			</div><!-- .container  -->
+		</div>
+		<!-- End Banner/Slider -->
+	</header>
+	<!-- End Header -->
+
+
+	<!-- Start Section -->
+	<div class="section section-pad section-bg-alt nopb" id="intro">
+		<div class="container">
+            <div class="row text-center">
+				<div class="col">
+					<div class="section-head">
+						<h2 class="section-title animated" data-animate="fadeInUp" data-delay="0">What is Blockcred?
+                            <span>What</span>
+						</h2>
+					</div>
+				</div>
+			</div>
+			<div class="row align-items-center">
+				<div class="col-md-5 offset-md-1">
+					<div class="res-m-btm animated" data-animate="fadeInUp" data-delay=".1">
+						<img src="{% static 'images/graph-light-a.png' %}" alt="graph">
+					</div>
+				</div><!-- .col  -->
+				<div class="col-md-6 order-md-first order-last">
+					<div class="text-block">
+						<p class="lead animated" data-animate="fadeInUp" data-delay=".1">
+                            BlockCred is a revolutionary Blockchain technology solution focused on creating leading digital credential delivery, offering exceptional power and scalability to universities, employers, awarding bodies, education providers, and professional associations who seek to transform their recognition programs and credentialing operations.
+                            <br>
+                            <br>
+                            We believe lifelong learning, in any form, should be encouraged, celebrated, and accepted as a means to better someone’s life. We believe you’re more than a GPA, test score, or resume.
+                        </p>
+					</div>
+				</div><!-- .col  -->
+			</div><!-- .row  -->
+            
+            <div class="gaps size-2x"></div><div class="gaps size-2x d-none d-md-block"></div><!-- .gaps  -->
+            
+            <div class="row align-items-center">
+                <div class="offset-md-1 col-md-6 order-md-last order-first">
+					<div class="text-block">
+						<p class="lead animated" data-animate="fadeInUp" data-delay=".1">
+                            BlockCred’s digital credentials allow individuals to share their achievements and prove their credibility, organizations to help their students get hired, and for employers to find the right person for the job.
+                            <br>
+                            <br>
+                            BlockCred comes from “Blockchain” and “Credentials” Our target is to host the world’s credentials on top of Blockchain and in the process become the world’s first truly verifiable and immutable repository of human capital.
+                        </p>
+					</div>
+				</div><!-- .col  -->
+                
+				<div class="col-md-5 text-center">
+					<div class="res-m-btm animated" data-animate="fadeInUp" data-delay=".1">
+						<img src="{% static 'images/features-icon-light-b.png' %}" alt="graph">
+					</div>
+				</div><!-- .col  -->
+			</div><!-- .row  -->
+		</div><!-- .conatiner  -->
+	</div>
+    
+    <div class="section section-pad no-pb section-bg-alt section-fix benefits" id="features">
+        <div class="container">
+            <div class="row text-center">
+				<div class="col">
+					<div class="section-head">
+						<h2 class="section-title animated" data-animate="fadeInUp" data-delay="0">Features
+                            <span>Features</span>
+						</h2>
+					</div>
+				</div>
+			</div>
+            <div class="row">
+                <div class="col-md-6 d-inline-flex justify-content-center">
+                    <div class="section-bg pd-x3">
+                        <h4><img src="{% static 'images/share-icon.png' %}"> Powerful sharing</h4>
+                        <p>
+                            Individuals unleash their credentials across the web to become more discoverable and verifiable. This includes integrations with leading social media sites like LinkedIn. Embed codes and other sharing tools allow individuals to control when and where they want to be seen online.
+                        </p>
+                    </div>
+                </div><!-- .col  -->
+
+                <div class="col-md-6 d-inline-flex justify-content-center">
+                    <div class="section-bg pd-x3">
+                        <h4><img src="{% static 'images/profile-icon.png' %}"> Credentials profile</h4>
+                        <p>
+                            Earners have full control of how they collate and display skills. Their hosted profile enables individuals to collect and display credentials from any BlockCred issuer, enabling a more visible and rich picture of individuals and their talents. Issuers can also showcase all their holders in one place to help promote what they do.
+                        </p>
+                    </div>
+                </div><!-- .col  -->
+
+                <div class="col-md-6 d-inline-flex justify-content-center">
+                    <div class="section-bg pd-x3">
+                        <h4><img src="{% static 'images/tracking-icon.png' %}"> Tracking and reporting</h4>
+                        <p>
+                            Unlock the power of a data-rich picture of all your holders through reporting dashboards. This includes a complete user-level view of each recipient, containing badge earning, sharing and display activity. Measure the benefit on your brand by tracking holders' sharing to see what is being viewed on each social media platform.
+                        </p>
+                    </div>
+                </div><!-- .col  -->
+
+                <div class="col-md-6 d-inline-flex justify-content-center">
+                    <div class="section-bg pd-x3">
+                        <h4><img src="{% static 'images/verfication-icon.png' %}"> Issuer Verification</h4>
+                        <p>
+                            We very careful to verify the issuer identity; it is a very important process in our model, to give a higher credibility for our holder that he gets a right credential from a verified entity. It is done by one to one contacting module to verify the identity and authority of the issuer.
+                        </p>
+                    </div>
+                </div><!-- .col  -->
+            </div><!-- .row  -->
+        </div>            
+    </div>
+            
+    <div class="section section-pad section-bg-alt" id="how">
+		<div class="container">
+			<div class="row text-center">
+				<div class="col">
+					<div class="section-head">
+						<h2 class="section-title animated" data-animate="fadeInUp" data-delay="0">How it works?
+                            <span>How</span>
+						</h2>
+					</div>
+				</div>
+			</div>
+            
+            <div class="row">
+                <div class="col-4">
+                    <div class="section-bg pd-x2">
+                        <p>
+                            <span class="number">01.</span> The issuer invites the holder to apply for the course’s credential through the store.
+                        </p>
+                    </div>
+                    
+                    <div class="gaps size-1x"></div><!-- .gaps  -->
+                    
+                    <div class="section-bg pd-x2">
+                        <p>
+                            <span class="number">02.</span> The holder accepts the invitation and applies to achieve the certificate by sending his public key to the issuer.
+                        </p>
+                    </div>
+                    
+                    <div class="gaps size-1x"></div><!-- .gaps  -->
+                    
+                    <div class="section-bg pd-x2">
+                        <p>
+                            <span class="number">03.</span> The issuer hashes the credential onto our Blockchain and signs the transaction by his private key.
+                        </p>
+                    </div>
+                    
+                    <div class="gaps size-1x"></div><!-- .gaps  -->
+                    
+                    <div class="section-bg pd-x2">
+                        <p>
+                            <span class="number">04.</span> The issuer sends the credential verification link to the holder.
+                        </p>
+                    </div>
+                    
+                    <div class="gaps size-1x"></div><!-- .gaps  -->
+                </div>
+                <div class="col-4">
+                    <div class="text-center">
+                        <img src="{% static 'images/center-visual.png' %}" alt="">
+                    </div>  
+                </div>
+                <div class="col-4">
+                    <div class="section-bg pd-x2">
+                        <p>
+                            <span class="number">05.</span> The holder gets the digital credential and stores it in his wallet.
+                        </p>
+                    </div>
+                    
+                    <div class="gaps size-1x"></div><!-- .gaps  -->
+                    
+                    <div class="section-bg pd-x2">
+                        <p>
+                            <span class="number">06.</span> The holder sends credential to a verifier (employer) to verify his skills.
+                        </p>
+                    </div>
+                    
+                    <div class="gaps size-1x"></div><!-- .gaps  -->
+                    
+                    <div class="section-bg pd-x2">
+                        <p>
+                            <span class="number">07.</span> The verifier checks the Blockchain to verify credential info.
+                        </p>
+                    </div>
+                    
+                    <div class="gaps size-1x"></div><!-- .gaps  -->
+                    
+                    <div class="section-bg pd-x2">
+                        <p>
+                            <span class="number">08.</span> The holder can invite the employer to verify his career history by sending his public key to him.
+                        </p>
+                    </div>
+                    
+                    <div class="gaps size-1x"></div><!-- .gaps  -->
+                </div>
+            </div>
+        </div>
+    </div><!-- .container  -->
+
+    <!-- Start Section -->
+	<div class="section section-pad section-bg" id="philosophy">
+		<div class="container">
+
+			<div class="row text-center">
+				<div class="col-md-8 offset-md-2 col-lg-8 offset-lg-2">
+					<div class="section-head">
+						<h2 class="section-title animated" data-animate="fadeInUp" data-delay="0">Identity philosophy in BlockCred 
+                            <span>Philosophy</span>
+						</h2>
+						<p class="animated" data-animate="fadeInUp" data-delay=".1">Who are you? And who decides you’re really you and can be trusted? The answer, and the systems involved, differs in the real world and online. But BlockCred technology could make establishing identity and trust much easier for everyone. Here’s how.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row align-items-center">
+				<div class="col-md-6">
+					<div class="res-m-btm animated" data-animate="fadeInUp" data-delay=".1">
+						<img src="{% static 'images/graph-light-c.png' %}" alt="graph">
+					</div>
+				</div><!-- .col  -->
+
+				<div class="col-md-5 offset-md-1">
+					<div class="text-block">
+                        <h4>YOUR WALLET & ITS MASTER SEED</h4>
+                        <p class="animated" data-animate="fadeInUp" data-delay="0">When you create your BlockCred Wallet, a unique master seed is created. This master seed is the nucleus of your specific wallet and is used to derive every individual credential address that you'll use to send or request a credential.</p>
+					</div>
+				</div><!-- .col  -->
+			</div><!-- .row  -->
+
+            <div class="gaps size-2x"></div><div class="gaps size-2x d-none d-md-block"></div><!-- .gaps  -->
+            
+            <div class="row align-items-center">
+                <div class="col-md-5 offset-md-1">
+					<div class="text-block">
+                        <h4>CLIENT SIDE KETS STORING MEANS ONLY YOU HAVE ACCESS TO YOUR WALLET</h4>
+                        <p class="animated" data-animate="fadeInUp" data-delay="0">We do not store your private key, we don't have the rights to act on behalf of you, and you are the one who controls his identity. We only provide you with the platform you need to store them yourself. Your wallet is encrypted on your device with your personal password. Your password acts as your decryption key to both lock and unlock your wallet — your wallet can’t be accessed without it. Because we don’t know or store your password (we can’t even reset it), only you are able to unlock and decrypt your wallet.</p>
+					</div>
+				</div><!-- .col  -->
+				<div class="col-md-6">
+					<div class="res-m-btm animated" data-animate="fadeInUp" data-delay=".1">
+						<img src="{% static 'images/graph-light-c.png' %}" alt="graph">
+					</div>
+				</div><!-- .col  -->
+			</div><!-- .row  -->
+
+		</div><!-- .container  -->
+	</div>
+
+	<!-- Start Section -->
+	<div class="section section-pad section-bg-alt" id="why">
+		<div class="container">
+
+			<div class="row text-center">
+				<div class="col-md-8 offset-md-2 col-lg-8 offset-lg-2">
+					<div class="section-head">
+						<h2 class="section-title animated" data-animate="fadeInUp" data-delay="0">Why BlockCred is so important?
+                            <span>Why</span>
+						</h2>
+					</div>
+				</div>
+			</div>
+
+            <div class="gaps size-1x"></div><div class="gaps size-1x d-none d-md-block"></div><!-- .gaps  -->
+
+			<div class="row text-center">
+				<div class="col-md-6">
+					<div class="single-chart res-m-btm">
+						<h3 class="sub-heading">For issuer …</h3>
+						<div class="animated" data-animate="fadeInUp" data-delay="0">
+                            <img src="{% static 'images/issuer-icon.png' %}" alt="">
+						</div>
+                        
+                        <div class="gaps size-3x"></div><div class="gaps size-1x d-none d-md-block"></div><!-- .gaps  -->
+                        
+                        <p class="animated text-left section-bg pd-x2" data-animate="fadeInUp" data-delay=".1">One-click sharing to social media and professional networking sites like LinkedIn help generate web traffic and referrals for your program. It's time to turn your digital certificates and badges into a marketing tool. Receiving recognition is a pivotal moment for anyone completing his/her certification, training, or learning program. When you use BlockCred to send your certificates and badges to your students, you create exciting moments of pride that individuals can't wait to share.</p>
+					</div>
+				</div><!-- .col  -->
+
+				<div class="col-md-6">
+					<div class="single-chart">
+						<h3 class="sub-heading">For holder …</h3>
+						<div class="animated" data-animate="fadeInUp" data-delay=".1">
+                            <img src="{% static 'images/holder-icon.png' %}" alt="">
+                        </div>
+                        
+                        <div class="gaps size-3x"></div><div class="gaps size-1x d-none d-md-block"></div><!-- .gaps  -->
+                        
+                        <p class="animated text-left section-bg pd-x2" data-animate="fadeInUp" data-delay=".1">Receiving recognition is a pivotal moment for anyone completing his/her certification, training, or learning program. When you use BlockCred to send your certificates and badges to your new employer, you create exciting moments of pride that will give your skills a new level of trust and verification, your skills will be verifiable, sharable and immutable by the power of the Blockchain.</p>
+					</div>
+				</div><!-- .col  -->
+			</div><!-- .row  -->
+
+		</div><!-- .container  -->
+	</div>
+	<!-- Start Section -->
+
+
+	<!-- Start Section -->
+	<div class="section section-pad section-bg section-connect" id="roadmap">
+		<div class="container">
+
+			<div class="row text-center">
+				<div class="col">
+					<div class="section-head">
+						<h2 class="section-title animated" data-animate="fadeInUp" data-delay="0">Roadmap
+						</h2>
+					</div>
+				</div>
+			</div>
+            <div class="roadmap-list-alt text-center timeline-carousel" >
+				<div class="single-roadmap-alt sra-done gradiant-ctob">
+					<h6>Q1 2018</h6>
+					<ul>
+                        <li>R&D phase.</li>
+                        <li>Build the Blockchain architecture.</li>
+                        <li>Publish the proof of concept.</li>
+                    </ul>
+				</div>
+				<div class="single-roadmap-alt sra-done gradiant-btoa">
+					<h6>Q2 2018</h6>
+					<ul>
+                        <li>R&D phase.</li>
+                        <li>Build the Blockchain architecture.</li>
+                        <li>Publish the proof of concept.</li>
+                    </ul>
+				</div>
+				<div class="single-roadmap-alt gradiant-atob">
+					<h6>Q3 2018</h6>
+					<ul>
+                        <li>R&D phase.</li>
+                        <li>Build the Blockchain architecture.</li>
+                        <li>Publish the proof of concept.</li>
+                    </ul>
+				</div>
+				<div class="single-roadmap-alt gradiant-btoc">
+					<h6>January 2019</h6>
+					<ul>
+                        <li>R&D phase.</li>
+                        <li>Build the Blockchain architecture.</li>
+                        <li>Publish the proof of concept.</li>
+                    </ul>
+				</div>
+     		</div>
+		</div><!-- .container  -->
+	</div>
+    
+	<!-- Start Section -->
+	<div class="section section-pad section-bg-alt" id="contact">
+		<div class="container">
+			<div class="row text-center">
+				<div class="col">
+					<div class="section-head">
+						<h2 class="section-title animated" data-animate="fadeInUp" data-delay="0">Contact
+							<span>Contact</span>
+						</h2>
+						<p class="animated" data-animate="fadeInUp" data-delay=".1">Any question? Reach out to us and we’ll get back to you shortly.</p>
+					</div>
+				</div>
+			</div>
+            <div class="row">
+				<div class="col-lg-6 offset-lg-4">
+					<ul class="contact-info">
+						<li class="animated" data-animate="fadeInUp" data-delay=".1"><em class="fa fa-envelope"></em><span><a href="mailto:hello@blockcred.io">hello@blockcred.io</a></span></li>
+						<li class="animated" data-animate="fadeInUp" data-delay=".2"><em class="fa fa-paper-plane"></em><span>Join us on <a href="#">Telegram</a></span></li>
+					</ul>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2">
+					<form id="contact-form" class="form-message text-center" action="#" method="post">
+						<div class="form-results"></div>
+						<div class="input-field animated" data-animate="fadeInUp" data-delay=".3">
+							<input name="contact-name" type="text" class="input-line required">
+							<label class="input-title">Your Name</label>
+						</div>
+						<div class="input-field animated" data-animate="fadeInUp" data-delay=".4">
+							<input name="contact-email" type="email" class="input-line required email">
+							<label class="input-title">Your Email</label>
+						</div>
+						<div class="input-field animated" data-animate="fadeInUp" data-delay=".5">
+							<textarea name="contact-message" class="txtarea input-line required"></textarea>
+							<label class="input-title">Your Message</label>
+						</div>
+						<input type="text" class="d-none" name="form-anti-honeypot" value="">
+						<div class="input-field animated" data-animate="fadeInUp" data-delay=".6">
+							<button type="submit" class="btn">Submit</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Section -->
+
+
+	<!-- Start Section -->
+	<div class="section subscribe-section section-pad-md section-bg section-connect">
+		<div class="container">
+			<div class="row text-center">
+				<div class="col-md-6 offset-md-3">
+					<h4 class="section-title-md animated" data-animate="fadeInUp" data-delay="0">Don't miss out, Stay updated</h4>
+					<form id="subscribe-form" action="form/subscribe.php" method="post" class="subscription-form inline-form">
+						<input type="text" name="youremail" class="input-round required email" placeholder="Enter your email address" >
+						<input type="text" class="d-none" name="form-anti-honeypot" value="">
+						<a href="#team-profile-1" class="btn btn-plane expand-trigger content-popup">Subscribe</a>
+						<div class="subscribe-results"></div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Section -->
+
+
+	<!-- Start Section -->
+	<div class="section footer-scetion no-pt section-pad-sm section-bg">
+		<div class="container">
+			<div class="row text-center">
+				<div class="col-md-12">
+					<ul class="social">
+						<li class="animated" data-animate="fadeInUp" data-delay=".1"><a href="#"><em class="fa fa-twitter"></em></a></li>
+                        <li class="animated" data-animate="fadeInUp" data-delay=".1"><a href="#"><em class="fa fa-telegram"></em></a></li>
+					</ul>
+					<span class="copyright-text animated" data-animate="fadeInUp" data-delay=".3">
+						Copyright &copy; 2018, Blockcred. Developend By <a href="http://intelli-coders.com" target="_blank">Intelli Coders</a>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Section -->
+    
+    <div id="team-profile-1" class="team-profile mfp-hide">
+        <button title="Close (Esc)" type="button" class="mfp-close">×</button>
+        <div class="text-center">
+            <img src="{% static 'images/success-icon.png' %}" alt="">
+            <p>
+                We have received your message and would like to thank you for writing to us. We will reply by email as soon as possible.
+            </p>
+        </div>
+    </div><!-- .team-profile  -->
+
+	<!-- Preloader !remove please if you do not want -->
+	<div id="preloader">
+		<div id="loader"></div>
+		<div class="loader-section loader-top"></div>
+   		<div class="loader-section loader-bottom"></div>
+	</div>
+	<!-- Preloader End -->
+
+	<!-- JavaScript (include all script here) -->
+	<script src="{% static 'js/jquery.bundle.js' %}"></script>
+	<script src="{% static 'js/script.js' %}"></script>
+
+</body>
+</html>

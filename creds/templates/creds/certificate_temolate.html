@@ -1,0 +1,99 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>                        
+        <title>Blockcred - Your Credentials On Top Of Blockchain</title>            
+        
+        <!-- META SECTION -->
+        
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+         <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+        <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+        
+        <!-- END META SECTION -->
+        
+        <!-- CSS INCLUDE -->        
+        
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        
+        <!-- EOF CSS INCLUDE -->
+    </head>
+    <body>        
+        
+        <!-- APP WRAPPER -->
+        <div class="app">           
+
+            <!-- START APP CONTAINER -->
+            <div class="app-container">
+               
+                    
+                    <!-- START PAGE CONTAINER -->
+                    <div class="container">
+                        <div class="block certificate">
+                            <div class="row">
+                                <div class="col-xs-offset-1 col-xs-10">
+                                    <div class="text-left certificate-content">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <img src="{% static 'img/logo.png' %}" alt="" class="margin-bottom-20">
+                                            </div>
+                                            <div class="col-md-offset-3 col-md-3">
+                                                <div class="pull-right">
+                                                    <h2 class="no-margin-bottom" >{{ sname}}</h2>
+
+                                                    <ul>
+                                                        <li >{{ cname }}</li>
+                                                        <li>{{ dep }}</li>
+                                                    </ul>        
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <h3>Certificate Of Achievement</h3>
+                                        
+                                        <p>
+                                            Blockcred certifies that <span>{{ sname }}</span> has successfully completed the required course of <span>{{ cname }}</span> and approved by the board of education for the department of <span>{{ dep }}</span> and therefore awarded this certificate
+                                        </p>
+                                        
+                                        <div>
+                                            <span>Certificate ID : 123456777</span>
+                                            <span>Issued On : 15/04/18</span>
+                                        </div>
+                                    </div>
+                                    
+                                   
+                                    
+                                </div>
+                            </div>
+                        </div>
+                            
+                        
+                    </div>
+                    <!-- END PAGE CONTAINER -->
+                    
+                </div>
+                <!-- END APP CONTENT -->
+                                
+            </div>
+            <!-- END APP CONTAINER -->
+                        
+            <!-- START APP FOOTER -->
+            <!--div class="app-footer app-footer-default" id="footer">
+                <div class="app-footer-line">
+                    <div class="copyright">&copy; 2018 Blockcred. All right reserved</div>                    
+                </div>
+            </div-->
+            <!-- END APP FOOTER -->         
+           
+            
+            <!-- END MODAL PRIMARY -->
+            
+        </div>        
+        <!-- END APP WRAPPER -->     
+
+    </body>
+</html>
