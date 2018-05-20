@@ -12,7 +12,7 @@ import codecs
 
 from django.core.mail import EmailMultiAlternatives
 from django.utils.html import strip_tags
-from pyshorteners import Shortener
+
 import qrcode
 from django.shortcuts import render_to_response
 from django.template import RequestContext
