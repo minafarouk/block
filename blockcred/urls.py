@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django.conf.urls import include, url
-from qr_code import urls as qr_code_urls
+
 
 urlpatterns = [
     path('creds/', include('creds.urls')),
