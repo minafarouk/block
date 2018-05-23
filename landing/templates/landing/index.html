@@ -449,20 +449,22 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2">
-					<form id="contact-form" class="form-message text-center" action="#" method="post">
+					<form id="contact-form" class="form-message text-center" action="{% url 'contact' %} " method="post">
+						{% csrf_token %}
 						<div class="form-results"></div>
 						<div class="input-field animated" data-animate="fadeInUp" data-delay=".3">
-							<input name="contact-name" type="text" class="input-line required">
+							<input name="contact_name" type="text" class="input-line required">
 							<label class="input-title">Your Name</label>
 						</div>
 						<div class="input-field animated" data-animate="fadeInUp" data-delay=".4">
-							<input name="contact-email" type="email" class="input-line required email">
+							<input name="contact_email" type="email" class="input-line required email">
 							<label class="input-title">Your Email</label>
 						</div>
 						<div class="input-field animated" data-animate="fadeInUp" data-delay=".5">
-							<textarea name="contact-message" class="txtarea input-line required"></textarea>
+							<textarea name="content" class="txtarea input-line required"></textarea>
 							<label class="input-title">Your Message</label>
 						</div>
+						<div id="results"></div>
 						<input type="text" class="d-none" name="form-anti-honeypot" value="">
 						<div class="input-field animated" data-animate="fadeInUp" data-delay=".6">
 							<button type="submit" class="btn">Submit</button>
@@ -533,6 +535,24 @@
 	<!-- JavaScript (include all script here) -->
 	<script src="{% static 'js/jquery.bundle.js' %}"></script>
 	<script src="{% static 'js/script.js' %}"></script>
+	<script type="text/javascript">
+    var frm = $('#contact-form');
+    frm.submit(function () {
+        $.ajax({
+            type: frm.attr('method'),
+            url: frm.attr('action'),
+            data: frm.serialize(),
+            success: function (json) {            	
+                $('#results').html("<div class='alert-box alert radius' data-alert></div>");
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+            	
+                 $('#results').text(thrownError);                
+            }
+        });
+        return false;
+    });
+</script>
 
 </body>
 </html>
