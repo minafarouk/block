@@ -14,6 +14,7 @@ from django.core.mail import EmailMultiAlternatives
 from django.utils.html import strip_tags
 
 import qrcode
+import qrcode.image.svg
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.conf import settings
@@ -23,7 +24,7 @@ from creds.models import Files
 import os
 from django.template import Context
 from django.template.loader import get_template
-from xhtml2pdf import pisa
+
 from io import StringIO
 from io import BytesIO
 
@@ -102,12 +103,13 @@ def _verify(key):
 #    key = 'edc21560ada6e962a08b52b7e836a563306a889c7df9e7a6e4cc37a5e7776a9c'
     client = mcrpc.RpcClient('159.89.226.46', '2778', 'multichainrpc', '5NVcmBy6YYHTj95XFp6ZrELdApxusaKrAtCxKs1K86Gc')
     tx_data = client.liststreamkeyitems('POACERT', key)[0]
+
     meta_data = tx_data['data']
     student_base64 = codecs.decode(meta_data, 'hex')
     student_json = json.loads(base64.b64decode(student_base64).decode())
     student_json['confirmations'] = tx_data['confirmations']
-    student_json['blocktime'] = tx_data['blocktime']
-#    print (type(student_json['blocktime']))
+    if 'blocktime' in tx_data:
+        student_json['blocktime'] = tx_data['blocktime']
     return student_json
 
 

@@ -92,9 +92,9 @@
                     
                     <!-- START PAGE CONTAINER -->
                        {% with cert_name=sname|add:'_'|add:cname|add:'.pdf' %}                 
-                    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://www.blockcred.io/creds/download/{{ cert_name }}">
+                    <!--a href="https://www.linkedin.com/shareArticle?mini=true&url=http://www.blockcred.io/creds/download/{{ cert_name }}">
                     Share on Linkedin
-                   </a>
+                   </a-->
 
                     <div class="container">
                         <div class="block certificate">
@@ -122,11 +122,12 @@
                                         <p>
                                             Blockcred certifies that <span>{{ sname }}</span> has successfully completed the required course of <span>{{ cname }}</span> and approved by the board of education for the department of <span>{{ dep }}</span> and therefore awarded this certificate
                                         </p>
-                                        
+                                        {% if blocktime %}
                                         <div>
                                             <span>Certificate ID : {{ blocktime }}</span>
                                             <span>Issued On : {{ blocktime|unix_to_datetime|date:"SHORT_DATE_FORMAT" }}</span>
                                         </div>
+                                        {% endif %}
                                     </div>
                                     
                                     <!--
