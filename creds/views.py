@@ -40,10 +40,13 @@ def _create_pdf(request, form):
     context['grade'] = form.cleaned_data['grade']
     context['dep'] = form.cleaned_data['department']
     html_string = render_to_string('creds/certificate_temolate.html', context)
+    import logging
+    logger = logging.getLogger('weasyprint')
+    logger.addHandler(logging.FileHandler('/tmp/weasyprint.log'))
     html = HTML(string=html_string, base_url=request.build_absolute_uri())
 
     certificate_name = form.cleaned_data['student_name'] + "_" + form.cleaned_data['course_name'] + ".pdf"
-    html.write_pdf(target='/tmp/{0}'.format(certificate_name), stylesheets=[CSS("/root/django_lab_testing/blockcred/creds/static/css/styles.css")])
+    html.write_pdf(target='/tmp/{0}'.format(certificate_name), stylesheets=[CSS("/root/django_lab_testing/blockcred/creds/static/css/weasy.css")])
     return '/tmp/{0}'.format(certificate_name)
 
 
@@ -103,7 +106,6 @@ def _verify(key):
 #    key = 'edc21560ada6e962a08b52b7e836a563306a889c7df9e7a6e4cc37a5e7776a9c'
     client = mcrpc.RpcClient('159.89.226.46', '2778', 'multichainrpc', '5NVcmBy6YYHTj95XFp6ZrELdApxusaKrAtCxKs1K86Gc')
     tx_data = client.liststreamkeyitems('POACERT', key)[0]
-
     meta_data = tx_data['data']
     student_base64 = codecs.decode(meta_data, 'hex')
     student_json = json.loads(base64.b64decode(student_base64).decode())
@@ -125,20 +127,17 @@ def _generate_qr_code(data, size=10, border=0):
 def issue(request):
     if request.method == 'POST':
         form = StudentForm(request.POST)
-
         if form.is_valid():
             file_path = _create_pdf(request, form)
-#            file_path = _topdf(form)
             file_hashed = _file_hash(file_path)
             tx_id = _generate_poe(file_hashed, form)
             Files.objects.create(file_hashed=file_hashed)
-
             certificate_info = _verify(file_hashed)
             sname = form.cleaned_data['student_name']
             semail = form.cleaned_data['student_email']
             cname = form.cleaned_data['course_name']
             _send_email(sname, cname, semail)
-            print (certificate_info)
+
 
             return render( request,'creds/certificate.html', context = certificate_info)
         else:
@@ -165,7 +164,6 @@ def qr_cert(request, cert_name):
 
 def mail_cert(request, sname, cname, dep):
    to = request.POST.get('to')
-#   print (request.POST.get('sname'))
    _send_email(sname, cname, to)
    context = {}
    context['sname'] = sname
@@ -175,11 +173,11 @@ def mail_cert(request, sname, cname, dep):
 
 
 def url_cert(request, cert_name):
-    print(cert_name)
+
     key = _file_hash('/tmp/' + cert_name)
     id = Files.objects.get(file_hashed=key).id
     short = short_url.encode_url(id)
-    print("www.blockreds.io/creds/verify/" + short)
+
     return HttpResponse("www.blockreds.io/creds/verify/" + short)
 
 

@@ -10,7 +10,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+        <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" type="image/x-icon">
         <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
         
         <!-- END META SECTION -->
@@ -37,19 +37,13 @@
                     <nav>
                         <ul>
                             <li>
-                                <a href="home.html"><span class="fa fa-home"></span> Home</a>
+                                <a href="#"><span class="fa fa-home"></span> Home</a>
                             </li>
                             <li>
-                                <a href="issue-certificate.html" class="active"><span class="fa fa-plus"></span> Issue Certificate</a>
+                                <a href="issue-certificate.html" class="active"><span class="fa fa-plus"></span> Issue Credential</a>
                             </li>
                             <li>
-                                <a href="verify-certificate.html"><span class="fa fa-check"></span> Verify Certificate</a>
-                            </li>
-                            <li>
-                                <a href="about.html"><span class="fa fa-info-circle"></span> About</a>
-                            </li>
-                            <li>
-                                <a href="contact.html"><span class="fa fa-envelope"></span> Contact</a>
+                                <a href="verify-certificate.html"><span class="fa fa-check"></span> Verify Credential</a>
                             </li>
                         </ul>
                     </nav>
@@ -75,8 +69,8 @@
                                 <span class="fa fa-plus"></span>
                             </div>
                             <div class="title">
-                                <h1>Issue Certificate</h1>
-                                <p>Save the result file then publish the certificate</p>
+                                <h1>Issue Credential</h1>
+                                <p>Enter credential's information to publish it on the blockchain.</p>
                             </div>
                             <!--
                             <div class="heading-elements">
@@ -90,6 +84,25 @@
                     
                     <!-- START PAGE CONTAINER -->
                     <div class="container">
+                        <div class="block how">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="title">
+                                        <h1>How it works ?</h1>
+                                    </div>
+                                    <p>
+                                        For the proof of concept purposes, please follow the following steps:
+                                    </p>
+                                    <ul>
+                                        <li>Enter credentials information.</li>
+                                        <li>Issue a certificate.</li>
+                                        <li>The student will get an Email with the credential information on the blockchain.</li>
+                                        
+                                    </ul>
+                                    
+                                </div>
+                            </div>
+                        </div>
                         <div class="block">
                             <div class="row">
                                 <div class="col-xs-12">
@@ -99,33 +112,33 @@
                                 </div>
                             </div>
                             
-                            <form class="form-horizontal"  method="POST" id="issue-form">
+                            <form class="form-horizontal" method="POST">
                                 {% csrf_token %}
                                 <div class="form-group">                                        
                                     <div class="col-md-4">
-                                        <input type="text" id="name_field" name="student_name" class="form-control" data-validation="required" placeholder="Student Name">
+                                        <input type="text" name="student_name" class="form-control" data-validation="required" placeholder="Student Name">
                                     </div>
                                     
                                     <div class="col-md-4">
-                                        <input type="text" id="email_field" name="student_email" class="form-control" data-validation="required" data-validation="email" placeholder="Student Email">
+                                        <input type="text"  name="student_email" class="form-control" data-validation="required" data-validation="email" placeholder="Student Email">
                                     </div>
                                     
                                     <div class="col-md-4">
-                                        <input type="text" id="mobile_field" name="mobile" class="form-control" data-validation="required" placeholder="Student Mobile">
+                                        <input type="text" name="mobile" class="form-control" data-validation="required" placeholder="Student Mobile">
                                     </div>
                                 </div>
                                 
                                 <div class="form-group">                                        
                                     <div class="col-md-4">
-                                        <input type="text" id="course_field" name="course_name" class="form-control" data-validation="required" placeholder="Course Name">
+                                        <input type="text" name="course_name" class="form-control" data-validation="required" placeholder="Course Name">
                                     </div>
                                     
                                     <div class="col-md-4">
-                                        <input type="text" id="department_field" name="department" class="form-control" data-validation="required" placeholder="Department">
+                                        <input type="text" name="department" class="form-control" data-validation="required" placeholder="Department">
                                     </div>
                                     
                                     <div class="col-md-4">
-                                        <input type="text" id="grade_field" name="grade" class="form-control" data-validation="required" placeholder="Grade">
+                                        <input type="text" name="grade" class="form-control" data-validation="required" placeholder="Grade">
                                     </div>
                                 </div>
                                 
@@ -136,71 +149,16 @@
                                 </div>
                             </form>
                         </div>
-                        
+                                                
                         <div>
                             <div class="row">
                                 <div class="col-xs-12">
                                     <div class="title text-center margin-bottom-30 loading-sec">
-                                        <h1><div class="app-spinner pulse pulse-success"></div> Generating Proof Of Achievement .. Please Wait</h1>
+                                        <h1><div class="app-spinner pulse pulse-success"></div> Generating credential's information .. Please Wait</h1>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
-                        <!--div class="block certificate">
-                            <div class="row">
-                                <div class="col-xs-offset-1 col-xs-10">
-                                    <div class="text-left certificate-content">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <img src="{% static 'img/logo.png' %}" alt="" class="margin-bottom-20">
-                                            </div>
-                                            <div class="col-md-offset-3 col-md-3">
-                                                <div class="pull-right">
-                                                    <h2 class="no-margin-bottom" class="student_name">Maged Baraka</h2>
-
-                                                    <ul>
-                                                        <li class="course_name">UI/UX Design Course</li>
-                                                        <li class="department_name">IT Department</li>
-                                                    </ul>        
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <h3>Certificate Of Achievement</h3>
-                                        
-                                        <p>
-                                            Blockcred certifies that <span class="student_name">Maged Baraka</span> has successfully completed the required course of <span class="course_name">UI/UX Design</span> and approved by the board of education for the department of <span class="department_name">IT</span> and therefore awarded this certificate
-                                        </p>
-                                        
-                                        <div>
-                                            <span>Certificate ID : 123456777</span>
-                                            <span>Issued On : 15/04/18</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <
-                                    
-                                    <div class="text-center">
-                                        <a href="#" class="btn btn-primary">Download PDF</a>
-                                    </div>
-
-                                    >
-                                    
-                                </div>
-                            </div>
-                        </div>
-                            
-                        <div class="block text-center certificate">
-                            <div class="row">
-                                <div class="col-xs-offset-1 col-xs-10">
-                                    <a href="#" class="btn btn-primary margin-top-10"><i class="fa fa-download margin-right-10"></i>Download PDF</a>
-                                    <a href="#" class="btn btn-primary margin-left-10 margin-top-10" data-toggle="modal" data-target="#send-popup"><i class="fa fa-envelope margin-right-10"></i>Send To Someone</a>
-                                    <a href="#" class="btn btn-primary margin-left-10 margin-top-10" data-toggle="modal" data-target="#link-popup"><i class="fa fa-chain margin-right-10"></i>Get Link</a>
-                                    <a href="#" class="btn btn-primary margin-left-10 margin-top-10" data-toggle="modal" data-target="#qrcode-popup"><i class="fa fa-qrcode margin-right-10"></i>Get QR Code</a>
-                                </div>
-                            </div>
-                        </div-->
                     </div>
                     <!-- END PAGE CONTAINER -->
                     
@@ -214,101 +172,9 @@
             <div class="app-footer app-footer-default" id="footer">
                 <div class="app-footer-line">
                     <div class="copyright">&copy; 2018 Blockcred. All right reserved</div>
-                    <div class="pull-right">
-                        <ul class="list-inline">
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="contact.html">Contacts</a></li>
-                        </ul>
-                    </div>
                 </div>
             </div>
             <!-- END APP FOOTER -->
-            
-            <!-- MODAL PRIMARY -->
-            
-            <div class="modal fade" id="qrcode-popup" tabindex="-1" role="dialog" aria-labelledby="modal-primary-header">                        
-                <div class="modal-dialog modal-primary" role="document">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="icon-cross"></span></button>
-
-                    <div class="modal-content">
-                        <div class="modal-header">                        
-                            <h4 class="modal-title" id="modal-primary-header"><i class="fa fa-qrcode margin-right-10"></i>Get QR Code</h4>
-                        </div>
-                        <div class="modal-body text-center">
-                            <div class="row">
-                                <div class="col-xs-offset-4 col-xs-4">
-                                    <!--img src="{% static 'img/qr-code.png' %}" alt="" class="img-responsive"-->
-                                </div>
-                            </div>                            
-                        </div>
-                    </div>
-                </div>            
-            </div>
-            
-            <div class="modal fade" id="link-popup" tabindex="-1" role="dialog" aria-labelledby="modal-primary-header">                        
-                <div class="modal-dialog modal-primary" role="document">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="icon-cross"></span></button>
-
-                    <div class="modal-content">
-                        <div class="modal-header">                        
-                            <h4 class="modal-title" id="modal-primary-header"><i class="fa fa-chain margin-right-10"></i>Get Link</h4>
-                        </div>
-                        <div class="modal-body text-center">
-                            <div class="row">
-                                <div class="col-xs-offset-2 col-xs-8">
-                                    <form class="form-horizontal" action="#">
-                                        <div class="form-group"> 
-                                            <div class="col-md-12">
-                                                <input type="text" class="form-control" disabled value="http://poa-certificates.com/u3Cn">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group text-right">                                        
-                                            <div class="col-md-5 col-md-offset-7">
-                                                <button type="submit" class="btn btn-primary">Copy</button>
-                                            </div>
-                                        </div>
-                                    </form>   
-                                </div>
-                            </div>        
-                        </div>
-                    </div>
-                </div>            
-            </div>
-            
-            <div class="modal fade" id="send-popup" tabindex="-1" role="dialog" aria-labelledby="modal-primary-header">                        
-                <div class="modal-dialog modal-primary" role="document">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="icon-cross"></span></button>
-
-                    <div class="modal-content">
-                        <div class="modal-header">                        
-                            <h4 class="modal-title" id="modal-primary-header"><i class="fa fa-envelope margin-right-10"></i>Send To Someone</h4>
-                        </div>
-                        <div class="modal-body text-center">
-                            <div class="row">
-                                <div class="col-xs-offset-2 col-xs-8">
-                                    <form class="form-horizontal" action="#">
-                                        <div class="form-group"> 
-                                            <div class="col-md-12">
-                                                <input type="text" class="form-control" data-validation="required" placeholder="Student Name">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group text-right">                                        
-                                            <div class="col-md-5 col-md-offset-7">
-                                                <button type="submit" class="btn btn-primary">Send Email</button>
-                                            </div>
-                                        </div>
-                                    </form>   
-                                </div>
-                            </div>                
-                        </div>
-                    </div>
-                </div>            
-            </div>
-            
-            <!-- END MODAL PRIMARY -->
-            
         </div>        
         <!-- END APP WRAPPER -->                
         
@@ -337,7 +203,7 @@
         <!-- END APP SCRIPTS -->
         <script type="text/javascript" src="{% static 'js/app_demo_dashboard.js' %}"></script>
         
-        <!--script type="text/javascript">
+        <script type="text/javascript">
             $(function(){
                 $.validate({
                     modules : 'date,file,location',
@@ -349,34 +215,24 @@
 
                     }
                 });
-                    
-                $("#issue-btn").on('click', function(){
-                    $.ajax({
-                        url: 'http://127.0.0.1:8000/creds/',
-                        type : "POST",
-                        dataType : "json",
-                        data: {
-                                name: $('#name_field').val(),
-                                email: $('#email_field').val(),
-                                mobile: $('#mobile_field').val(),
-                                course: $('#course_field').val(),
-                                department: $('#department_field').val(),
-                                grade: $('#grade_field').val() 
-                            },
-                        beforeSend: function() {
-                            $('.loading-sec').show();
-                        },
-                        success : function(data) {
-                            $('.loading-sec').fadeOut();
-                            $('.student_name').append(data.name);
-                            $('.department_name').append(data.name);
-                            $('.course_name').append(data.name);
-                            $('.certificate').fadeIn();
-                        }
-                    });
+                
+                $(".block-refresh-example").on("click",function(){
+                    var block = $(this).data("block");
+                    app.block.loading.start("#"+block);
+                    setTimeout(function(){
+                        app.block.loading.finish("#"+block);
+                    },3000);
+                });
+                
+                $("#issue-btn").on("click",function(e){
+                    e.preventDefault();
+                    $('.loading-sec').show();
+                     setTimeout(function(){
+                        window.location = {% url 'issue-cert' %};
+                    },3000);
                 });
             });
-        </script-->
+        </script>
 
     </body>
 </html>

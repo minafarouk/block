@@ -10,7 +10,7 @@
 	<!-- Fav Icon  -->
 	<link rel="shortcut icon" href="{% static 'images/favicon.png' %}">
 	<!-- Site Title  -->
-	<title>Blockcred</title>
+	<title>Blockcred - Your Credentials On Top Of Blockchain</title>
 	<!-- Vendor Bundle CSS -->
 	<link rel="stylesheet" href="{% static 'css/vendor.bundle.css' %}">
 	<!-- Custom styles for this template -->
@@ -49,7 +49,7 @@
 						<li class="nav-item"><a class="nav-link menu-link" href="#philosophy">Our Philosophy</a></li>
 						<li class="nav-item"><a class="nav-link menu-link" href="#why">Why?</a></li>
                         <li class="nav-item"><a class="nav-link menu-link" href="#roadmap">Roadmap</a></li>
-						<li class="nav-item"><a class="nav-link menu-link" href="{% host_url 'faq' host 'landing' %}">FAQs</a></li>
+						<li class="nav-item"><a class="nav-link menu-link" href="{% url 'faq' %}">FAQs</a></li>
 						<li class="nav-item"><a class="nav-link menu-link" href="#contact">Contact</a></li>
 					</ul>
                     <ul class="navbar-nav navbar-btns">
@@ -75,7 +75,7 @@
 						</div><!-- .col  -->
 						<div class="col-lg-6 col-md-12">
 							<div class="res-m-btm animated" data-animate="fadeInUp" data-delay=".1">
-                                <img src="{% static 'images/header-image-light.png' %}" alt="graph">
+                                <img src="{% static 'images/header-image-light2.png' %}" alt="graph">
                             </div>
 						</div><!-- .col  -->
 					</div><!-- .row  -->
@@ -204,7 +204,7 @@
 			</div>
             
             <div class="row">
-                <div class="col-4">
+                <div class="col-md-4">
                     <div class="section-bg pd-x2">
                         <p>
                             <span class="number">01.</span> The issuer invites the holder to apply for the course’s credential through the store.
@@ -237,12 +237,12 @@
                     
                     <div class="gaps size-1x"></div><!-- .gaps  -->
                 </div>
-                <div class="col-4">
+                <div class="col-md-4">
                     <div class="text-center">
                         <img src="{% static 'images/center-visual.png' %}" alt="">
                     </div>  
                 </div>
-                <div class="col-4">
+                <div class="col-md-4">
                     <div class="section-bg pd-x2">
                         <p>
                             <span class="number">05.</span> The holder gets the digital credential and stores it in his wallet.
@@ -354,7 +354,9 @@
                         
                         <div class="gaps size-3x"></div><div class="gaps size-1x d-none d-md-block"></div><!-- .gaps  -->
                         
-                        <p class="animated text-left section-bg pd-x2" data-animate="fadeInUp" data-delay=".1">One-click sharing to social media and professional networking sites like LinkedIn help generate web traffic and referrals for your program. It's time to turn your digital certificates and badges into a marketing tool. Receiving recognition is a pivotal moment for anyone completing his/her certification, training, or learning program. When you use BlockCred to send your certificates and badges to your students, you create exciting moments of pride that individuals can't wait to share.</p>
+                        <p class="animated text-left section-bg pd-x2" data-animate="fadeInUp" data-delay=".1">
+                            One-click sharing to social media and professional networking sites like LinkedIn help generate web traffic and referrals for your program. It's time to turn your digital certificates and badges into a marketing tool. Receiving recognition is a pivotal moment for anyone completing his/her certification, training, or learning program. When you use BlockCred to send your certificates and badges to your students, you create exciting moments of pride that individuals can't wait to share.
+                        </p>
 					</div>
 				</div><!-- .col  -->
 
@@ -367,7 +369,7 @@
                         
                         <div class="gaps size-3x"></div><div class="gaps size-1x d-none d-md-block"></div><!-- .gaps  -->
                         
-                        <p class="animated text-left section-bg pd-x2" data-animate="fadeInUp" data-delay=".1">Receiving recognition is a pivotal moment for anyone completing his/her certification, training, or learning program. When you use BlockCred to send your certificates and badges to your new employer, you create exciting moments of pride that will give your skills a new level of trust and verification, your skills will be verifiable, sharable and immutable by the power of the Blockchain.</p>
+                        <p class="animated text-left section-bg pd-x2" data-animate="fadeInUp" data-delay=".1">We put learners front and center, Blockcred is where learners collect, store, and work with the credentials they earn over their career life. We believe that when you make credentials digital they can improve the learner’s ability to share what they know and how well they know it with employers and on social networks like LinkedIn and Facebook. The future of academic credentials is changing. Blockchain is making waves in the world of educational certificates and Blockcred is taking the lead in that field.</p>
 					</div>
 				</div><!-- .col  -->
 			</div><!-- .row  -->
@@ -398,28 +400,27 @@
                         <li>Publish the proof of concept.</li>
                     </ul>
 				</div>
-				<div class="single-roadmap-alt sra-done gradiant-btoa">
+				<div class="single-roadmap-alt gradiant-btoa">
 					<h6>Q2 2018</h6>
 					<ul>
-                        <li>R&D phase.</li>
-                        <li>Build the Blockchain architecture.</li>
-                        <li>Publish the proof of concept.</li>
+                        <li>Establish the identity verification.</li>
+                        <li>Launching the wallet software for both issuer and holder.</li>
+                        <li>Minimal Viable Product.</li>
                     </ul>
 				</div>
 				<div class="single-roadmap-alt gradiant-atob">
 					<h6>Q3 2018</h6>
 					<ul>
-                        <li>R&D phase.</li>
-                        <li>Build the Blockchain architecture.</li>
-                        <li>Publish the proof of concept.</li>
+                        <li>Adding more functionality to make life easier.</li>
+                        <li>Mobile wallet -  Android</li>
+                        <li>Beta launching.</li>
                     </ul>
 				</div>
 				<div class="single-roadmap-alt gradiant-btoc">
-					<h6>January 2019</h6>
+					<h6>Q1 2019</h6>
 					<ul>
-                        <li>R&D phase.</li>
-                        <li>Build the Blockchain architecture.</li>
-                        <li>Publish the proof of concept.</li>
+                        <li>Mobile wallet - IOS</li>
+                        <li>Final release.</li>
                     </ul>
 				</div>
      		</div>
@@ -483,11 +484,18 @@
 			<div class="row text-center">
 				<div class="col-md-6 offset-md-3">
 					<h4 class="section-title-md animated" data-animate="fadeInUp" data-delay="0">Don't miss out, Stay updated</h4>
-					<form id="subscribe-form" action="form/subscribe.php" method="post" class="subscription-form inline-form">
+					<form id="subscribe-form" action="{% url 'subscribe' %} " method="post" class="subscription-form inline-form">
+						{% csrf_token %}
 						<input type="text" name="youremail" class="input-round required email" placeholder="Enter your email address" >
-						<input type="text" class="d-none" name="form-anti-honeypot" value="">
-						<a href="#team-profile-1" class="btn btn-plane expand-trigger content-popup">Subscribe</a>
-						<div class="subscribe-results"></div>
+						<input type="text" class="d-none" name="form-anti-honeypot" value="">						
+						
+						 <!--a href="#team-profile-1" class="btn btn-plane expand-trigger content-popup">Subscribe</a-->
+						 
+
+						 <div id="subscribe-results"></div>
+						 <input type="text" class="d-none" name="form-anti-honeypot" value="">
+						 <button type="submit" class="btn">Subscribe</button>
+						 <!--a href="#subscribe-form" class="btn btn-plane expand-trigger content-popup" type="submit">Subscribe</a-->
 					</form>
 				</div>
 			</div>
@@ -502,8 +510,8 @@
 			<div class="row text-center">
 				<div class="col-md-12">
 					<ul class="social">
-						<li class="animated" data-animate="fadeInUp" data-delay=".1"><a href="#"><em class="fa fa-twitter"></em></a></li>
-                        <li class="animated" data-animate="fadeInUp" data-delay=".1"><a href="#"><em class="fa fa-telegram"></em></a></li>
+						<li class="animated" data-animate="fadeInUp" data-delay=".1"><a href="https://twitter.com/blockcred"><em class="fa fa-twitter"></em></a></li>
+                        <li class="animated" data-animate="fadeInUp" data-delay=".1"><a href="https://t.me/joinchat/IRHN2EjnCavHHKreWshr1Q"><em class="fa fa-telegram"></em></a></li>
 					</ul>
 					<span class="copyright-text animated" data-animate="fadeInUp" data-delay=".3">
 						Copyright &copy; 2018, Blockcred. Developend By <a href="http://intelli-coders.com" target="_blank">Intelli Coders</a>
@@ -552,7 +560,28 @@
         });
         return false;
     });
+
+    var frm2 = $('#subscribe-form');
+    frm2.unbind('submit').submit(function (e) {
+    	e.preventDefault(); 
+    	    	
+        $.ajax({
+            type: frm2.attr('method'),
+            url: frm2.attr('action'),
+            data: frm2.serialize(),
+            success: function (json) {            	
+                $('#subscribe-results').html("<div class='alert-box alert radius' data-alert></div>");
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+            	
+                 $('#subscribe-results').text(thrownError);                
+            }
+        });
+
+        return false;
+    });
 </script>
+
 
 </body>
 </html>

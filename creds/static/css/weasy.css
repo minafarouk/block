@@ -32156,7 +32156,7 @@ body {
 
 .app-navigation.app-navigation-style-default .app-navigation-logo,
 .app-navigation.app-navigation-style-default .app-navigation-logo:hover{
-    background: url(../img/logo-w.png) center center no-repeat #282855;
+    background: url(../img/logo.png) center center no-repeat #e9e8fa;
     height: 90px;
 }
 
@@ -32166,7 +32166,7 @@ body {
 
 .app-navigation.app-navigation-style-default.app-navigation-minimized .app-navigation-logo,
 .app-navigation.app-navigation-style-default.app-navigation-minimized .app-navigation-logo:hover{
-    background: url(../img/logo-sm.png) center center no-repeat #282855;
+    background: url(../img/logo-sm.png) center center no-repeat #e9e8fa;
 }
 
 .app-navigation.app-navigation-style-default nav > ul > li a{
@@ -32176,12 +32176,9 @@ body {
     color: #e9e8fa;
 }
 
+.app-navigation.app-navigation-style-default nav > ul > li a:hover,
 .app-navigation.app-navigation-style-default nav > ul > li a.active{
     background: #f26122;
-}
-
-.app-navigation.app-navigation-style-default nav > ul > li a:hover{
-    background: rgba(255,255,255,.05);
 }
 
 .app-navigation.app-navigation-style-default nav > ul > li{
@@ -32396,6 +32393,14 @@ body {
     height: 100% !important;
 }
 
+/*
+
+.certificate{
+    display: none;
+}
+
+*/
+
 .certificate-full-page{
     display: block;
 }
@@ -32446,10 +32451,6 @@ body {
     font-weight: 600;
 }
 
-.certificate{
-    display: none;
-}
-
 .modal .modal-dialog.modal-primary .modal-header{
     background: #3a3671;
 }
@@ -32491,8 +32492,6 @@ body {
 .certificate-footer p{
     font-size: 13px;
     font-weight: 400;
-    filter: grayscale(100);
-    opacity: .5;
 }
 
 .certificate-footer img{
@@ -32500,504 +32499,4 @@ body {
     width: 164px;
     filter: grayscale(100);
     opacity: .5;
-    position: relative;
-    top: 6px;
-}
-
-.verification-process.verified{
-}
-
-.verification-process.verified > ul{
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    width: 970px;
-}
-
-.verification-process.verified > ul > li{
-    font-size: 16px;
-    font-weight: 600;
-    padding: 0;
-    display: inline-block;
-    width: 25%;
-    color: rgba(42, 178, 123, 1);
-}
-
-.verification-process.verified > ul > li > span{
-    text-align: left !important;
-}
-
-.verification-process.verified ul > li:last-of-type > span{
-    position: relative;
-    top: -40px;
-}
-
-.verification-process.verified ul > li > ul{
-    line-height: 26px;
-    list-style-type: none;
-    position: relative;
-    z-index: 140;
-    margin-left: -7px;
-    margin-top: 0px;
-    font-weight: 400;
-}
-
-.verification-process.verified ul > li > ul > li{
-    font-size: 13px;
-    text-align: left !important;
-}
-
-.verification-process.verified ul > li > ul > li:before{
-    content: "•";
-    font-size: 16px;
-    margin-right: 10px;
-    margin-left: 23px;
-}
-
-.verification-process.verified > ul > li:before{
-    content: "\f00c";
-    display: inline-block;
-    width: 32px;
-    height: 32px;
-    border-radius: 32px;
-    text-align: center;
-    line-height: 32px;
-    font-family: 'FontAwesome';
-    background: #fff;
-    position: relative;
-    color: rgba(42, 178, 123, 1);
-    z-index: 99;
-    top: -47px;
-    border: 2px solid rgba(42, 178, 123, 1);
-}
-
-.verification-process.verified > ul > li:after{
-    content: "";
-    position: absolute;
-    z-index: 1;
-    width: 320px;
-    height: 16px;
-    background: rgba(42, 178, 123, 1);
-}
-
-.verification-process.verified > ul > li:last-of-type:after{
-    content: "";
-    display: none;
-}
-
-.verification-process.verified > ul > li:last-of-type:before{
-    content: "";
-    background: url('../img/verified.png') no-repeat;
-    width: 128px;
-    height: 128px;
-    border: 0;
-    top: 20px;
-}
-
-.verification-process.verified > ul > li:last-of-type{
-    padding: 0;
-}
-
-.verification-process.verified > ul > li:last-of-type{
-    color: rgba(42, 178, 123, 1);
-    font-size: 18px;
-}
-
-.verification-process.verified > ul > li:last-of-type span{
-    position: relative;
-    top: -110px;
-    left: -112px;
-}
-
-.verification-process.verified > ul > li > ul{
-    height: 108px;
-    overflow: hidden;
-}
-
-.verification-process.verified > ul > li > span{
-    display: inline-block;
-    height: 22px;
-    overflow: hidden;
-    margin-top: 40px;
-    color: #444 !important;
-    font-weight: 500 !important;
-}
-
-.verification-process.verified > ul > li:first-of-type:before{
-    animation-name: circle;
-    animation-duration: .5s;
-    animation-fill-mode: backwards;
-}
-
-.verification-process.verified > ul > li:first-of-type:after{
-    animation-name: line;
-    animation-delay: .5;
-    animation-duration: 1s;
-    animation-fill-mode: backwards;
-    left: 34px;
-}
-
-.verification-process.verified > ul > li:first-of-type > ul{
-    animation-name: list;
-    animation-duration: 2.5s;
-    animation-fill-mode: backwards;
-}
-
-.verification-process.verified > ul > li:first-of-type > span{
-    animation-name: text;
-    animation-duration: 1s;
-    animation-fill-mode: backwards;
-}
-
-.verification-process.verified > ul > li:nth-of-type(2):before{
-    animation-name: circle;
-    animation-duration: .5s;
-    animation-delay: 2s;
-    animation-fill-mode: backwards;
-}
-
-.verification-process.verified > ul > li:nth-of-type(2):after{
-    animation-name: line;
-    animation-duration: 1s;
-    animation-delay: 2.5s;
-    animation-fill-mode: backwards;
-    left: 259px;
-}
-
-.verification-process.verified > ul > li:nth-of-type(2) > ul{
-    animation-name: list;
-    animation-duration: 2.5s;
-    animation-delay: 2.5s;
-    animation-fill-mode: backwards;
-}
-
-.verification-process.verified > ul > li:nth-of-type(2) > span{
-    animation-name: text;
-    animation-duration: 1s;
-    animation-delay: 2s;
-    animation-fill-mode: backwards;
-}
-
-.verification-process.verified > ul > li:nth-of-type(3):before{
-    animation-name: circle;
-    animation-duration: .5s;
-    animation-delay: 3.5s;
-    animation-fill-mode: backwards;
-}
-
-.verification-process.verified > ul > li:nth-of-type(3):after{
-    animation-name: line;
-    animation-duration: 1s;
-    animation-delay: 4s;
-    animation-fill-mode: backwards;
-    left: 400px;
-}
-
-.verification-process.verified > ul > li:nth-of-type(3) > ul{
-    animation-name: list;
-    animation-duration: 2.5s;
-    animation-delay: 4s;
-    animation-fill-mode: backwards;
-}
-
-.verification-process.verified > ul > li:nth-of-type(3) > span{
-    animation-name: text;
-    animation-duration: 1s;
-    animation-delay: 3.5s;
-    animation-fill-mode: backwards;
-}
-
-.verification-process.verified > ul > li:last-of-type:before{
-    animation-name: circle;
-    animation-duration: .5s;
-    animation-delay: 5s;
-    animation-fill-mode: backwards;
-}
-
-.verification-process.verified > ul > li:last-of-type:after{
-    animation-name: line;
-    animation-duration: 1s;
-    animation-delay: 5.5s;
-    animation-fill-mode: backwards;
-}
-
-.verification-process.verified > ul > li:nth-of-type(4) > span{
-    animation-name: text;
-    animation-duration: 1s;
-    animation-delay: 5s;
-    animation-fill-mode: backwards;
-}
-
-.verification-process.unverified > ul{
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.verification-process.unverified > ul > li{
-    font-size: 16px;
-    font-weight: 600;
-    padding: 0 0 25px;
-    color: #ff0000;
-}
-
-.verification-process.unverified ul > li > span{
-    position: relative;
-    top: -3px;
-}
-
-.verification-process.unverified ul > li:last-of-type > span{
-    position: relative;
-    top: -10px;
-}
-
-.verification-process.unverified ul > li > ul{
-    line-height: 26px;
-    list-style-type: none;
-    position: relative;
-    z-index: 140;
-    margin-left: -7px;
-    margin-top: -10px;
-    font-weight: 400;
-}
-
-.verification-process.unverified ul > li > ul > li{
-    font-size: 13px;
-}
-
-.verification-process.unverified ul > li > ul > li:before{
-    content: "•";
-    color: #fff;
-    font-size: 16px;
-    margin-right: 29px;
-}
-
-.verification-process.unverified > ul > li:before{
-    content: "\f00d";
-    display: inline-block;
-    margin-right: 10px;
-    width: 32px;
-    height: 32px;
-    border-radius: 32px;
-    text-align: center;
-    line-height: 32px;
-    font-family: 'FontAwesome';
-    background: #fff;
-    position: relative;
-    color: #ff0000 !important;
-    z-index: 99;
-    top: -9px;
-}
-
-.verification-process.unverified > ul > li:after{
-    content: "";
-    position: absolute;
-    left: 28px;
-    z-index: 1;
-    width: 16px;
-    height: 150px;
-    background: #ff0000;
-}
-
-.verification-process.unverified > ul > li:last-of-type:after{
-    content: "";
-    display: none;
-}
-
-.verification-process.unverified > ul > li:last-of-type:before{
-    content: "\f132";
-    width: 48px;
-    height: 48px;
-    border-radius: 48px;
-    line-height: 48px;
-    font-size: 30px;
-    left: -8px;
-}
-
-.verification-process.unverified > ul > li:first-of-type{
-    padding: 25px 0 25px;
-}
-
-.verification-process.unverified > ul > li:last-of-type{
-    padding: 0;
-}
-
-.verification-process.unverified > ul > li:last-of-type{
-    color: #ff0000;
-    font-size: 18px;
-}
-
-.verification-process.unverified > ul > li:last-of-type span{
-    margin-left: -10px;
-}
-
-.verification-process.unverified > ul > li > ul{
-    height: 108px;
-    overflow: hidden;
-}
-
-.verification-process.unverified > ul > li > span{
-    display: inline-block;
-    height: 22px;
-    overflow: hidden;
-}
-
-.verification-process.unverified > ul > li:first-of-type:before{
-    animation-name: circle;
-    animation-duration: .5s;
-    animation-fill-mode: backwards;
-}
-
-.verification-process.unverified > ul > li:first-of-type:after{
-    animation-name: linev;
-    animation-delay: .5;
-    animation-duration: 1s;
-    animation-fill-mode: backwards;
-}
-
-.verification-process.unverified > ul > li:first-of-type > ul{
-    animation-name: listv;
-    animation-duration: 2.5s;
-    animation-fill-mode: backwards;
-}
-
-.verification-process.unverified > ul > li:first-of-type > span{
-    animation-name: text;
-    animation-duration: 1s;
-    animation-fill-mode: backwards;
-}
-
-.verification-process.unverified > ul > li:last-of-type:before{
-    animation-name: circle;
-    animation-duration: .5s;
-    animation-delay: 2s;
-    animation-fill-mode: backwards;
-}
-
-.verification-process.unverified > ul > li:last-of-type:after{
-    animation-name: linev;
-    animation-duration: 1s;
-    animation-delay: 2.5s;
-    animation-fill-mode: backwards;
-}
-
-.verification-process.unverified > ul > li:last-of-type > ul{
-    animation-name: listv;
-    animation-duration: 2.5s;
-    animation-delay: 2.5s;
-    animation-fill-mode: backwards;
-}
-
-.verification-process.unverified > ul > li:last-of-type > span{
-    animation-name: text;
-    animation-duration: 1s;
-    animation-delay: 2s;
-    animation-fill-mode: backwards;
-}
-
-.certificate-footer img,
-.certificate-footer p{
-    display: inline-block;
-    float: left;
-}
-
-.certificate-footer img{
-    width: 144px !important;
-}
-
-.certificate-footer p{
-    margin-left: 20px;
-    position: relative;
-    top: 5px;
-}
-
-@keyframes circle{
-    0%{
-        transform: scale(0,0);
-    }
-    
-    100%{
-        transform: scale(1,1);
-    }
-}
-
-@keyframes line{
-    0%{
-        width: 0;
-    }
-    
-    100%{
-        width: 320px;
-    }
-}
-
-@keyframes linev{
-    0%{
-        height: 0;
-    }
-    
-    100%{
-        height: 150px;
-    }
-}
-
-@keyframes list{
-    0%{
-        height: 0;
-        color: #444;
-    }
-    
-    100%{
-        height: 108px;
-        color: rgba(42, 178, 123, 1);
-    }
-}
-
-@keyframes listv{
-    0%{
-        height: 0;
-        color: #444;
-    }
-    
-    100%{
-        height: 108px;
-        color: #ff0000;
-    }
-}
-
-@keyframes text{
-    0%{
-        height: 0;
-    }
-    
-    100%{
-        height: 22px;
-    }
-}
-
-.how ul li ,
-.how p{
-    color: #3a3671;
-    font-weight: 600;
-    margin-bottom: 5px;
-}
-
-.unsuccess-notes{
-    display: none;
-    min-height: 258px;
-    text-align: center;
-}
-
-.unsuccess-notes ul,
-.unsuccess-notes li,
-.unsuccess-notes p{
-    text-align: left;
-}
-
-.unsuccess-notes .btn{
-    margin: auto;
-}
-
-.verify-link{
-    min-height: 230px;
 }

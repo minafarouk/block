@@ -4,6 +4,7 @@ from .forms import *
 from django.http import JsonResponse
 from django.core.mail import send_mail
 from django.conf import settings
+from landing.models import Subscribe
 # Create your views here.
 
 
@@ -27,11 +28,24 @@ def contact(request):
             form.cleaned_data['content'],       #message
             sender, [to])
         returnedJSON = {}
-        returnedJSON['message'] = 'Your message sent successfully'
+        returnedJSON['message'] = 'Your message has been sent successfully'
         return JsonResponse(returnedJSON)
 
     else:
-
         return JsonResponse(form.errors.as_json(), safe=False,  status=400)
+
+
+def subscribe(request):
+    email = request.POST.get('youremail')
+    returnedJSON = {}
+    if email:
+        print(request.POST.get('youremail'))
+        Subscribe.objects.create(email=email)
+        returnedJSON['message'] = 'Your subscription added successfully'
+        return JsonResponse(returnedJSON)
+    else:
+        print("error")
+        returnedJSON['message'] = 'Your subscription failed'
+        return JsonResponse(returnedJSON, status=400)
 
 

@@ -156,7 +156,7 @@
 	if ($roadmap_carousel.length > 0 ) {
 		var c_rtl_r = ($body_m.hasClass('is-rtl')) ? true : false;
 		$roadmap_carousel.addClass('owl-carousel').owlCarousel({
-			items:6,
+			items:3,
 			nav:false,
 			dost:true,
 			margin:30,
@@ -173,10 +173,10 @@
 					items:3,
 				},
 				1024 : {
-					items:4,
+					items:3,
 				},
 				1170 : {
-					items:5,
+					items:3,
 				}
 			}
 		});

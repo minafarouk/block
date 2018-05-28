@@ -2471,3 +2471,56 @@ h6{
 .contact-info a:hover{
     color: #f16122 !important;
 }
+
+.navbar-toggler{
+    background-image: -webkit-linear-gradient(left, #3a3672 0%, #f16122 100%) !important;
+    background-image: linear-gradient(to right, #3a3672 0%, #f16122 100%) !important;
+}
+
+@media only screen and (max-width: 991px){
+.theme-light .site-header .navbar.is-transparent.active {
+    background: #e2e2f9;
+}
+    
+.site-header .navbar-collapse{
+    background: #e2e2f9;
+}
+}
+
+#roadmap ul{
+    text-align: left;
+}
+
+#roadmap ul li:before{
+    content: "•";
+    margin-right: 5px;
+}
+
+.subscription-form .btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+@media(max-width: 479px){
+    .subscription-form .btn {
+        position: static ;
+        width: 100%;
+    }
+    
+    #how img{
+        margin: 5px 0 20px;
+    }
+}
+
+#faqs{
+    margin-bottom: 50px;
+}
+
+.theme-light .tab-custom .nav-tabs li > a, .io-dark-light .section-light .tab-custom .nav-tabs li > a, .io-dark-light .section-light-alt .tab-custom .nav-tabs li > a{
+    color: #393771;
+}
+
+.theme-light .tab-custom .nav-tabs li > a.active, .theme-light .tab-custom .nav-tabs li > a.active:hover, .theme-light .tab-custom .nav-tabs li > a.active:focus, .theme-light .tab-custom .nav-tabs li > a.active:hover, .theme-light .tab-custom .nav-tabs li > a.active:focus, .io-dark-light .section-light .tab-custom .nav-tabs li > a.active, .io-dark-light .section-light .tab-custom .nav-tabs li > a.active:hover, .io-dark-light .section-light .tab-custom .nav-tabs li > a.active:focus, .io-dark-light .section-light .tab-custom .nav-tabs li > a.active:hover, .io-dark-light .section-light .tab-custom .nav-tabs li > a.active:focus, .io-dark-light .section-light-alt .tab-custom .nav-tabs li > a.active, .io-dark-light .section-light-alt .tab-custom .nav-tabs li > a.active:hover, .io-dark-light .section-light-alt .tab-custom .nav-tabs li > a.active:focus, .io-dark-light .section-light-alt .tab-custom .nav-tabs li > a.active:hover, .io-dark-light .section-light-alt .tab-custom .nav-tabs li > a.active:focus{
+    color: #f16122;
+}
