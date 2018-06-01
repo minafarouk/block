@@ -1,5 +1,4 @@
 {% load staticfiles %}
-{% load unix_to_datetime %}
 <!DOCTYPE html>
 <html lang="en">
     <head>                        
@@ -41,10 +40,10 @@
                                 <a href="home.html"><span class="fa fa-home"></span> Home</a>
                             </li>
                             <li>
-                                <a href="{% url 'issue-cert' %}" class="active"><span class="fa fa-plus"></span> Issue Credential</a>
+                                <a href="issue-certificate.html"><span class="fa fa-plus"></span> Issue Credential</a>
                             </li>
                             <li>
-                                <a href="{% url 'verify-cert' %}"><span class="fa fa-check"></span> Verify Credential</a>
+                                <a href="verify-certificate.html" class="active"><span class="fa fa-check"></span> Verify Credential</a>
                             </li>
                         </ul>
                     </nav>
@@ -67,11 +66,11 @@
                     <div class="app-heading-container app-heading-bordered bottom">
                         <div class="app-heading app-heading-bordered app-heading-page">  
                             <div class="icon icon-lg">
-                                <span class="fa fa-plus"></span>
+                                <span class="fa fa-check"></span>
                             </div>
                             <div class="title">
-                                <h1>Issue Certificate</h1>
-                                <p>Enter credential's information to publish it on the blockchain.</p>
+                                <h1>Verify Credential</h1>
+                                <p>Verify credential by using it's link</p>
                             </div>
                             <!--
                             <div class="heading-elements">
@@ -84,9 +83,69 @@
                     <!-- END PAGE HEADING -->
                     
                     <!-- START PAGE CONTAINER -->
-                    {% with cert_name=sname|add:'_'|add:cname|add:'.pdf' %}
                     <div class="container">
-                        <div class="block certificate-full-page">
+                        <div class="block text-right">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="verification-process verified text-left margin-top-20">
+                                        <ul>
+                                            <li>
+                                                <span>Format validation</span>
+                                                <ul>
+                                                    <li>Get transaction ID</li>
+                                                    <li>Compute local hash</li>
+                                                    <li>Fetch remote hash</li>
+                                                    <li>Parse issuer keys</li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <span>Hash comparison</span>
+                                                <ul>
+                                                    <li>Compare hashes</li>
+                                                    <li>Check Merkle root</li>
+                                                    <li>Check receipt</li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <span>Status check</span>
+                                                <ul>
+                                                    <li>Revoked status check</li>
+                                                    <li>Issuer signature check</li>
+                                                    <li>Expired status check</li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <span>Verified</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="block certificate text-right">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="dropdown">
+                                        <a href="#" class="btn btn-primary margin-top-10" data-toggle="dropdown"><i class="fa fa-download"></i></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#"><i class="fa fa-file-pdf-o"></i>Download as PDF</a></li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="dropdown">
+                                        <a href="#" class="btn btn-primary margin-top-10 margin-left-10" data-toggle="dropdown"><i class="fa fa-share"></i></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#"><i class="fa fa-linkedin"></i>Add To Linkedin</a></li>
+                                            <li><a href="#"><i class="fa fa-facebook"></i>Share To Facebook</a></li>
+                                            <li><a href="#"><i class="fa fa-twitter"></i>Share To Twitter</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="block certificate certificate-full-page">
                             <div class="row">
                                 <div class="col-xs-offset-1 col-xs-10">
                                     <div class="text-left certificate-content">
@@ -96,7 +155,7 @@
                                             </div>
                                             <div class="col-md-offset-3 col-md-3">
                                                 <div class="pull-right">
-                                                    <h2 class="no-margin-bottom">{{ sname }}</h2>
+                                                    <h2 class="no-margin-bottom">{{ sname}}</h2>
 
                                                     <ul>
                                                         <li>{{ cname }}</li>
@@ -113,29 +172,95 @@
                                         </p>
                                         
                                         <div>
-                                            {% if blocktime %}
-                                            <span>Certificate ID : {{ blocktime }}</span>
-                                            <span>Issued On :  {{ blocktime|unix_to_datetime|date:"SHORT_DATE_FORMAT" }}</span>
-                                            {% endif %}
+                                            <span>Certificate ID : 123456777</span>
+                                            
                                         </div>
                                     </div>
                                     
+                                    <!--
                                     
+                                    <div class="text-center">
+                                        <a href="#" class="btn btn-primary">Download PDF</a>
+                                    </div>
+
+                                    -->
                                     
                                 </div>
                             </div>
                         </div>
-                            
-                        <div class="block text-center certificate-full-page">
+                        
+                        <div class="block text-left certificate certificate-info">
                             <div class="row">
-                                <div class="col-xs-offset-1 col-xs-10">
-                                    <a href="{% url 'downloadcert' cert_name %}" class="btn btn-primary margin-top-10"><i class="fa fa-download margin-right-10"></i>Download PDF</a>
-                                    <a href=""  sname="{{ sname }}" class="btn btn-primary margin-left-10 margin-top-10" data-toggle="modal" data-target="#send-popup"><i class="fa fa-envelope margin-right-10"></i>Send To Someone</a>
-                                    <a href="{% url 'urlcert' cert_name %}" class="btn btn-primary margin-left-10 margin-top-10" data-toggle="modal" data-target="#link-popup"><i class="fa fa-chain margin-right-10"></i>Get Link</a>
-                                    <a href="" class="btn btn-primary margin-left-10 margin-top-10" data-toggle="modal" data-target="#qrcode-popup"><i class="fa fa-qrcode margin-right-10"></i>Get QR Code</a>
+                                <div class="col-md-10">
+                                    <div class="row margin-bottom-10">
+                                        <div class="col-md-3">
+                                            <p>
+                                                <span>Recipient</span>
+                                                {{ sname }}
+                                            </p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p>
+                                                <span>Issuer</span>
+                                                {{ dep }}
+                                            </p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p>
+                                                <span>Issue Date</span>
+                                                04/05/2018
+                                            </p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p>
+                                                <span>Expired Date</span>
+                                                04/05/2018
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row margin-bottom-30">
+                                        <div class="col-md-6">
+                                            <p>
+                                                <span>Transaction ID</span>
+                                                4b4b5aa4b0a1df5a004b4b5aa4b0a1df5a0044
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>
+                                                <span>Certificate Hash</span>
+                                                4b4b5aa4b0a1df5a004b4b5aa4b0a1df5a004b4
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row margin-bottom-30">
+                                        <div class="col-md-12">
+                                            <p>
+                                                <span>Credential Link</span>
+                                                https://www.blockcred.io/3bv543bv543bv
+                                            </p>
+                                        </div>
+                                    </div>    
+                                </div>
+                                <div class="col-md-2">
+                                    <img src="{% static 'img/qr-code.png' %}" alt="" class="img-responsive">
+                                </div>
+                            </div>
+                                
+                            
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="text-left certificate-footer">
+                                        <img src="{% static 'img/logo.png' %}" alt="Blockcred">
+                                        <p>
+                                            All certificate content, assets and metadata are provided by the issuer of this certificate and have been registered on the Blockchain
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
                     <!-- END PAGE CONTAINER -->
                     
@@ -152,92 +277,6 @@
                 </div>
             </div>
             <!-- END APP FOOTER -->
-            
-            <!-- MODAL PRIMARY -->
-            
-            <div class="modal fade" id="qrcode-popup" tabindex="-1" role="dialog" aria-labelledby="modal-primary-header">                        
-                <div class="modal-dialog modal-primary" role="document">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="icon-cross"></span></button>
-
-                    <div class="modal-content">
-                        <div class="modal-header">                        
-                            <h4 class="modal-title" id="modal-primary-header"><i class="fa fa-qrcode margin-right-10"></i>Get QR Code</h4>
-                        </div>
-                        <div class="modal-body text-center">
-                            <div class="row">
-                                <div class="col-xs-offset-4 col-xs-4">
-                                    <img src="{% url 'qrcert' cert_name %}" alt="" class="img-responsive">
-                                </div>
-                            </div>                            
-                        </div>
-                    </div>
-                </div>            
-            </div>
-            
-            <div class="modal fade" id="link-popup" tabindex="-1" role="dialog" aria-labelledby="modal-primary-header">                        
-                <div class="modal-dialog modal-primary" role="document">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="icon-cross"></span></button>
-
-                    <div class="modal-content">
-                        <div class="modal-header">                        
-                            <h4 class="modal-title" id="modal-primary-header"><i class="fa fa-chain margin-right-10"></i>Get Link</h4>
-                        </div>
-                        <div class="modal-body text-center">
-                            <div class="row">
-                                <div class="col-xs-offset-2 col-xs-8">
-                                    <form class="form-horizontal" action="#">
-                                        <div class="form-group"> 
-                                            <div class="col-md-12">
-                                                <input type="text" class="form-control" disabled value="https://www.blockcred.io/3bv54">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group text-right">                                        
-                                            <div class="col-md-5 col-md-offset-7">
-                                                <button type="submit" class="btn btn-primary">Copy</button>
-                                            </div>
-                                        </div>
-                                    </form>   
-                                </div>
-                            </div>        
-                        </div>
-                    </div>
-                </div>            
-            </div>
-            
-            <div class="modal fade" id="send-popup" tabindex="-1" role="dialog" aria-labelledby="modal-primary-header">                        
-                <div class="modal-dialog modal-primary" role="document">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="icon-cross"></span></button>
-
-                    <div class="modal-content">
-                        <div class="modal-header">                        
-                            <h4 class="modal-title" id="modal-primary-header"><i class="fa fa-envelope margin-right-10"></i>Send To Someone</h4>
-                        </div>
-                        <div class="modal-body text-center">
-                            <div class="row">
-                                <div class="col-xs-offset-2 col-xs-8">
-                                    <form class="form-horizontal" action="#">
-                                        <div class="form-group"> 
-                                            <div class="col-md-12">
-                                                <input type="text" class="form-control" data-validation="required" placeholder="Email">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group text-right">                                        
-                                            <div class="col-md-5 col-md-offset-7">
-                                                <button type="submit" class="btn btn-primary">Send Email</button>
-                                            </div>
-                                        </div>
-                                    </form>   
-                                </div>
-                            </div>                
-                        </div>
-                    </div>
-                </div>            
-            </div>
-            {% endwith %}
-            <!-- END MODAL PRIMARY -->
-            
         </div>        
         <!-- END APP WRAPPER -->                
         
@@ -285,6 +324,16 @@
                         app.block.loading.finish("#"+block);
                     },3000);
                 });
+                
+                $('#issue-btn').click(function(){
+                    $('.loading-sec').show().delay(5000).fadeOut();
+                    $('.certificate').delay(5000).fadeIn();
+                });
+                
+                setTimeout(function(){
+                    $(".certificate").show();
+                },6000);
+                
             });
         </script>
 

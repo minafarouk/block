@@ -1,5 +1,0 @@
-db.sqlite3
-*.pyc
-requirements.txt
-local_settings.py
-settings.py

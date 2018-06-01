@@ -32504,8 +32504,7 @@ body {
     top: 6px;
 }
 
-.verification-process.verified{
-}
+
 
 .verification-process.verified > ul{
     list-style: none;
@@ -32630,102 +32629,15 @@ body {
 }
 
 .verification-process.verified > ul > li:first-of-type:after{
-    animation-name: line;
-    animation-delay: .5;
-    animation-duration: 1s;
-    animation-fill-mode: backwards;
     left: 34px;
 }
 
-.verification-process.verified > ul > li:first-of-type > ul{
-    animation-name: list;
-    animation-duration: 2.5s;
-    animation-fill-mode: backwards;
-}
-
-.verification-process.verified > ul > li:first-of-type > span{
-    animation-name: text;
-    animation-duration: 1s;
-    animation-fill-mode: backwards;
-}
-
-.verification-process.verified > ul > li:nth-of-type(2):before{
-    animation-name: circle;
-    animation-duration: .5s;
-    animation-delay: 2s;
-    animation-fill-mode: backwards;
-}
-
 .verification-process.verified > ul > li:nth-of-type(2):after{
-    animation-name: line;
-    animation-duration: 1s;
-    animation-delay: 2.5s;
-    animation-fill-mode: backwards;
     left: 259px;
 }
 
-.verification-process.verified > ul > li:nth-of-type(2) > ul{
-    animation-name: list;
-    animation-duration: 2.5s;
-    animation-delay: 2.5s;
-    animation-fill-mode: backwards;
-}
-
-.verification-process.verified > ul > li:nth-of-type(2) > span{
-    animation-name: text;
-    animation-duration: 1s;
-    animation-delay: 2s;
-    animation-fill-mode: backwards;
-}
-
-.verification-process.verified > ul > li:nth-of-type(3):before{
-    animation-name: circle;
-    animation-duration: .5s;
-    animation-delay: 3.5s;
-    animation-fill-mode: backwards;
-}
-
 .verification-process.verified > ul > li:nth-of-type(3):after{
-    animation-name: line;
-    animation-duration: 1s;
-    animation-delay: 4s;
-    animation-fill-mode: backwards;
     left: 400px;
-}
-
-.verification-process.verified > ul > li:nth-of-type(3) > ul{
-    animation-name: list;
-    animation-duration: 2.5s;
-    animation-delay: 4s;
-    animation-fill-mode: backwards;
-}
-
-.verification-process.verified > ul > li:nth-of-type(3) > span{
-    animation-name: text;
-    animation-duration: 1s;
-    animation-delay: 3.5s;
-    animation-fill-mode: backwards;
-}
-
-.verification-process.verified > ul > li:last-of-type:before{
-    animation-name: circle;
-    animation-duration: .5s;
-    animation-delay: 5s;
-    animation-fill-mode: backwards;
-}
-
-.verification-process.verified > ul > li:last-of-type:after{
-    animation-name: line;
-    animation-duration: 1s;
-    animation-delay: 5.5s;
-    animation-fill-mode: backwards;
-}
-
-.verification-process.verified > ul > li:nth-of-type(4) > span{
-    animation-name: text;
-    animation-duration: 1s;
-    animation-delay: 5s;
-    animation-fill-mode: backwards;
 }
 
 .verification-process.unverified > ul{
@@ -32994,20 +32906,28 @@ body {
     text-align: left;
 }
 
+.unsuccess-notes ul li ,
+.unsuccess-notes p{
+    color: #3a3671;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
 .unsuccess-notes .btn{
     margin: auto;
+    margin-top: 15px;
 }
 
 .verify-link{
     min-height: 230px;
 }
 
-input[type="file"] {
-    display: none;
+.verify-link p{
+    color: #3a3671;
+    font-weight: 600;
 }
-.custom-file-upload {
-    border: 1px solid #ccc;
-    display: inline-block;
-    padding: 6px 12px;
-    cursor: pointer;
-}
+
+@page {
+            size: Letter;
+            margin: 0in 0.44in 0.2in 0.44in;
+    }

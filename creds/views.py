@@ -39,14 +39,14 @@ def _create_pdf(request, form):
     context['cname'] = form.cleaned_data['course_name']
     context['grade'] = form.cleaned_data['grade']
     context['dep'] = form.cleaned_data['department']
-    html_string = render_to_string('creds/certificate_temolate.html', context)
+    html_string = render_to_string('creds/memo.html', context)
     import logging
     logger = logging.getLogger('weasyprint')
     logger.addHandler(logging.FileHandler('/tmp/weasyprint.log'))
     html = HTML(string=html_string, base_url=request.build_absolute_uri())
 
     certificate_name = form.cleaned_data['student_name'] + "_" + form.cleaned_data['course_name'] + ".pdf"
-    html.write_pdf(target='/tmp/{0}'.format(certificate_name), stylesheets=[CSS("/root/django_lab_testing/blockcred/creds/static/css/weasy.css")])
+    html.write_pdf(target='/tmp/{0}'.format(certificate_name), stylesheets=[CSS("/root/django_lab_testing/blockcred/creds/static/css/pdf.css")])
     return '/tmp/{0}'.format(certificate_name)
 
 
@@ -137,8 +137,6 @@ def issue(request):
             semail = form.cleaned_data['student_email']
             cname = form.cleaned_data['course_name']
             _send_email(sname, cname, semail)
-
-
             return render( request,'creds/certificate.html', context = certificate_info)
         else:
  #           issue_url = reverse('issue-cert', args=form, current_app='creds', host='creds')
@@ -178,11 +176,34 @@ def url_cert(request, cert_name):
     id = Files.objects.get(file_hashed=key).id
     short = short_url.encode_url(id)
 
-    return HttpResponse("www.blockreds.io/creds/verify/" + short)
+    return HttpResponse("www.blockreds.io/" + short)
 
 
-def verify_cert(request, id_map):
-    id = short_url.decode_url(id_map)
-    key = Files.objects.get(id=id).file_hashed
-    certificate_info = _verify(key)
-    return render(request, 'creds/verify.html', context=certificate_info)
+def verify(request):
+     if request.method == 'POST':
+         try:
+            fs = FileSystemStorage()
+            file = request.FILES['file']
+            filename = fs.save(file.name, file)
+            uploaded_file_path = fs.url(filename)
+            file_hash = _file_hash(settings.BASE_DIR + uploaded_file_path)
+            context = _verify(file_hash)
+            return render_to_response('creds/verify-success.html', context=context)
+         except:
+            return render_to_response('creds/verify-unsuccess.html')
+
+     if request.method == 'GET':
+        url = request.GET.get('url')
+        if url:
+            try:
+                id = short_url.decode_url(url[url.find('/') + 1:])
+                key = Files.objects.get(id=id).file_hashed
+                context = _verify(key)
+                return render(request, 'creds/verify-success.html', context=context)
+            except:
+                return render(request, 'creds/verify-unsuccess.html')
+        else:
+            return render(request, 'creds/verify-certificate.html')
+
+     else:
+        return render(request, 'creds/verify-certificate.html')

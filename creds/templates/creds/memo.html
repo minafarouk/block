@@ -1,0 +1,136 @@
+{% load staticfiles %}
+{% load unix_to_datetime %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>                        
+        <title>Blockcred - Your Credentials On Top Of Blockchain</title>            
+          
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" type="image/x-icon">
+        <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+        
+       
+        <link rel="stylesheet" href="{% static 'css/pdf.css' %}">
+      
+    </head>
+    <body>                  
+                                          
+                        <div class="block certificate-full-page certificate-pdf-page">
+                            <div class="row">
+                                <div class="col-xs-offset-1 col-xs-10">
+                                    <div class="text-left certificate-content">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <img src="{% static 'img/logo.png' %}" alt="" class="margin-bottom-20">
+                                            </div>
+                                            <div class="col-md-offset-3 col-md-3">
+                                                <div class="pull-right">
+                                                    <h2 class="no-margin-bottom">{{ sname }}</h2>
+
+                                                    <ul>
+                                                        <li>{{ cname }}</li>
+                                                        <li>{{ dep }}</li>
+                                                    </ul>        
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <h3>Certificate Of Achievement</h3>
+                                        
+                                        <p>
+                                            Blockcred certifies that <span>{{ sname }}</span> has successfully completed the required course of <span>{{ cname }}</span> and approved by the board of education for the department of <span>{{ dep }}</span> and therefore awarded this certificate
+                                        </p>
+                                        {% if blocktime %}
+                                        <div>
+                                            <span>Certificate ID : {{ blocktime }}</span>
+                                            <span>Issued On : {{ blocktime|unix_to_datetime|date:"SHORT_DATE_FORMAT" }}</span>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="block text-left certificate-full-page certificate-info">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <div class="row margin-bottom-10">
+                                        <div class="col-md-3">
+                                            <p>
+                                                <span>Recipient</span>
+                                                {{ sname }}
+                                            </p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p>
+                                                <span>Issuer</span>
+                                                {{ dep }}
+                                            </p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p>
+                                                <span>Issue Date</span>
+                                                04/05/2018
+                                            </p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p>
+                                                <span>Expired Date</span>
+                                                {{ blocktime|unix_to_datetime|date:"SHORT_DATE_FORMAT" }}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row margin-bottom-30">
+                                        <div class="col-md-6">
+                                            <p>
+                                                <span>Transaction ID</span>
+                                                4b4b5aa4b0a1df5a004b4b5aa4b0a1df5a0044
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>
+                                                <span>Certificate Hash</span>
+                                                4b4b5aa4b0a1df5a004b4b5aa4b0a1df5a004b4
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row margin-bottom-30">
+                                        <div class="col-md-12">
+                                            <p>
+                                                <span>Credential Link</span>
+                                                https://www.blockcred.io/3bv543bv543bv
+                                            </p>
+                                        </div>
+                                    </div>    
+                                </div>
+                                <div class="col-md-2">
+                                    <img src="{% url 'qrcert' cert_name %}" alt="" class="img-responsive">
+                                </div>
+                            </div>
+                                
+                           {% endif %} 
+                            
+                        </div>
+                        
+                    </div>
+                    <!-- END PAGE CONTAINER -->
+                    
+                
+                <!-- END APP CONTENT -->
+                                
+            </div>
+            <!-- END APP CONTAINER -->
+                        
+            <!-- START APP FOOTER -->
+         
+            <!-- END APP FOOTER -->
+        </div>        
+        <!-- END APP WRAPPER -->                
+    </body>
+</html>

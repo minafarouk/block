@@ -9,6 +9,3 @@ class StudentForm(forms.Form):
     course_name = forms.CharField(required=False)
     grade = forms.CharField(required=False)
     department = forms.CharField(required=False)
-
-
-    

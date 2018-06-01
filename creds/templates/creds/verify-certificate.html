@@ -1,0 +1,232 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>                        
+        <title>Blockcred - Your Credentials On Top Of Blockchain</title>            
+        
+        <!-- META SECTION -->
+        
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" type="image/x-icon">
+        <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+        
+        <!-- END META SECTION -->
+        
+        <!-- CSS INCLUDE -->        
+        
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        
+        <!-- EOF CSS INCLUDE -->
+    </head>
+    <body>        
+        
+        <!-- APP WRAPPER -->
+        <div class="app">           
+
+            <!-- START APP CONTAINER -->
+            <div class="app-container">
+                <!-- START SIDEBAR -->
+                <div class="app-sidebar app-navigation app-navigation-fixed scroll app-navigation-style-default app-navigation-open-hover dir-left" data-type="close-other">
+                    <a href="home.html" class="app-navigation-logo">
+                        Blockcred - Your Credentials On Top Of Blockchain
+                    </a>
+                    
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="home.html"><span class="fa fa-home"></span> Home</a>
+                            </li>
+                            <li>
+                                <a href="issue-certificate.html"><span class="fa fa-plus"></span> Issue Credential</a>
+                            </li>
+                            <li>
+                                <a href="verify-certificate.html" class="active"><span class="fa fa-check"></span> Verify Credential</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- END SIDEBAR -->
+                
+                <!-- START APP CONTENT -->
+                <div class="app-content app-sidebar-left">
+                    <!-- START APP HEADER -->
+                    <div class="app-header app-header-design-default">
+                        <ul class="app-header-buttons">
+                            <li class="visible-mobile"><a href="#" class="btn btn-link btn-icon" data-sidebar-toggle=".app-sidebar.dir-left"><span class="icon-menu"></span></a></li>
+                            <li class="hidden-mobile"><a href="#" class="btn btn-link btn-icon" data-sidebar-minimize=".app-sidebar.dir-left"><span class="icon-menu"></span></a></li>
+                        </ul>    
+                    </div>
+                    <!-- END APP HEADER  -->
+                    
+                    <!-- START PAGE HEADING -->
+                    
+                    <div class="app-heading-container app-heading-bordered bottom">
+                        <div class="app-heading app-heading-bordered app-heading-page">  
+                            <div class="icon icon-lg">
+                                <span class="fa fa-check"></span>
+                            </div>
+                            <div class="title">
+                                <h1>Verify Credential</h1>
+                                <p>Verify credential by using it's link</p>
+                            </div>
+                            <!--
+                            <div class="heading-elements">
+                                <a href="#" class="btn btn-danger" id="page-like"><span class="app-spinner loading"></span> loading...</a>
+                                <a href="https://themeforest.net/item/boooya-revolution-admin-template/17227946?ref=aqvatarius&license=regular&open_purchase_for_item_id=17227946" class="btn btn-success btn-icon-fixed"><span class="icon-text">$24</span> Purchase</a>
+                            </div>
+                            -->
+                        </div>
+                    </div>
+                    <!-- END PAGE HEADING -->
+                    
+                    <!-- START PAGE CONTAINER -->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="block verify-link">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="title">
+                                                <h1>Enter the credential's link to verify</h1>
+                                            </div>
+                                            
+                                              <p>
+                                            Please enter the credential's link or upload the PDF to verify. 
+                                             
+                                             </p>
+                                        </div>
+                                    </div>
+                                    </br>
+
+                                    <form class="form-horizontal" action="{% url 'verify-cert' %}" method="get">
+                                        {% csrf_token %}
+                                        <div class="form-group">                                        
+                                            <div class="col-md-12">
+                                                <input type="text" name="url" class="form-control" data-validation="required" placeholder="Certificate Link">
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-group text-right">                                        
+                                            <div class="col-md-4 col-md-offset-8">
+                                                <button id="verify-btn" type="submit" class="btn btn-primary">Verify</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <div class="block">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="title">
+                                                <h1>Upload the certificate.</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <form  action="{% url 'verify-cert' %}"  method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <label for="file-upload" class="custom-file-upload">
+                                        <i class="fa fa-cloud-upload"></i>Upload
+                                    </label>
+                                   <input type="file"  id="file-upload" name="file" >
+                                   <div class="form-group text-right">                                        
+                                            <div class="col-md-4 col-md-offset-8">
+                                                <button id="verify-btn" type="submit" class="btn btn-primary">Verify</button>
+                                            </div>
+                                        </div>
+                                    
+                                </form>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="title text-center margin-bottom-30 loading-sec">
+                                        <h1><div class="app-spinner pulse pulse-success"></div> Verifying credential's information .. Please Wait</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END PAGE CONTAINER -->
+                    
+                </div>
+                <!-- END APP CONTENT -->
+                                
+            </div>
+            <!-- END APP CONTAINER -->
+                        
+            <!-- START APP FOOTER -->
+            <div class="app-footer app-footer-default" id="footer">
+                <div class="app-footer-line">
+                    <div class="copyright">&copy; 2018 Blockcred. All right reserved</div>
+                </div>
+            </div>
+            <!-- END APP FOOTER -->
+        </div>        
+        <!-- END APP WRAPPER -->                
+        
+        <!-- IMPORTANT SCRIPTS -->
+        <script type="text/javascript" src="{% static 'js/vendor/jquery/jquery.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/jquery/jquery-migrate.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/jquery/jquery-ui.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/bootstrap/bootstrap.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/moment/moment.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/customscrollbar/jquery.mCustomScrollbar.min.js' %}"></script>
+        <!-- END IMPORTANT SCRIPTS -->
+        <!-- THIS PAGE SCRIPTS -->
+        <script type="text/javascript" src="{% static 'js/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/dropzone/dropzone.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/jvectormap/jquery-jvectormap.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/jvectormap/jquery-jvectormap-world-mill-en.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/jvectormap/jquery-jvectormap-us-aea-en.js' %}"></script>
+        
+        <script type="text/javascript" src="{% static 'js/vendor/rickshaw/d3.v3.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/rickshaw/rickshaw.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/form-validator/jquery.form-validator.min.js' %}"></script>
+        <!-- END THIS PAGE SCRIPTS -->
+        <!-- APP SCRIPTS -->
+        <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/app_plugins.js' %}"></script>
+        <!-- END APP SCRIPTS -->
+        <script type="text/javascript" src="{% static 'js/app_demo_dashboard.js' %}"></script>
+        
+        <script type="text/javascript">
+            $(function(){
+                $.validate({
+                    modules : 'date,file,location',
+                    onValidate: function(){
+
+                        delayBeforeFire(function(){                                                
+                            app.spy();
+                        },100);
+
+                    }
+                });
+                $(".block-refresh-example").on("click",function(){
+                    var block = $(this).data("block");
+                    app.block.loading.start("#"+block);
+                    setTimeout(function(){
+                        app.block.loading.finish("#"+block);
+                    },3000);
+                });
+                
+                $("#verify-btn").on("click",function(e){
+                    e.preventDefault();
+                    $('.loading-sec').show();
+                     
+                
+            });
+            
+        </script>
+
+    </body>
+</html>
