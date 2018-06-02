@@ -2,10 +2,9 @@ from django import forms
 
 
 class StudentForm(forms.Form):
-
-    student_name = forms.CharField(required=False)
-    student_email = forms.EmailField(required=False)
-    mobile = forms.IntegerField(required=False)
-    course_name = forms.CharField(required=False)
-    grade = forms.CharField(required=False)
-    department = forms.CharField(required=False)
+    student_name = forms.CharField(required=True)
+    student_email = forms.EmailField(required=True)
+    mobile = forms.IntegerField(required=True)
+    course_name = forms.CharField(required=True)
+    grade = forms.CharField(required=True)
+    department = forms.CharField(required=True)

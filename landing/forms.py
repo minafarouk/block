@@ -10,3 +10,7 @@ class ContactForm(forms.Form):
     )
 
 
+class SubscribeForm(forms.Form):
+    contact_email = forms.EmailField(required=True)
+
+

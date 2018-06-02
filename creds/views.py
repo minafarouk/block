@@ -46,25 +46,34 @@ def _create_pdf(request, form):
     html = HTML(string=html_string, base_url=request.build_absolute_uri())
 
     certificate_name = form.cleaned_data['student_name'] + "_" + form.cleaned_data['course_name'] + ".pdf"
-    html.write_pdf(target='/tmp/{0}'.format(certificate_name), stylesheets=[CSS("/root/django_lab_testing/blockcred/creds/static/css/pdf.css")])
+    html.write_pdf(target='/tmp/{0}'.format(certificate_name), stylesheets=[CSS(settings.BASE_DIR + "/creds/static/css/pdf.css")])
     return '/tmp/{0}'.format(certificate_name)
 
 
-def _send_email(sname, cname, semail):
+def _send_email(context):
 
     sender = settings.EMAIL_HOST_USER #'cert@poa-certificates.com'
     subject = 'Congratulation ... your new certificate has been issued'
-    to = semail
-    context = {}
-    context['sname'] = sname
-    context['cname'] = cname
+    to = context['semail']
+
+    id = Files.objects.get(file_hashed=context['key']).id
+    context['url'] = short_url.encode_url(id)
+
     html_content = render_to_string('creds/email.html', context)  # render with dynamic value
     text_content = strip_tags(html_content)  # Strip the html tag. So people can see the pure text at least.
-    pdf = '/tmp/'+ sname + '_' + cname + '.pdf'
-
+    pdf = '/tmp/' + context['sname'] + '_' + context['cname'] + '.pdf'
     msg = EmailMultiAlternatives(subject, text_content, sender, [to])
+
+    from email.mime.image import MIMEImage
+    image_file = open( settings.BASE_DIR + '/creds/static/img/logo.png', 'rb')
+    msg_image = MIMEImage(image_file.read())
+    image_file.close()
+    msg_image.add_header('Content-ID', '<image1>')
+    msg.attach(msg_image)
+
     msg.attach_alternative(html_content, "text/html")
     msg.attach_file(pdf, 'application/pdf')
+
     msg.send()
 
 
@@ -112,6 +121,8 @@ def _verify(key):
     student_json['confirmations'] = tx_data['confirmations']
     if 'blocktime' in tx_data:
         student_json['blocktime'] = tx_data['blocktime']
+    student_json['txid'] = tx_data['txid']
+    student_json['key'] = tx_data['key']
     return student_json
 
 
@@ -133,10 +144,13 @@ def issue(request):
             tx_id = _generate_poe(file_hashed, form)
             Files.objects.create(file_hashed=file_hashed)
             certificate_info = _verify(file_hashed)
-            sname = form.cleaned_data['student_name']
-            semail = form.cleaned_data['student_email']
-            cname = form.cleaned_data['course_name']
-            _send_email(sname, cname, semail)
+#            sname = form.cleaned_data['student_name']
+#            semail = form.cleaned_data['student_email']
+#            cname = form.cleaned_data['course_name']
+#            key = certificate_info['key']
+            _send_email(certificate_info)
+#            fs = FileSystemStorage()
+#            fs.delete(file_path)
             return render( request,'creds/certificate.html', context = certificate_info)
         else:
  #           issue_url = reverse('issue-cert', args=form, current_app='creds', host='creds')
@@ -153,7 +167,7 @@ def download_cert(request, cert_name):
 
 
 def qr_cert(request, cert_name):
-    url = "http://127.0.0.1:8000/creds/download-cert/" + cert_name
+    url = "http://www.blockcred.io/creds/download-cert/" + cert_name
     qr = _generate_qr_code(url, 20, 2)
     response = HttpResponse(content_type="image/svg+xml")
     qr.save(response, "SVG")
@@ -181,24 +195,29 @@ def url_cert(request, cert_name):
 
 def verify(request):
      if request.method == 'POST':
+         fs = FileSystemStorage()
+         file = request.FILES['file']
+         filename = fs.save(file.name, file)
+         uploaded_file_path = fs.url(filename)
+         file_hash = _file_hash(settings.BASE_DIR + uploaded_file_path)
+         fs.delete(settings.BASE_DIR + uploaded_file_path)
          try:
-            fs = FileSystemStorage()
-            file = request.FILES['file']
-            filename = fs.save(file.name, file)
-            uploaded_file_path = fs.url(filename)
-            file_hash = _file_hash(settings.BASE_DIR + uploaded_file_path)
-            context = _verify(file_hash)
-            return render_to_response('creds/verify-success.html', context=context)
+             context = _verify(file_hash)
+             id = Files.objects.get(file_hashed=file_hash).id
+             context['url'] = short_url.encode_url(id)
+             return render_to_response('creds/verify-success.html', context=context)
          except:
             return render_to_response('creds/verify-unsuccess.html')
 
      if request.method == 'GET':
         url = request.GET.get('url')
         if url:
+            id = short_url.decode_url(url[url.find('/') + 1:])
             try:
-                id = short_url.decode_url(url[url.find('/') + 1:])
                 key = Files.objects.get(id=id).file_hashed
+                url = short_url.encode_url(id)
                 context = _verify(key)
+                context['url'] = url
                 return render(request, 'creds/verify-success.html', context=context)
             except:
                 return render(request, 'creds/verify-unsuccess.html')

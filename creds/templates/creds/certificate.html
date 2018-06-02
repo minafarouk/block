@@ -31,14 +31,14 @@
             <div class="app-container">
                 <!-- START SIDEBAR -->
                 <div class="app-sidebar app-navigation app-navigation-fixed scroll app-navigation-style-default app-navigation-open-hover dir-left" data-type="close-other">
-                    <a href="home.html" class="app-navigation-logo">
+                    <a href="{% url 'home' %}" class="app-navigation-logo">
                         Blockcred - Your Credentials On Top Of Blockchain
                     </a>
                     
                     <nav>
                         <ul>
                             <li>
-                                <a href="home.html"><span class="fa fa-home"></span> Home</a>
+                                <a href="{% url 'home' %}"><span class="fa fa-home"></span> Home</a>
                             </li>
                             <li>
                                 <a href="{% url 'issue-cert' %}" class="active"><span class="fa fa-plus"></span> Issue Credential</a>

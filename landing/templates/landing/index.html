@@ -486,7 +486,7 @@
 					<h4 class="section-title-md animated" data-animate="fadeInUp" data-delay="0">Don't miss out, Stay updated</h4>
 					<form id="subscribe-form" action="{% url 'subscribe' %} " method="post" class="subscription-form inline-form">
 						{% csrf_token %}
-						<input type="text" name="youremail" class="input-round required email" placeholder="Enter your email address" >
+						<input type="text" name="contact_email" class="input-round required email" placeholder="Enter your email address" >
 						<input type="text" class="d-none" name="form-anti-honeypot" value="">						
 						
 						 <!--a href="#team-profile-1" class="btn btn-plane expand-trigger content-popup">Subscribe</a-->

@@ -32994,20 +32994,23 @@ body {
     text-align: left;
 }
 
+.unsuccess-notes ul li ,
+.unsuccess-notes p{
+    color: #3a3671;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
 .unsuccess-notes .btn{
     margin: auto;
+    margin-top: 15px;
 }
 
 .verify-link{
     min-height: 230px;
 }
 
-input[type="file"] {
-    display: none;
-}
-.custom-file-upload {
-    border: 1px solid #ccc;
-    display: inline-block;
-    padding: 6px 12px;
-    cursor: pointer;
+.verify-link p{
+    color: #3a3671;
+    font-weight: 600;
 }

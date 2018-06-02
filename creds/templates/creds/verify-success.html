@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load unix_to_datetime %}
 <!DOCTYPE html>
 <html lang="en">
     <head>                        
@@ -30,20 +31,20 @@
             <div class="app-container">
                 <!-- START SIDEBAR -->
                 <div class="app-sidebar app-navigation app-navigation-fixed scroll app-navigation-style-default app-navigation-open-hover dir-left" data-type="close-other">
-                    <a href="home.html" class="app-navigation-logo">
+                    <a href="{% url 'home' %}" class="app-navigation-logo">
                         Blockcred - Your Credentials On Top Of Blockchain
                     </a>
                     
                     <nav>
                         <ul>
                             <li>
-                                <a href="home.html"><span class="fa fa-home"></span> Home</a>
+                                <a href="{% url 'home' %}"><span class="fa fa-home"></span> Home</a>
                             </li>
                             <li>
-                                <a href="issue-certificate.html"><span class="fa fa-plus"></span> Issue Credential</a>
+                                <a href="{% url 'issue-cert' %}"><span class="fa fa-plus"></span> Issue Credential</a>
                             </li>
                             <li>
-                                <a href="verify-certificate.html" class="active"><span class="fa fa-check"></span> Verify Credential</a>
+                                <a href="{% url 'verify-cert' %}" class="active"><span class="fa fa-check"></span> Verify Credential</a>
                             </li>
                         </ul>
                     </nav>
@@ -122,14 +123,14 @@
                                 </div>
                             </div>
                         </div>
-                        
+                        {% with cert_name=sname|add:'_'|add:cname|add:'.pdf' %}
                         <div class="block certificate text-right">
                             <div class="row">
                                 <div class="col-xs-12">
                                     <div class="dropdown">
                                         <a href="#" class="btn btn-primary margin-top-10" data-toggle="dropdown"><i class="fa fa-download"></i></a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="#"><i class="fa fa-file-pdf-o"></i>Download as PDF</a></li>
+                                            <li><a href="{% url 'downloadcert' cert_name %}"><i class="fa fa-file-pdf-o"></i>Download as PDF</a></li>
                                         </ul>
                                     </div>
                                     
@@ -172,7 +173,8 @@
                                         </p>
                                         
                                         <div>
-                                            <span>Certificate ID : 123456777</span>
+                                            {% if blocktime %}
+                                            <span>Certificate ID : {{ blocktime }}</span>
                                             
                                         </div>
                                     </div>
@@ -208,8 +210,9 @@
                                         <div class="col-md-3">
                                             <p>
                                                 <span>Issue Date</span>
-                                                04/05/2018
+                                                {{ blocktime|unix_to_datetime|date:"SHORT_DATE_FORMAT" }}
                                             </p>
+                                            {% endif %}
                                         </div>
                                         <div class="col-md-3">
                                             <p>
@@ -223,13 +226,13 @@
                                         <div class="col-md-6">
                                             <p>
                                                 <span>Transaction ID</span>
-                                                4b4b5aa4b0a1df5a004b4b5aa4b0a1df5a0044
+                                                {{ txid }}
                                             </p>
                                         </div>
                                         <div class="col-md-6">
                                             <p>
                                                 <span>Certificate Hash</span>
-                                                4b4b5aa4b0a1df5a004b4b5aa4b0a1df5a004b4
+                                                {{ key }}
                                             </p>
                                         </div>
                                     </div>
@@ -238,13 +241,13 @@
                                         <div class="col-md-12">
                                             <p>
                                                 <span>Credential Link</span>
-                                                https://www.blockcred.io/3bv543bv543bv
+                                               <span>www.blockcred.io/{{ url }}</span> 
                                             </p>
                                         </div>
                                     </div>    
                                 </div>
                                 <div class="col-md-2">
-                                    <img src="{% static 'img/qr-code.png' %}" alt="" class="img-responsive">
+                                    <img src="{% url 'qrcert' cert_name %}" alt="" class="img-responsive">
                                 </div>
                             </div>
                                 
@@ -266,7 +269,7 @@
                     
                 </div>
                 <!-- END APP CONTENT -->
-                                
+                {% endwith %}                
             </div>
             <!-- END APP CONTAINER -->
                         

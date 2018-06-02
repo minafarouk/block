@@ -19,7 +19,6 @@ def faq(request):
 
 def contact(request):
     form = ContactForm(request.POST)
-
     if request.method == 'POST' and form.is_valid():
         sender = settings.EMAIL_HOST_USER
         to = settings.EMAIL_HOST_USER
@@ -36,16 +35,14 @@ def contact(request):
 
 
 def subscribe(request):
-    email = request.POST.get('youremail')
-    returnedJSON = {}
-    if email:
-        print(request.POST.get('youremail'))
+    form = SubscribeForm(request.POST)
+    if request.method == 'POST' and form.is_valid():
+        email = form.cleaned_data['contact_email']
         Subscribe.objects.create(email=email)
+        returnedJSON = {}
         returnedJSON['message'] = 'Your subscription added successfully'
         return JsonResponse(returnedJSON)
     else:
-        print("error")
-        returnedJSON['message'] = 'Your subscription failed'
-        return JsonResponse(returnedJSON, status=400)
+        return JsonResponse(form.errors.as_json(), safe=False,  status=400)
 
 

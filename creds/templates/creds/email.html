@@ -1,8 +1,16 @@
+{% load staticfiles %}
+{% load unix_to_datetime %}
+
 <!doctype html>
 <html dir="ltr">
     <head>
         <meta name="viewport" content="width=device-width" />
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="stylesheet" href="{{site}}{% static 'css/styles.css' %}">
+        
         <title>POA</title>
         <style>
             /* -------------------------------------
@@ -59,7 +67,7 @@
                 display: block;
                 Margin: 0 auto;
                 max-width: 580px;
-                padding: 10px; }
+                padding: 2px; }
 
             /* -------------------------------------
                 HEADER, FOOTER, MAIN
@@ -81,15 +89,112 @@
             .footer {
                 clear: both;
                 Margin-top: 10px;
-                text-align: center;
+                text-align: left;
                 width: 100%; }
             .footer td,
-            .footer p,
+            
             .footer span,
             .footer a {
                 color: #999999;
                 font-size: 12px;
                 text-align: center; }
+            .certificate-footer p{
+             font-size: 13px;
+             font-weight: 400;
+            }
+
+             .certificate-footer img{
+                display: block;
+                width: 164px;
+                filter: grayscale(100);
+                opacity: .5;
+            }
+             .certificate-info p{
+    display: inline-block;
+    margin-right: 20px;
+    float: none;
+    width: auto;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.certificate-info p span{
+    display: block;
+    font-size: 13px;
+    font-weight: 400;
+}
+            .certificate-full-page{
+    display: block;
+}
+
+.certificate-content{
+    padding: 30px 0;
+    overflow: hidden
+}
+
+.certificate-content h2{
+    font-weight: 600;
+    font-size: 24px;
+    color: #3a3671;
+}
+
+.certificate-content h3{
+    font-weight: 700;
+    font-size: 30px;
+    color: #3a3671;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.certificate-content ul{
+    list-style: none;
+    padding: 0;
+}
+
+.certificate-content ul li{
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #f26122;
+}
+
+.certificate-content p{
+    font-size: 16px;
+    color: #626262;
+}
+
+.certificate-content p span{
+    font-weight: 600;
+}
+
+.certificate-content > div > span{
+    font-size: 13px;
+    color: #3a3671;
+    display: block;
+    font-weight: 600;
+}
+
+.modal .modal-dialog.modal-primary .modal-header{
+    background: #3a3671;
+}
+
+.modal .modal-dialog.modal-primary .modal-header i{
+    position: relative;
+    top: 5px;
+}
+
+.loading-sec{
+    display: none;
+}
+
+.block .dropdown{
+    display: inline-block;
+    float: none;
+}
+
+.block .dropdown .dropdown-menu{
+    left: auto;
+    right: 0;
+}
 
             /* -------------------------------------
                 TYPOGRAPHY
@@ -291,22 +396,115 @@ text-align: left;">
 
                             <!-- START MAIN CONTENT AREA -->
                             <tr>
-                                <td class="wrapper">
-                                    <table border="0" cellpadding="0" cellspacing="0">
+                                <td class="text-left certificate-content ">
+                                    <table >
                                         <tr>
                                             <td>
-                                                <p>Dear {{ sname }}</p>
-                                                <p>We would like to congratulate you for the new certificate that has been issued on top of POA Blockchain. </p>
-                                                <p>Your certificate verification link is :</p>
-                                                <p> {% url 'urlcert' cert_name %} </p>
-                                                <p>You can share this link with any one wants to verify your certificate.</p>
-                                                <p>Thanks for unsing our service.</p>
+                                                <p>Dear </p>
+
+                                                <p>Blockcred certifies that <span>{{ sname }}</span> has successfully completed the required course of <span>{{ cname }}</span> and approved by the board of education for the department of <span>{{ dep }}</span> and therefore awarded this certificate</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p> <div>
+                                            {% if blocktime %}
+                                            <span>Certificate ID : {{ blocktime }}</span>
+                                            
+                                               </div></p>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="block text-left certificate certificate-info">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <!--div class="row margin-bottom-10">
+                                        <div class="col-md-3">
+                                            <p>
+                                                <span>Recipient</span>
+                                                   {{ sname }}
+                                            </p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p>
+                                                <span>Issuer</span>
+                                                {{ dep }}
+                                            </p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p>
+                                                <span>Issue Date</span>
+                                                {{ blocktime|unix_to_datetime|date:"SHORT_DATE_FORMAT" }}
+                                            </p>
+                                            
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p>
+                                                <span>Expired Date</span>
+                                                04/05/2018
+                                            </p>
+                                        </div>
+                                    </div-->
+
+                                    <div class="row margin-bottom-30">
+                                        <div class="col-md-6">
+                                            <p>
+                                                <span>Recipient</span>
+                                                   {{ sname }}
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>
+                                                <span>Issuer</span>
+                                                {{ dep }}
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>
+                                                <span>Issue Date</span>
+                                                {{ blocktime|unix_to_datetime|date:"SHORT_DATE_FORMAT" }}
+                                            </p>
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>
+                                                <span>Transaction ID</span>
+                                                {{ txid }}
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>
+                                                <span>Certificate Hash</span>
+                                                {{ key }}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row margin-bottom-30">
+                                        <div class="col-md-12">
+                                            <p>
+                                                <span>Credential Verification Link</span>
+                                               <span>www.blockcred.io/{{ url }}</span> 
+                                            </p>
+                                            <div class="col-md-12">
+                                    <img src="{% url 'qrcert' cert_name %}" alt="" class="img-responsive">
+                                </div>
+                                        </div>
+                                    </div>    
+                                </div>
+                                <!--div class="col-md-2">
+                                    <img src="{% url 'qrcert' cert_name %}" alt="" class="img-responsive">
+                                </div-->
+                            </div>
+                                
                                             </td>
                                         </tr>
                                     </table>
                                 </td>
                             </tr>
-
+                              
                             <!-- END MAIN CONTENT AREA -->
                         </table>
 
@@ -315,7 +513,17 @@ text-align: left;">
                             <table border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td class="content-block powered-by">
-                                        Powered by <a href="http://127.0.0.1:8000/creds/issue-certificates">POA Certificates Team</a>.
+                                        <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="text-left certificate-footer">
+                                        <img src="cid:image1" alt="Blockcred"><br>
+                                        <p class="text-left certificate-footer">
+                                            All certificate content, assets and metadata are provided by the issuer of this certificate and have been registered on the Blockchain
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                                     </td>
                                 </tr>
                             </table>

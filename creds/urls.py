@@ -9,5 +9,5 @@ urlpatterns = [
     path('mail/<sname>/<cname>/<dep>/', views.mail_cert, name='mailcert'),
     path('short-cert/<cert_name>/', views.url_cert, name='urlcert'),
     path('verify', views.verify, name='verify-cert'),
-
+#    path('', include('landing.urls')),
 ]
