@@ -39,18 +39,18 @@ def _create_pdf(request, form):
     context['cname'] = form.cleaned_data['course_name']
     context['grade'] = form.cleaned_data['grade']
     context['dep'] = form.cleaned_data['department']
-    html_string = render_to_string('creds/memo.html', context)
+    html_string = render_to_string('creds/certificate_temolate.html', context)
     import logging
     logger = logging.getLogger('weasyprint')
     logger.addHandler(logging.FileHandler('/tmp/weasyprint.log'))
     html = HTML(string=html_string, base_url=request.build_absolute_uri())
 
     certificate_name = form.cleaned_data['student_name'] + "_" + form.cleaned_data['course_name'] + ".pdf"
-    html.write_pdf(target='/tmp/{0}'.format(certificate_name), stylesheets=[CSS(settings.BASE_DIR + "/creds/static/css/pdf.css")])
+    html.write_pdf(target='/tmp/{0}'.format(certificate_name))
     return '/tmp/{0}'.format(certificate_name)
 
 
-def _send_email(context):
+def _send_email (context):
 
     sender = settings.EMAIL_HOST_USER #'cert@poa-certificates.com'
     subject = 'Congratulation ... your new certificate has been issued'
@@ -65,11 +65,21 @@ def _send_email(context):
     msg = EmailMultiAlternatives(subject, text_content, sender, [to])
 
     from email.mime.image import MIMEImage
-    image_file = open( settings.BASE_DIR + '/creds/static/img/logo.png', 'rb')
+    image_file = open( settings.BASE_DIR + '/creds/static/img/logo4.jpg', 'rb')
     msg_image = MIMEImage(image_file.read())
     image_file.close()
     msg_image.add_header('Content-ID', '<image1>')
     msg.attach(msg_image)
+
+    url =  "http://www.blockcred.io/creds/download-cert/" + context['sname'] + '_' + context['cname'] + '.pdf'
+    qr = _generate_qr_code(url)
+    qr.save('/tmp/' + context['sname'] + '_' + context['cname'] + '.svg')
+    qr_image = open('/tmp/'+context['sname'] + '_' + context['cname'] + '.svg', 'rb')
+    msg_qr = MIMEImage(qr_image.read(), _subtype="SVG")
+    qr_image.close()
+    msg_qr.add_header('Content-ID', '<image2>')
+    msg_qr.add_header('Content-Disposition', 'inline', filename='/tmp/'+context['sname'] + '_' + context['cname'] + '.svg')
+    msg.attach(msg_qr)
 
     msg.attach_alternative(html_content, "text/html")
     msg.attach_file(pdf, 'application/pdf')
