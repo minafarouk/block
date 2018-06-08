@@ -14,7 +14,6 @@ from django.core.mail import EmailMultiAlternatives
 from django.utils.html import strip_tags
 
 import qrcode
-import qrcode.image.svg
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.conf import settings
@@ -29,6 +28,7 @@ from io import StringIO
 from io import BytesIO
 
 from django_hosts.resolvers import reverse
+import datetime
 
 # Create your views here.
 def _create_pdf(request, form):
@@ -39,13 +39,14 @@ def _create_pdf(request, form):
     context['cname'] = form.cleaned_data['course_name']
     context['grade'] = form.cleaned_data['grade']
     context['dep'] = form.cleaned_data['department']
+    certificate_name = datetime.datetime.now().strftime('%d:%m:%y:%H:%M:%S') + ".pdf"
+    context['cert'] = certificate_name
     html_string = render_to_string('creds/certificate_temolate.html', context)
-    import logging
-    logger = logging.getLogger('weasyprint')
-    logger.addHandler(logging.FileHandler('/tmp/weasyprint.log'))
+#    import logging
+#    logger = logging.getLogger('weasyprint')
+#    logger.addHandler(logging.FileHandler('/tmp/weasyprint.log'))
     html = HTML(string=html_string, base_url=request.build_absolute_uri())
 
-    certificate_name = form.cleaned_data['student_name'] + "_" + form.cleaned_data['course_name'] + ".pdf"
     html.write_pdf(target='/tmp/{0}'.format(certificate_name))
     return '/tmp/{0}'.format(certificate_name)
 
@@ -57,11 +58,11 @@ def _send_email (context):
     to = context['semail']
 
     id = Files.objects.get(file_hashed=context['key']).id
-    context['url'] = short_url.encode_url(id)
+    context['url'] = short_url.encode_url(id,12)
 
     html_content = render_to_string('creds/email.html', context)  # render with dynamic value
     text_content = strip_tags(html_content)  # Strip the html tag. So people can see the pure text at least.
-    pdf = '/tmp/' + context['sname'] + '_' + context['cname'] + '.pdf'
+    pdf = '/tmp/' + context['cert']
     msg = EmailMultiAlternatives(subject, text_content, sender, [to])
 
     from email.mime.image import MIMEImage
@@ -71,21 +72,19 @@ def _send_email (context):
     msg_image.add_header('Content-ID', '<image1>')
     msg.attach(msg_image)
 
-    url =  "http://www.blockcred.io/creds/download-cert/" + context['sname'] + '_' + context['cname'] + '.pdf'
+    url =  "www.blockcred.io/creds/verifylink/" + context['url']
     qr = _generate_qr_code(url)
-    qr.save('/tmp/' + context['sname'] + '_' + context['cname'] + '.svg')
-    qr_image = open('/tmp/'+context['sname'] + '_' + context['cname'] + '.svg', 'rb')
-    msg_qr = MIMEImage(qr_image.read(), _subtype="SVG")
+    qr.save('/tmp/' + context['sname'] + '_' + context['cname'] + '.jpg')
+    qr_image = open('/tmp/'+context['sname'] + '_' + context['cname'] + '.jpg', 'rb')
+    msg_qr = MIMEImage(qr_image.read(), _subtype="JPEG")
     qr_image.close()
     msg_qr.add_header('Content-ID', '<image2>')
-    msg_qr.add_header('Content-Disposition', 'inline', filename='/tmp/'+context['sname'] + '_' + context['cname'] + '.svg')
     msg.attach(msg_qr)
 
     msg.attach_alternative(html_content, "text/html")
     msg.attach_file(pdf, 'application/pdf')
 
     msg.send()
-
 
 
 def _download_pdf(certificate_name):
@@ -104,7 +103,7 @@ def _file_hash(file_path):
     return h.hexdigest()
 
 
-def _generate_poe(key, form):
+def _generate_poe(key, form, cert_name):
     student_info = {}
     student_info['certificate_hash'] = key
     student_info['sname'] = form.cleaned_data['student_name']
@@ -113,6 +112,7 @@ def _generate_poe(key, form):
     student_info['cname'] = form.cleaned_data['course_name']
     student_info['grade'] = form.cleaned_data['grade']
     student_info['dep'] = form.cleaned_data['department']
+    student_info['cert'] = cert_name
 
     student_json = json.dumps(student_info)
     student_base64 = base64.b64encode(student_json.encode())
@@ -141,8 +141,7 @@ def _generate_qr_code(data, size=10, border=0):
                        box_size=size, border=border)
     qr.add_data(data)
     qr.make(fit=True)
-    factory = qrcode.image.svg.SvgImage
-    return qr.make_image(image_factory=factory)
+    return qr.make_image()
 
 
 def issue(request):
@@ -151,16 +150,11 @@ def issue(request):
         if form.is_valid():
             file_path = _create_pdf(request, form)
             file_hashed = _file_hash(file_path)
-            tx_id = _generate_poe(file_hashed, form)
+            cert_name = file_path[file_path.find('mp') + 3:]
+            tx_id = _generate_poe(file_hashed, form, cert_name)
             Files.objects.create(file_hashed=file_hashed)
             certificate_info = _verify(file_hashed)
-#            sname = form.cleaned_data['student_name']
-#            semail = form.cleaned_data['student_email']
-#            cname = form.cleaned_data['course_name']
-#            key = certificate_info['key']
             _send_email(certificate_info)
-#            fs = FileSystemStorage()
-#            fs.delete(file_path)
             return render( request,'creds/certificate.html', context = certificate_info)
         else:
  #           issue_url = reverse('issue-cert', args=form, current_app='creds', host='creds')
@@ -177,10 +171,13 @@ def download_cert(request, cert_name):
 
 
 def qr_cert(request, cert_name):
-    url = "http://www.blockcred.io/creds/download-cert/" + cert_name
-    qr = _generate_qr_code(url, 20, 2)
-    response = HttpResponse(content_type="image/svg+xml")
-    qr.save(response, "SVG")
+    key = _file_hash('/tmp/' + cert_name)
+    id = Files.objects.get(file_hashed=key).id
+    short = short_url.encode_url(id, 12)
+    url = "www.blockcred.io/creds/verifylink/" + short
+    qr = _generate_qr_code(url, 10, 2)
+    response = HttpResponse(content_type="image/jpeg")
+    qr.save(response, "JPEG")
     return response
 
 
@@ -198,9 +195,9 @@ def url_cert(request, cert_name):
 
     key = _file_hash('/tmp/' + cert_name)
     id = Files.objects.get(file_hashed=key).id
-    short = short_url.encode_url(id)
+    short = short_url.encode_url(id,12)
 
-    return HttpResponse("www.blockreds.io/" + short)
+    return HttpResponse("www.blockcred.io/creds/verifylink/" + short)
 
 
 def verify(request):
@@ -214,7 +211,7 @@ def verify(request):
          try:
              context = _verify(file_hash)
              id = Files.objects.get(file_hashed=file_hash).id
-             context['url'] = short_url.encode_url(id)
+             context['url'] = short_url.encode_url(id, 12)
              return render_to_response('creds/verify-success.html', context=context)
          except:
             return render_to_response('creds/verify-unsuccess.html')
@@ -225,7 +222,7 @@ def verify(request):
             id = short_url.decode_url(url[url.find('/') + 1:])
             try:
                 key = Files.objects.get(id=id).file_hashed
-                url = short_url.encode_url(id)
+                url = short_url.encode_url(id, 12)
                 context = _verify(key)
                 context['url'] = url
                 return render(request, 'creds/verify-success.html', context=context)
@@ -236,3 +233,14 @@ def verify(request):
 
      else:
         return render(request, 'creds/verify-certificate.html')
+
+
+def verifylink(request, id):
+    try:
+        id_decoded = short_url.decode_url(id)
+        key = Files.objects.get(id=id_decoded).file_hashed
+        context = _verify(key)
+        context['url'] = "www.blockcred.io/creds/verifylink/" + id
+        return render(request, 'creds/verify-success.html', context=context)
+    except:
+        return render(request, 'creds/verify-unsuccess.html')

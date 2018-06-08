@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django_hosts.resolvers import reverse
 from .forms import *
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.core.mail import send_mail
 from django.conf import settings
 from landing.models import Subscribe
+from .utils import SendSubscribeMail
 # Create your views here.
 
 
@@ -35,14 +36,15 @@ def contact(request):
 
 
 def subscribe(request):
-    form = SubscribeForm(request.POST)
-    if request.method == 'POST' and form.is_valid():
-        email = form.cleaned_data['contact_email']
-        Subscribe.objects.create(email=email)
-        returnedJSON = {}
-        returnedJSON['message'] = 'Your subscription added successfully'
-        return JsonResponse(returnedJSON)
-    else:
-        return JsonResponse(form.errors.as_json(), safe=False,  status=400)
+    if request.method == 'POST':
+        email = request.POST['email_id']
+        email_qs = Subscribe.objects.filter(email=email)
+        if email_qs.exists():
+            data = {"status": "404"}
+            return JsonResponse(data)
+        else:
+            Subscribe.objects.create(email=email)
+            SendSubscribeMail(email)  # Send the Mail, Class available in utils.py
+    return HttpResponse("/")
 
 

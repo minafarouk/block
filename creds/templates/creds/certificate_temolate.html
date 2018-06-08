@@ -89,9 +89,9 @@
                                       
                                 </div>
                                 <div class="col-md-2">
-                                    {% with cert_name=sname|add:'_'|add:cname|add:'.pdf' %}
-                                    <img src="{% url 'qrcert' cert_name %}" alt="" class="img-responsive">
-                                    {% endwith %}
+                                    
+                                    <img src="{% url 'qrcert' cert_name=cert %}" alt="" class="img-responsive">
+                                    
                                 </div>
                             </div>
                                         </div>

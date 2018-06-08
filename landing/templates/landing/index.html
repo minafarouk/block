@@ -16,6 +16,16 @@
 	<!-- Custom styles for this template -->
 	<link rel="stylesheet" href="{% static 'css/style.css' %}">
 	<link rel="stylesheet" href="{% static 'css/theme.css' %}">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120529509-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-120529509-1');
+</script>
+
 	
 </head>
 
@@ -484,19 +494,26 @@
 			<div class="row text-center">
 				<div class="col-md-6 offset-md-3">
 					<h4 class="section-title-md animated" data-animate="fadeInUp" data-delay="0">Don't miss out, Stay updated</h4>
-					<form id="subscribe-form" action="{% url 'subscribe' %} " method="post" class="subscription-form inline-form">
+					<!--form id="subscribe-form" action="{% url 'subscribe' %} " method="post" class="subscription-form inline-form">
 						{% csrf_token %}
 						<input type="text" name="contact_email" class="input-round required email" placeholder="Enter your email address" >
 						<input type="text" class="d-none" name="form-anti-honeypot" value="">						
 						
-						 <!--a href="#team-profile-1" class="btn btn-plane expand-trigger content-popup">Subscribe</a-->
+						 <a href="#team-profile-1" class="btn btn-plane expand-trigger content-popup">Subscribe</a>
 						 
 
 						 <div id="subscribe-results"></div>
-						 <input type="text" class="d-none" name="form-anti-honeypot" value="">
-						 <button type="submit" class="btn">Subscribe</button>
-						 <!--a href="#subscribe-form" class="btn btn-plane expand-trigger content-popup" type="submit">Subscribe</a-->
-					</form>
+						 <input type="text" class="d-none" name="form-anti-honeypot" value="" >
+						 <button type="submit" id="subscribe_btn"class="btn">Subscribe</button>
+						 <a href="#subscribe-form" class="btn btn-plane expand-trigger content-popup" type="submit">Subscribe</a-->
+					<!--/form-->
+					<div class = "subscribe_form">
+                       <p>Sign up for our newsletter to get latest updates</p>
+                            <form id = "subscribe" form method = 'POST' class="subscription-form inline-form">{% csrf_token %}
+                               <input id = "email_id" type = "email" name = "email_id" placeholder="your@email.com" class="input-round required email">
+                               <button type="submit" value = "Subscribe" class="btn btn-plane expand-trigger">Subscribe</button>
+                              </form>
+                    </div>
 				</div>
 			</div>
 		</div>
@@ -561,26 +578,71 @@
         return false;
     });
 
-    var frm2 = $('#subscribe-form');
-    frm2.unbind('submit').submit(function (e) {
-    	e.preventDefault(); 
-    	    	
-        $.ajax({
-            type: frm2.attr('method'),
-            url: frm2.attr('action'),
-            data: frm2.serialize(),
-            success: function (json) {            	
-                $('#subscribe-results').html("<div class='alert-box alert radius' data-alert></div>");
-            },
-            error: function(xhr, ajaxOptions, thrownError) {
-            	
-                 $('#subscribe-results').text(thrownError);                
-            }
-        });
-
-        return false;
-    });
+    
 </script>
+<script type="text/javascript" >
+	$('#subscribe').submit(function(e){
+      e.preventDefault();
+      var email_id = $("#email_id").val();
+      if(email_id){
+        var csrfmiddlewaretoken = csrftoken;
+        var email_data = {"email_id": email_id, 
+                          "csrfmiddlewaretoken" : csrfmiddlewaretoken};
+        $.ajax({
+          type : 'POST',
+          url :  '/subscribe/',
+          data : email_data,
+          success : function(response){
+            $('#email_id').val(''); 
+            if(response.status == "404"){
+              alert("This Email is already been subscribed!");
+            }
+            else{
+              alert("Thank you for Subscribing! Please Check your Email to Confirm the Subscription");
+            }
+          },
+          error: function(response) {
+            alert("Sorry Something went Wrong");
+            $('#email_id').val(''); 
+          }
+        });
+        return false;
+      }
+      else{
+        alert("Please provide correct email!");
+      }
+  });
+ 
+
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+
+function csrfSafeMethod(method) {
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+})
+</script>
+
+
 
 
 </body>
