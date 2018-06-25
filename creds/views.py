@@ -31,6 +31,8 @@ from django_hosts.resolvers import reverse
 import datetime
 
 # Create your views here.
+
+
 def _create_pdf(request, form):
     context = {}
     context['sname'] = form.cleaned_data['student_name']
@@ -72,7 +74,7 @@ def _send_email (context):
     msg_image.add_header('Content-ID', '<image1>')
     msg.attach(msg_image)
 
-    url =  "www.blockcred.io/creds/verifylink/" + context['url']
+    url = "www.blockcred.io/creds/verifylink/" + context['url']
     qr = _generate_qr_code(url)
     qr.save('/tmp/' + context['sname'] + '_' + context['cname'] + '.jpg')
     qr_image = open('/tmp/'+context['sname'] + '_' + context['cname'] + '.jpg', 'rb')
@@ -204,7 +206,7 @@ def verify(request):
      if request.method == 'POST':
          fs = FileSystemStorage()
          file = request.FILES['file']
-         filename = fs.save(file.name, file)
+         filename = fs.save(file.name.replace(" ", ""), file)
          uploaded_file_path = fs.url(filename)
          file_hash = _file_hash(settings.BASE_DIR + uploaded_file_path)
          fs.delete(settings.BASE_DIR + uploaded_file_path)
@@ -219,7 +221,8 @@ def verify(request):
      if request.method == 'GET':
         url = request.GET.get('url')
         if url:
-            id = short_url.decode_url(url[url.find('/') + 1:])
+            url = url.strip()
+            id = short_url.decode_url(url[url.find('link/')+5:])
             try:
                 key = Files.objects.get(id=id).file_hashed
                 url = short_url.encode_url(id, 12)
@@ -240,7 +243,7 @@ def verifylink(request, id):
         id_decoded = short_url.decode_url(id)
         key = Files.objects.get(id=id_decoded).file_hashed
         context = _verify(key)
-        context['url'] = "www.blockcred.io/creds/verifylink/" + id
+        context['url'] = id
         return render(request, 'creds/verify-success.html', context=context)
     except:
         return render(request, 'creds/verify-unsuccess.html')

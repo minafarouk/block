@@ -137,9 +137,9 @@
                                     <div class="dropdown">
                                         <a href="#" class="btn btn-primary margin-top-10 margin-left-10" data-toggle="dropdown"><i class="fa fa-share"></i></a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="#"><i class="fa fa-linkedin"></i>Add To Linkedin</a></li>
-                                            <li><a href="#"><i class="fa fa-facebook"></i>Share To Facebook</a></li>
-                                            <li><a href="#"><i class="fa fa-twitter"></i>Share To Twitter</a></li>
+                                            <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=www.blockcred.io/creds/verifylink/{{ url }}"><i class="fa fa-linkedin"></i>Add To Linkedin</a></li>
+                                            <li><a href="http://www.facebook.com/sharer.php?u=www.blockcred.io/creds/verifylink/{{ url }}"><i class="fa fa-facebook"></i>Share To Facebook</a></li>
+                                            <li><a href="http://twitter.com/share?url=www.blockcred.io/creds/verifylink/{{ url }}"><i class="fa fa-twitter"></i>Share To Twitter</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -217,7 +217,7 @@
                                         <div class="col-md-3">
                                             <p>
                                                 <span>Expired Date</span>
-                                                04/05/2018
+                                                ----------------
                                             </p>
                                         </div>
                                     </div>
@@ -226,22 +226,21 @@
                                         <div class="col-md-6">
                                             <p>
                                                 <span>Transaction ID</span>
-                                                {{ txid }}
-                                            </p>
-                                        </div>
-                                        <div class="col-md-6">
+                                                {{ txid }} 
+                                            </p><br>
                                             <p>
                                                 <span>Certificate Hash</span>
                                                 {{ key }}
                                             </p>
                                         </div>
+                                        
                                     </div>
 
                                     <div class="row margin-bottom-30">
                                         <div class="col-md-12">
                                             <p>
                                                 <span>Credential Link</span>
-                                               <span>www.blockcred.io/{{ url }}</span> 
+                                               <span>www.blockcred.io/creds/verifylink/{{ url }}</span> 
                                             </p>
                                         </div>
                                     </div>    
