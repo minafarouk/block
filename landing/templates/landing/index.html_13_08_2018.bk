@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
 	<meta name="author" content="Softnio">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="BlockCred is a revolutionary Blockchain protocol focused on creating leading digital credential delivery, offering exceptional power and scalability to academic certifications, corporate compliances, awarding bodies, supply chain management, and professional associations who seek to transform their recognition, certifications or credentials to the new era of the Blockchain.">
+	<meta name="description" content="ICO Crypto is a modern and elegant landing page, created for ICO Agencies and digital crypto currency investment website.">
 	<!-- Fav Icon  -->
 	<link rel="shortcut icon" href="{% static 'images/favicon.png' %}">
 	<!-- Site Title  -->
@@ -54,12 +54,12 @@
 				<div class="collapse navbar-collapse justify-content-end" id="navbarToggle">
 					<ul class="navbar-nav animated" data-animate="fadeInDown" data-delay=".9">
 						<li class="nav-item"><a class="nav-link menu-link" href="#intro">What is?<span class="sr-only">(current)</span></a></li>
-						<li class="nav-item"><a class="nav-link menu-link" href="#features">Who?</a></li>
+						<li class="nav-item"><a class="nav-link menu-link" href="#features">Features</a></li>
 						<li class="nav-item"><a class="nav-link menu-link" href="#how">How?</a></li>
 						<li class="nav-item"><a class="nav-link menu-link" href="#philosophy">Our Philosophy</a></li>
 						<li class="nav-item"><a class="nav-link menu-link" href="#why">Why?</a></li>
                         <li class="nav-item"><a class="nav-link menu-link" href="#roadmap">Roadmap</a></li>
-						<li class="nav-item"><a class="nav-link menu-link" href="{% url 'faq' %}">FAQs</a></li>
+						<li class="nav-item"><a class="nav-link menu-link" href="#">FAQs</a></li>
 						<li class="nav-item"><a class="nav-link menu-link" href="#contact">Contact</a></li>
 					</ul>
                     <ul class="navbar-nav navbar-btns">
@@ -77,7 +77,7 @@
 					<div class="row align-items-center">
 						<div class="col-lg-6 col-md-12">
 							<div class="header-txt tab-center mobile-center">
-								<h1 class="animated text-uppercase" data-animate="fadeInUp" data-delay="1.25">We transfer your digital certificates to a Blockchain wallet.</h1>
+								<h1 class="animated text-uppercase" data-animate="fadeInUp" data-delay="1.25">We transfer your career history to a Blockchain wallet.</h1>
 								<ul class="btns animated" data-animate="fadeInUp" data-delay="1.45">
 									<li><a href="{% url 'issue-cert' %}" class="btn">Proof of Concept</a></li>
 								</ul>
@@ -117,11 +117,12 @@
 				</div><!-- .col  -->
 				<div class="col-md-6 order-md-first order-last">
 					<div class="text-block">
-						<p class="lead animated" data-animate="fadeInUp" data-delay=".1">BlockCred is a revolutionary Blockchain protocol focused on creating a leading digital credential delivery, offering exceptional power and scalability to academic certifications, corporate compliances, awarding bodies, supply chain management, IoT, and professional associations who seek to transform their recognition, certifications or credentials to the new era of the Blockchain
-														<br>
+						<p class="lead animated" data-animate="fadeInUp" data-delay=".1">
+                            BlockCred is a revolutionary Blockchain technology solution focused on creating leading digital credential delivery, offering exceptional power and scalability to universities, employers, awarding bodies, education providers, and professional associations who seek to transform their recognition programs and credentialing operations.
                             <br>
-                            Blockcred is all about the 5 ABLEs. Available, deliverable, verifiable, shareable and immutable.
-						</p>
+                            <br>
+                            We believe lifelong learning, in any form, should be encouraged, celebrated, and accepted as a means to better someone’s life. We believe you’re more than a GPA, test score, or resume.
+                        </p>
 					</div>
 				</div><!-- .col  -->
 			</div><!-- .row  -->
@@ -132,10 +133,10 @@
                 <div class="offset-md-1 col-md-6 order-md-last order-first">
 					<div class="text-block">
 						<p class="lead animated" data-animate="fadeInUp" data-delay=".1">
-                             In the academic certifications Field (for example), BlockCred’s digital credentials allow individuals to share their achievements and prove their credibility, organizations to help their students get hired, and for employers to find the right person for the job.
-													<br>
+                            BlockCred’s digital credentials allow individuals to share their achievements and prove their credibility, organizations to help their students get hired, and for employers to find the right person for the job.
                             <br>
-                            BlockCred comes from “Blockchain” and “Credentials” Our target is to host the world’s credentials on top of Blockchain and in the process become the world’s first truly verifiable and immutable repository of human capital
+                            <br>
+                            BlockCred comes from “Blockchain” and “Credentials” Our target is to host the world’s credentials on top of Blockchain and in the process become the world’s first truly verifiable and immutable repository of human capital.
                         </p>
 					</div>
 				</div><!-- .col  -->
@@ -143,28 +144,6 @@
 				<div class="col-md-5 text-center">
 					<div class="res-m-btm animated" data-animate="fadeInUp" data-delay=".1">
 						<img src="{% static 'images/features-icon-light-b.png' %}" alt="graph">
-					</div>
-				</div><!-- .col  -->
-			</div><!-- .row  -->
-
-
-
-
-			<div class="gaps size-2x"></div><div class="gaps size-2x d-none d-md-block"></div><!-- .gaps  -->
-			<div class="row align-items-center">
-				<div class="col-md-5 offset-md-1">
-					<div class="res-m-btm animated" data-animate="fadeInUp" data-delay=".1">
-						<img src="{% static 'images/Layers.png' %}" alt="graph">
-					</div>
-				</div><!-- .col  -->
-				<div class="col-md-6 order-md-first order-last">
-					<div class="text-block">
-						<p class="lead animated" data-animate="fadeInUp" data-delay=".1">
-                            With the six layers protocol, the ecosystem of Blockcred provides the building blocks for our Blockchain. The different layers interact with each other to form the public, minable and distributed ledger with the real meaning of the Blockchain powered by Blockcred token XBC.
-														<br>
-                            <br>
-                            Our API layer gives the power for every business model to build his own application on top of our Blockchain and using our token (XBC) as a gas for his critical transactions, on top of this, everyone is free to run a full node and earn from mining the transactions, and reuse the rewarded XBC to issue or verify any certificate.
-														</p>
 					</div>
 				</div><!-- .col  -->
 			</div><!-- .row  -->
@@ -176,8 +155,8 @@
             <div class="row text-center">
 				<div class="col">
 					<div class="section-head">
-						<h2 class="section-title animated" data-animate="fadeInUp" data-delay="0">Samples of business models that are in a need of Blockcred
-                            <span>Who</span>
+						<h2 class="section-title animated" data-animate="fadeInUp" data-delay="0">Features
+                            <span>Features</span>
 						</h2>
 					</div>
 				</div>
@@ -185,39 +164,37 @@
             <div class="row">
                 <div class="col-md-6 d-inline-flex justify-content-center">
                     <div class="section-bg pd-x3">
-                        <h4><img src="{% static 'images/share-icon.png' %}"> Supply Chain Management</h4>
+                        <h4><img src="{% static 'images/share-icon.png' %}"> Powerful sharing</h4>
                         <p>
-                            From recording the quantity and transfer of assets – such as pallets, trailers, or containers, etc. – as they move between supply chain nodes, up to tracking purchase orders, change orders, receipts, shipment notifications, or other trade-related documents. All these critical transactions are in a bad need to be recorded in a Blockchain ledger.
-                        </p>
-                    </div>
-                </div><!-- .col  -->
-
-                
-
-                <div class="col-md-6 d-inline-flex justify-content-center">
-                    <div class="section-bg pd-x3">
-                        <h4><img src="{% static 'images/profile-icon.png' %}"> Acadimic Certificates</h4>
-                        <p>
-                            Academic certificates can be easily issued and verified using the Blockcred. Educational authorities can issue a certificate and give the user a receipt which they can share with any third party to prove the authenticity of the certificate. When the third party receives this receipt, they can easily check its authenticity on the Blockcred Blockchain.
+                            Individuals unleash their credentials across the web to become more discoverable and verifiable. This includes integrations with leading social media sites like LinkedIn. Embed codes and other sharing tools allow individuals to control when and where they want to be seen online.
                         </p>
                     </div>
                 </div><!-- .col  -->
 
                 <div class="col-md-6 d-inline-flex justify-content-center">
                     <div class="section-bg pd-x3">
-                        <h4><img src="{% static 'images/tracking-icon.png' %}"> IoT with Blockcred</h4>
+                        <h4><img src="{% static 'images/profile-icon.png' %}"> Credentials profile</h4>
                         <p>
-                            Some IoT applications are facing a trust problem, Blockchain revolution will solve it easily, storing the digital certificates for your smart home applications can be a nightmare if you imagine that these digital certificates are stored on a central server that can be accessed and attacked easily. Now, Blockcred will solve this issue and let you feel safe.
+                            Earners have full control of how they collate and display skills. Their hosted profile enables individuals to collect and display credentials from any BlockCred issuer, enabling a more visible and rich picture of individuals and their talents. Issuers can also showcase all their holders in one place to help promote what they do.
                         </p>
                     </div>
                 </div><!-- .col  -->
 
                 <div class="col-md-6 d-inline-flex justify-content-center">
                     <div class="section-bg pd-x3">
-                        <h4><img src="{% static 'images/verfication-icon.png' %}"> Land Ownership</h4>
+                        <h4><img src="{% static 'images/tracking-icon.png' %}"> Tracking and reporting</h4>
                         <p>
-                            For any high-value property (such as real estate, cars, or artwork) it is essential to have accurate records which can identify the owner, currently, people have to rely on a trusted third party. For example, a government agency might be responsible for keeping track of ownership information. Sometimes, these records are not preserved systematically. Blockcred will solve this.
-													</p>
+                            Unlock the power of a data-rich picture of all your holders through reporting dashboards. This includes a complete user-level view of each recipient, containing badge earning, sharing and display activity. Measure the benefit on your brand by tracking holders' sharing to see what is being viewed on each social media platform.
+                        </p>
+                    </div>
+                </div><!-- .col  -->
+
+                <div class="col-md-6 d-inline-flex justify-content-center">
+                    <div class="section-bg pd-x3">
+                        <h4><img src="{% static 'images/verfication-icon.png' %}"> Issuer Verification</h4>
+                        <p>
+                            We very careful to verify the issuer identity; it is a very important process in our model, to give a higher credibility for our holder that he gets a right credential from a verified entity. It is done by one to one contacting module to verify the identity and authority of the issuer.
+                        </p>
                     </div>
                 </div><!-- .col  -->
             </div><!-- .row  -->
@@ -229,7 +206,7 @@
 			<div class="row text-center">
 				<div class="col">
 					<div class="section-head">
-						<h2 class="section-title animated" data-animate="fadeInUp" data-delay="0">Acadimic certificates case study
+						<h2 class="section-title animated" data-animate="fadeInUp" data-delay="0">How it works?
                             <span>How</span>
 						</h2>
 					</div>
@@ -388,8 +365,7 @@
                         <div class="gaps size-3x"></div><div class="gaps size-1x d-none d-md-block"></div><!-- .gaps  -->
                         
                         <p class="animated text-left section-bg pd-x2" data-animate="fadeInUp" data-delay=".1">
-                            Transferring your digital certificates on a Blockchain will empower your business model to a further level. NOW, your credentials are verifiable, immutable, and secured by the power of the Blockchain.
-							Being on the Blockcred Blockchain will increase the trust level for your business up to 100% with lower cost and effective issuing process.
+                            One-click sharing to social media and professional networking sites like LinkedIn help generate web traffic and referrals for your program. It's time to turn your digital certificates and badges into a marketing tool. Receiving recognition is a pivotal moment for anyone completing his/her certification, training, or learning program. When you use BlockCred to send your certificates and badges to your students, you create exciting moments of pride that individuals can't wait to share.
                         </p>
 					</div>
 				</div><!-- .col  -->
@@ -403,7 +379,7 @@
                         
                         <div class="gaps size-3x"></div><div class="gaps size-1x d-none d-md-block"></div><!-- .gaps  -->
                         
-                        <p class="animated text-left section-bg pd-x2" data-animate="fadeInUp" data-delay=".1">We put the holder front and center, Blockcred wallet is where holders collect, store, and work with the credentials they earn. We believe that when you make credentials on blockchain, it can improve the holder’s ability to share what they know and how well they know it with verifiers, not only this but also, the holder can earn money from the verification process for his credentials.</p>
+                        <p class="animated text-left section-bg pd-x2" data-animate="fadeInUp" data-delay=".1">We put learners front and center, Blockcred is where learners collect, store, and work with the credentials they earn over their career life. We believe that when you make credentials digital they can improve the learner’s ability to share what they know and how well they know it with employers and on social networks like LinkedIn and Facebook. The future of academic credentials is changing. Blockchain is making waves in the world of educational certificates and Blockcred is taking the lead in that field.</p>
 					</div>
 				</div><!-- .col  -->
 			</div><!-- .row  -->
@@ -434,7 +410,7 @@
                         <li>Publish the proof of concept.</li>
                     </ul>
 				</div>
-				<div class="single-roadmap-alt sra-done gradiant-btoa">
+				<div class="single-roadmap-alt gradiant-btoa">
 					<h6>Q2 2018</h6>
 					<ul>
                         <li>Establish the identity verification.</li>
@@ -451,11 +427,10 @@
                     </ul>
 				</div>
 				<div class="single-roadmap-alt gradiant-btoc">
-					<h6>Q2 2019</h6>
+					<h6>Q1 2019</h6>
 					<ul>
                         <li>Mobile wallet - IOS</li>
-                        <li>XBC release and enable mining.</li>
-						<li>Final release.</li>
+                        <li>Final release.</li>
                     </ul>
 				</div>
      		</div>
@@ -478,8 +453,8 @@
             <div class="row">
 				<div class="col-lg-6 offset-lg-4">
 					<ul class="contact-info">
-						<li class="animated" data-animate="fadeInUp" data-delay=".1"><em class="fa fa-envelope"></em><span><a href="mailto:info@blockcred.io">info@blockcred.io</a></span></li>
-						<li class="animated" data-animate="fadeInUp" data-delay=".2"><em class="fa fa-paper-plane"></em><span>Join us on <a href="https://t.me/joinchat/IRHN2EjnCavHHKreWshr1Q">Telegram</a></span></li>
+						<li class="animated" data-animate="fadeInUp" data-delay=".1"><em class="fa fa-envelope"></em><span><a href="mailto:hello@blockcred.io">hello@blockcred.io</a></span></li>
+						<li class="animated" data-animate="fadeInUp" data-delay=".2"><em class="fa fa-paper-plane"></em><span>Join us on <a href="#">Telegram</a></span></li>
 					</ul>
 				</div>
 			</div>
@@ -533,7 +508,7 @@
 						 <a href="#subscribe-form" class="btn btn-plane expand-trigger content-popup" type="submit">Subscribe</a-->
 					<!--/form-->
 					<div class = "subscribe_form">
-                       <!--p>Sign up for our newsletter to get latest updates</p-->
+                       <p>Sign up for our newsletter to get latest updates</p>
                             <form id = "subscribe" form method = 'POST' class="subscription-form inline-form">{% csrf_token %}
                                <input id = "email_id" type = "email" name = "email_id" placeholder="your@email.com" class="input-round required email">
                                <button type="submit" value = "Subscribe" class="btn btn-plane expand-trigger">Subscribe</button>

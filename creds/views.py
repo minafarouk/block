@@ -119,13 +119,17 @@ def _generate_poe(key, form, cert_name):
     student_json = json.dumps(student_info)
     student_base64 = base64.b64encode(student_json.encode())
     student_hexa = codecs.encode(student_base64, 'hex')
-    client = mcrpc.RpcClient('159.89.226.46', '2778', 'multichainrpc', '5NVcmBy6YYHTj95XFp6ZrELdApxusaKrAtCxKs1K86Gc')
+    client = mcrpc.RpcClient(settings.MULTICHAIN_IP, settings.MULTICHAIN_PORT, settings.MULTICHAIN_RPCUSER, \
+                             settings.MULTICHAIN_RPCPASSWORD)
+ #   client = mcrpc.RpcClient('159.89.226.46', '2778', 'multichainrpc', '5NVcmBy6YYHTj95XFp6ZrELdApxusaKrAtCxKs1K86Gc')
     tx_id = client.publish('POACERT', key, student_hexa)
     return tx_id
 
 def _verify(key):
-#    key = 'edc21560ada6e962a08b52b7e836a563306a889c7df9e7a6e4cc37a5e7776a9c'
-    client = mcrpc.RpcClient('159.89.226.46', '2778', 'multichainrpc', '5NVcmBy6YYHTj95XFp6ZrELdApxusaKrAtCxKs1K86Gc')
+
+    #client = mcrpc.RpcClient('159.89.226.46', '2778', 'multichainrpc', '5NVcmBy6YYHTj95XFp6ZrELdApxusaKrAtCxKs1K86Gc')
+    client = mcrpc.RpcClient(settings.MULTICHAIN_IP, settings.MULTICHAIN_PORT, settings.MULTICHAIN_RPCUSER,
+                             settings.MULTICHAIN_RPCPASSWORD)
     tx_data = client.liststreamkeyitems('POACERT', key)[0]
     meta_data = tx_data['data']
     student_base64 = codecs.decode(meta_data, 'hex')
@@ -157,7 +161,7 @@ def issue(request):
             Files.objects.create(file_hashed=file_hashed)
             certificate_info = _verify(file_hashed)
             _send_email(certificate_info)
-            return render( request,'creds/certificate.html', context = certificate_info)
+            return render(request, 'creds/certificate.html', context = certificate_info)
         else:
  #           issue_url = reverse('issue-cert', args=form, current_app='creds', host='creds')
             return render(request, 'creds/issue-certificate.html', context = {'form': form})

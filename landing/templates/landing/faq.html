@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="author" content="Softnio">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="ICO Crypto is a modern and elegant landing page, created for ICO Agencies and digital crypto currency investment website.">
+	<meta name="description" content="BlockCred is a revolutionary Blockchain protocol focused on creating leading digital credential delivery, offering exceptional power and scalability to academic certifications, corporate compliances, awarding bodies, supply chain management, and professional associations who seek to transform their recognition, certifications or credentials to the new era of the Blockchain.">
 	<!-- Fav Icon  -->
 	<link rel="shortcut icon" href="{% static 'images/favicon.png' %}">
 	<!-- Site Title  -->
@@ -42,17 +42,17 @@
 
 				<div class="collapse navbar-collapse justify-content-end" id="navbarToggle">
 					<ul class="navbar-nav animated" data-animate="fadeInDown" data-delay=".9">
-						<li class="nav-item"><a class="nav-link menu-link" href="#intro">What is?<span class="sr-only">(current)</span></a></li>
-						<li class="nav-item"><a class="nav-link menu-link" href="#features">Features</a></li>
-						<li class="nav-item"><a class="nav-link menu-link" href="#how">How?</a></li>
-						<li class="nav-item"><a class="nav-link menu-link" href="#philosophy">Our Philosophy</a></li>
-						<li class="nav-item"><a class="nav-link menu-link" href="#why">Why?</a></li>
-                        <li class="nav-item"><a class="nav-link menu-link" href="#roadmap">Roadmap</a></li>
-						<li class="nav-item active"><a class="nav-link menu-link" href="#faqs">FAQs</a></li>
-						<li class="nav-item"><a class="nav-link menu-link" href="#contact">Contact</a></li>
+						<li class="nav-item"><a class="nav-link menu-link" href="{% url 'home' %}#intro">What is?<span class="sr-only">(current)</span></a></li>
+						<li class="nav-item"><a class="nav-link menu-link" href="{% url 'home' %}#features">Features</a></li>
+						<li class="nav-item"><a class="nav-link menu-link" href="{% url 'home' %}#how">How?</a></li>
+						<li class="nav-item"><a class="nav-link menu-link" href="{% url 'home' %}#philosophy">Our Philosophy</a></li>
+						<li class="nav-item"><a class="nav-link menu-link" href="{% url 'home' %}#why">Why?</a></li>
+                        <li class="nav-item"><a class="nav-link menu-link" href="{% url 'home' %}#roadmap">Roadmap</a></li>
+						<li class="nav-item active"><a class="nav-link menu-link" href="{% url 'faq' %}">FAQs</a></li>
+						<li class="nav-item"><a class="nav-link menu-link" href="{% url 'home' %}#contact">Contact</a></li>
 					</ul>
                     <ul class="navbar-nav navbar-btns">
-						<li class="nav-item"><a class="btn btn-sm" href="#">Proof of Concept</a></li>
+						<li class="nav-item"><a class="btn btn-sm" href="{% url 'issue-cert' %}">Proof of Concept</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -86,7 +86,7 @@
 						<h2 class="section-title animated" data-animate="fadeInUp" data-delay="0">Frequently asked questions
 							<span>FAQS</span>
 						</h2>
-						<p class="animated" data-animate="fadeInUp" data-delay=".1">Below we’ve provided a bit of ICO, ICO Token, cryptocurrencies, and few others. If you have any other questions, please get in touch using the contact form below.</p>
+						<p class="animated" data-animate="fadeInUp" data-delay=".1">Below, we have provided a sample of questions that you may ask about Blockcred, if you didn’t find what you need here, please don’t hesitate to send us your question and one of our representatives will answer you shortly.</p>
 					</div>
 				</div>
 			</div>
@@ -99,14 +99,12 @@
 								<a class="nav-link active" data-toggle="tab" href="#tab-1">General</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" data-toggle="tab" href="#tab-2">Issuer</a>
+								<a class="nav-link" data-toggle="tab" href="#tab-2">Mining</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" data-toggle="tab" href="#tab-3">Holder</a>
+								<a class="nav-link" data-toggle="tab" href="#tab-3">XBC</a>
 							</li>
-							<li class="nav-item">
-								<a class="nav-link" data-toggle="tab" href="#tab-4">Wallet</a>
-							</li>
+							
 						</ul>
 						<!-- Tab panes -->
 						<div class="tab-content animated" data-animate="fadeInUp" data-delay=".1">
@@ -116,13 +114,14 @@
 										<div class="card-header">
 											<h5>
 												<a data-toggle="collapse" data-target="#collapse-1-1">
-													What is ICO Crypto?<span class="plus-minus"><span class="ti ti-angle-up"></span></span>
+													What is Blockcred?<span class="plus-minus"><span class="ti ti-angle-up"></span></span>
 												</a>
 											</h5>
 										</div>
 										<div id="collapse-1-1" class="collapse show" data-parent="#accordion-1">
 											<div class="card-body">
-												<p>ICO Crypto - is unique platform; that is secure, smart and easy-to-use platform, and completely disrupting the way businesses raise capital.</p>
+												<p>Blockcred is a public, mineable blockchain. It can also be seen as an open-source protocol for the public blockchains, which offers a rich set of features including extensive configurability, rapid deployment, native assets, and data streams.
+													<br>You can publish your data in key-value pair format on our blockchain.</p>
 											</div>
 										</div>
 									</div>
@@ -130,41 +129,50 @@
 										<div class="card-header">
 											<h5>
 												<a class="collapsed" data-toggle="collapse" data-target="#collapse-1-2">
-												  What cryptocurrencies can I use to purchase?<span class="plus-minus"><span class="ti ti-angle-up"></span></span>
+												  How is Blockcred different from traditional storage systems?<span class="plus-minus"><span class="ti ti-angle-up"></span></span>
 												</a>
 											</h5>
 										</div>
 										<div id="collapse-1-2" class="collapse" data-parent="#accordion-1">
 											<div class="card-body">
-												<p>ICO Crypto - is unique platform; that is secure, smart and easy-to-use platform, and completely disrupting the way businesses raise capital.</p>
+												<p>Since Blockcred is a public blockchain, it consists of several decentralized nodes which verify each and every transaction while adding new blocks into the blockchain. Each node participates in administration: all nodes verify new additions to the blockchain, and are capable of entering new data into the blockchain. Traditional databases allow the modification of data, but with the Blockcred blockchain the data is secured and cannot be tampered with, altered, or modified once published and confirmed in the Blockcred blockchain ledger.</p>
 											</div>
 										</div>
 									</div>
-									<div class="card">
-										<div class="card-header">
-											<h5>
-												<a class="collapsed" data-toggle="collapse" data-target="#collapse-1-3">
-												  How can I participate in the ICO Token sale?<span class="plus-minus"><span class="ti ti-angle-up"></span></span>
-												</a>
-											</h5>
-										</div>
-										<div id="collapse-1-3" class="collapse" data-parent="#accordion-1">
-											<div class="card-body">
-												<p>ICO Crypto - is unique platform; that is secure, smart and easy-to-use platform, and completely disrupting the way businesses raise capital.</p>
-											</div>
-										</div>
-									</div>
+									
 									<div class="card">
 										<div class="card-header">
 											<h5>
 												<a class="collapsed" data-toggle="collapse" data-target="#collapse-1-4">
-												  How do I benefit from the ICO Token?<span class="plus-minus"><span class="ti ti-angle-up"></span></span>
+												  How does Blockcred work?<span class="plus-minus"><span class="ti ti-angle-up"></span></span>
 												</a>
 											</h5>
 										</div>
 										<div id="collapse-1-4" class="collapse" data-parent="#accordion-1">
 											<div class="card-body">
-												<p>ICO Crypto - is unique platform; that is secure, smart and easy-to-use platform, and completely disrupting the way businesses raise capital.</p>
+												<p>Blockcred allows the user to upload data (in key-value pair format) onto the blockchain with ease and in a single XBC transaction. Users can upload multiple entries in the form of key-value pairs, but it has to be one pair per transaction. Blockcred is a public blockchain, and it also allows users to retrieve their uploaded data by the use of a key. The cost of data upload is calculated as per the data size and awarded to the miners in the form of XBC.</p>
+											</div>
+										</div>
+									</div>
+
+									<div class="card">
+										<div class="card-header">
+											<h5>
+												<a data-toggle="collapse" data-target="#collapse-2-1">
+												  What are the blockchain specifications for Blockcred?<span class="plus-minus"><span class="ti ti-angle-up"></span></span>
+												</a>
+											</h5>
+										</div>
+										<div id="collapse-2-1" class="collapse show" data-parent="#accordion-2">
+											<div class="card-body">
+												<p>The Blockcred specifications are as follows:<br>
+													•	Avg. Block Size: 250 bytes<br>
+													•	Max Block Size: 8 MB<br>
+													•	Avg. Block Frequency: 15 seconds<br>
+													•	Mining Algorithm: PoW<br>
+													•	Mining Reward: 10 XRK<br>
+													•	Max Transaction Size: 4 MB<br>
+													•	Max OP_RETURN Transaction Size: 2 MB<br></p>
 											</div>
 										</div>
 									</div>
@@ -172,31 +180,18 @@
 							</div><!-- End tab-pane -->
 							<div class="tab-pane fade" id="tab-2">
 								<div class="accordion" id="accordion-2">
-									<div class="card">
-										<div class="card-header">
-											<h5>
-												<a data-toggle="collapse" data-target="#collapse-2-1">
-												  Which of us ever undertakes laborious?<span class="plus-minus"><span class="ti ti-angle-up"></span></span>
-												</a>
-											</h5>
-										</div>
-										<div id="collapse-2-1" class="collapse show" data-parent="#accordion-2">
-											<div class="card-body">
-												<p>ICO Crypto - is unique platform; that is secure, smart and easy-to-use platform, and completely disrupting the way businesses raise capital.</p>
-											</div>
-										</div>
-									</div>
+									
 									<div class="card">
 										<div class="card-header">
 											<h5>
 												<a class="collapsed" data-toggle="collapse" data-target="#collapse-2-2">
-													Who do not know how to pursue rationally?<span class="plus-minus"><span class="ti ti-angle-up"></span></span>
+													 Can I mine XBC?<span class="plus-minus"><span class="ti ti-angle-up"></span></span>
 												</a>
 											</h5>
 										</div>
 										<div id="collapse-2-2" class="collapse" data-parent="#accordion-2">
 											<div class="card-body">
-												<p>ICO Crypto - is unique platform; that is secure, smart and easy-to-use platform, and completely disrupting the way businesses raise capital.</p>
+												<p>Yes. Anyone can become a miner with Blockcred. You need to download the needed mining software, and then you can start mining. You can follow the mining guide that will be available once we open the mining for the crowed.</p>
 											</div>
 										</div>
 									</div>
@@ -204,152 +199,60 @@
 										<div class="card-header">
 											<h5>
 												<a class="collapsed" data-toggle="collapse" data-target="#collapse-2-4">
-												   Their separate existence is a myth?<span class="plus-minus"><span class="ti ti-angle-up"></span></span>
+												   What are the minimum H/W requirements for XBC mining?<span class="plus-minus"><span class="ti ti-angle-up"></span></span>
 												</a>
 											</h5>
 										</div>
 										<div id="collapse-2-4" class="collapse" data-parent="#accordion-2">
 											<div class="card-body">
-												<p>ICO Crypto - is unique platform; that is secure, smart and easy-to-use platform, and completely disrupting the way businesses raise capital.</p>
+												<p>Anyone with a personal laptop/computer can begin mining for XBC. The minimum system requirements are as follows:<br>
+													•	Linux: 64-bit, supports Ubuntu 12.04+, CentOS 6.2+, Debian 7+, Fedora 15+, RHEL 6.2+.<br>
+													•	Windows: 64-bit, supports Windows 7, 8, 10, Server 2008 or later.<br>
+													•	Mac: 64-bit, supports OS X 10.12 (we hope to support earlier versions soon).<br>
+													•	1 MB of RAM<br>
+													•	5 GB of disk space<br></p>
 											</div>
 										</div>
 									</div>
+									
+								</div>
+							</div><!-- End tab-pane -->
+							<div class="tab-pane fade" id="tab-3">
+								<div class="accordion" id="accordion-3">
+
 									<div class="card">
 										<div class="card-header">
 											<h5>
 												<a class="collapsed" data-toggle="collapse" data-target="#collapse-2-3">
-												  Pityful a rethoric question ran over her cheek?<span class="plus-minus"><span class="ti ti-angle-up"></span></span>
+												  What is XBC?<span class="plus-minus"><span class="ti ti-angle-up"></span></span>
 												</a>
 											</h5>
 										</div>
 										<div id="collapse-2-3" class="collapse" data-parent="#accordion-2">
 											<div class="card-body">
-												<p>ICO Crypto - is unique platform; that is secure, smart and easy-to-use platform, and completely disrupting the way businesses raise capital.</p>
+												<p>XBC is the name (or ticker) of the tokens which are used as an incentive and payment model for issuing a certificate onto the Blockcred blockchain. XBC tokens are used as a gas for issuing a certificate over the Blockcred blockchain.</p>
 											</div>
 										</div>
 									</div>
-								</div>
-							</div><!-- End tab-pane -->
-							<div class="tab-pane fade" id="tab-3">
-								<div class="accordion" id="accordion-3">
 									<div class="card">
 										<div class="card-header">
 											<h5>
 												<a data-toggle="collapse" data-target="#collapse-3-1">
-													When she reached the first hills?<span class="plus-minus"><span class="ti ti-angle-up"></span></span>
+													What is the value of XBC?<span class="plus-minus"><span class="ti ti-angle-up"></span></span>
 												</a>
 											</h5>
 										</div>
 										<div id="collapse-3-1" class="collapse show" data-parent="#accordion-3">
 											<div class="card-body">
-												<p>ICO Crypto - is unique platform; that is secure, smart and easy-to-use platform, and completely disrupting the way businesses raise capital.</p>
+												<p>Will be determined at the time of launching the beta version of Blockcred and enabling the mining process for the crowd.</p>
 											</div>
 										</div>
-									</div>
-									<div class="card">
-										<div class="card-header">
-											<h5>
-												<a class="collapsed" data-toggle="collapse" data-target="#collapse-3-2">
-												  Big Oxmox advised her not to do?<span class="plus-minus"><span class="ti ti-angle-up"></span></span>
-												</a>
-											</h5>
-										</div>
-										<div id="collapse-3-2" class="collapse" data-parent="#accordion-3">
-											<div class="card-body">
-												<p>ICO Crypto - is unique platform; that is secure, smart and easy-to-use platform, and completely disrupting the way businesses raise capital.</p>
-											</div>
-										</div>
-									</div>
-									<div class="card">
-										<div class="card-header">
-											<h5>
-												<a class="collapsed" data-toggle="collapse" data-target="#collapse-3-3">
-												  Which roasted parts of sentences fly into your mouth?<span class="plus-minus"><span class="ti ti-angle-up"></span></span>
-												</a>
-											</h5>
-										</div>
-										<div id="collapse-3-3" class="collapse" data-parent="#accordion-3">
-											<div class="card-body">
-												<p>ICO Crypto - is unique platform; that is secure, smart and easy-to-use platform, and completely disrupting the way businesses raise capital.</p>
-											</div>
-										</div>
-									</div>
-									<div class="card">
-										<div class="card-header">
-											<h5>
-												<a class="collapsed" data-toggle="collapse" data-target="#collapse-3-4">
-												  Vokalia and Consonantia, there live?<span class="plus-minus"><span class="ti ti-angle-up"></span></span>
-												</a>
-											</h5>
-										</div>
-										<div id="collapse-3-4" class="collapse" data-parent="#accordion-3">
-											<div class="card-body">
-												<p>ICO Crypto - is unique platform; that is secure, smart and easy-to-use platform, and completely disrupting the way businesses raise capital.</p>
-											</div>
-										</div>
-									</div>
+									</div>									
+									
+									
 								</div>
 							</div><!-- End tab-pane -->
-							<div class="tab-pane fade" id="tab-4">
-								<div class="accordion" id="accordion-4">
-									<div class="card">
-										<div class="card-header">
-											<h5>
-												<a data-toggle="collapse" data-target="#collapse-4-1">
-													Who formed us in his own image?<span class="plus-minus"><span class="ti ti-angle-up"></span></span>
-												</a>
-											</h5>
-										</div>
-										<div id="collapse-4-1" class="collapse show" data-parent="#accordion-4">
-											<div class="card-body">
-												<p>ICO Crypto - is unique platform; that is secure, smart and easy-to-use platform, and completely disrupting the way businesses raise capital.</p>
-											</div>
-										</div>
-									</div>
-									<div class="card">
-										<div class="card-header">
-											<h5>
-												<a class="collapsed" data-toggle="collapse" data-target="#collapse-4-2">
-												  While the lovely valley teems with vapour?<span class="plus-minus"><span class="ti ti-angle-up"></span></span>
-												</a>
-											</h5>
-										</div>
-										<div id="collapse-4-2" class="collapse" data-parent="#accordion-4">
-											<div class="card-body">
-												<p>ICO Crypto - is unique platform; that is secure, smart and easy-to-use platform, and completely disrupting the way businesses raise capital.</p>
-											</div>
-										</div>
-									</div>
-									<div class="card">
-										<div class="card-header">
-											<h5>
-												<a class="collapsed" data-toggle="collapse" data-target="#collapse-4-3">
-												  Which was created for the bliss of souls like mine?<span class="plus-minus"><span class="ti ti-angle-up"></span></span>
-												</a>
-											</h5>
-										</div>
-										<div id="collapse-4-3" class="collapse" data-parent="#accordion-4">
-											<div class="card-body">
-												<p>ICO Crypto - is unique platform; that is secure, smart and easy-to-use platform, and completely disrupting the way businesses raise capital.</p>
-											</div>
-										</div>
-									</div>
-									<div class="card">
-										<div class="card-header">
-											<h5>
-												<a class="collapsed" data-toggle="collapse" data-target="#collapse-4-4">
-												  Wonderful serenity has taken of my entire soul?<span class="plus-minus"><span class="ti ti-angle-up"></span></span>
-												</a>
-											</h5>
-										</div>
-										<div id="collapse-4-4" class="collapse" data-parent="#accordion-4">
-											<div class="card-body">
-												<p>ICO Crypto - is unique platform; that is secure, smart and easy-to-use platform, and completely disrupting the way businesses raise capital.</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div><!-- End tab-pane -->
+<!-- End tab-pane -->
 						</div><!-- End tab-content -->
 					</div><!-- End tab-custom -->
 				</div><!-- End col -->
@@ -363,13 +266,14 @@
 		<div class="container">
 			<div class="row text-center">
 				<div class="col-md-6 offset-md-3">
-					<h4 class="section-title-md animated" data-animate="fadeInUp" data-delay="0">Don't miss out, Stay updated</h4>
-					<form id="subscribe-form" action="form/subscribe.php" method="post" class="subscription-form inline-form">
-						<input type="text" name="youremail" class="input-round required email" placeholder="Enter your email address" >
-						<input type="text" class="d-none" name="form-anti-honeypot" value="">
-						<a href="#team-profile-1" class="btn btn-plane expand-trigger content-popup">Subscribe</a>
-						<div class="subscribe-results"></div>
-					</form>
+					<h4 class="section-title-md animated" data-animate="fadeInUp" data-delay="0">Don't miss out, Stay updated</h4>		
+					<div class = "subscribe_form">
+                       <!--p>Sign up for our newsletter to get latest updates</p-->
+                            <form id = "subscribe" form method = 'POST' class="subscription-form inline-form">{% csrf_token %}
+                               <input id = "email_id" type = "email" name = "email_id" placeholder="your@email.com" class="input-round required email">
+                               <button type="submit" value = "Subscribe" class="btn btn-plane expand-trigger">Subscribe</button>
+                              </form>
+                    </div>
 				</div>
 			</div>
 		</div>
@@ -416,6 +320,67 @@
 	<!-- JavaScript (include all script here) -->
 	<script src="{% static 'js/jquery.bundle.js' %}"></script>
 	<script src="{% static 'js/script.js' %}"></script>
+	<script type="text/javascript" >
+	$('#subscribe').submit(function(e){
+      e.preventDefault();
+      var email_id = $("#email_id").val();
+      if(email_id){
+        var csrfmiddlewaretoken = csrftoken;
+        var email_data = {"email_id": email_id, 
+                          "csrfmiddlewaretoken" : csrfmiddlewaretoken};
+        $.ajax({
+          type : 'POST',
+          url :  '/subscribe/',
+          data : email_data,
+          success : function(response){
+            $('#email_id').val(''); 
+            if(response.status == "404"){
+              alert("This Email is already been subscribed!");
+            }
+            else{
+              alert("Thank you for Subscribing! Please Check your Email to Confirm the Subscription");
+            }
+          },
+          error: function(response) {
+            alert("Sorry Something went Wrong");
+            $('#email_id').val(''); 
+          }
+        });
+        return false;
+      }
+      else{
+        alert("Please provide correct email!");
+      }
+  });
+ 
+
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+
+function csrfSafeMethod(method) {
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+})
+</script>
 
 </body>
 </html>
