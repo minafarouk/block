@@ -66,7 +66,7 @@ def _send_email (context):
     to = context['semail']
 
     id = Files.objects.get(file_hashed=context['key']).id
-    context['url'] = short_url.encode_url(id)
+    context['url'] = short_url.encode_url(id,12)
 
     html_content = render_to_string('creds/email.html', context)  # render with dynamic value
     text_content = strip_tags(html_content)  # Strip the html tag. So people can see the pure text at least.
@@ -126,6 +126,7 @@ def _generate_poe(key, form, cert_name):
     student_base64 = base64.b64encode(student_json.encode())
     student_hexa = codecs.encode(student_base64, 'hex')
     client = _connect()
+ #   client = mcrpc.RpcClient('159.89.226.46', '2778', 'multichainrpc', '5NVcmBy6YYHTj95XFp6ZrELdApxusaKrAtCxKs1K86Gc')
     tx_id = client.publish('POACERT', key, student_hexa)
     return tx_id
 
@@ -134,7 +135,6 @@ def _verify(key):
     #client = mcrpc.RpcClient('159.89.226.46', '2778', 'multichainrpc', '5NVcmBy6YYHTj95XFp6ZrELdApxusaKrAtCxKs1K86Gc')
     client = mcrpc.RpcClient(settings.MULTICHAIN_IP, settings.MULTICHAIN_PORT, settings.MULTICHAIN_RPCUSER,
                              settings.MULTICHAIN_RPCPASSWORD)
-
     tx_data = client.liststreamkeyitems('POACERT', key)[0]
     meta_data = tx_data['data']
     student_base64 = codecs.decode(meta_data, 'hex')
@@ -166,41 +166,25 @@ def issue(request):
             Files.objects.create(file_hashed=file_hashed)
             issuer_address = form.cleaned_data['issuer_address']
             holder_address = form.cleaned_data['holder_address']
-            issuer_privkey = form.cleaned_data['privkey']
+            privkey = form.cleaned_data['privkey']
             system_address = "15ztXjMfVZmAuqVcWyqfBg5nm1bDsn5Jsf"
-            system_privKey = "Ky6a1zhKqdC37iiNPyh66LouTrN8Cwdt5Sjj7rjZvDVv8VRr4FoN"
 
             client = _connect()
-            unsigned_offer = client.createrawsendfrom(system_address, {system_address: {'creds': 1}}, [], 'lock')
-            signed_offer = client.signrawtransaction(unsigned_offer, [], [system_privKey])
-            offer_txid = client.sendrawtransaction(signed_offer['hex'])
-            offer_of_exchange = client.createrawtransaction([{'txid': offer_txid, "vout": 0}], {system_address: {"xbc": 2}}, [], 'lock')
-            signed_offer_exchange = client.signrawtransaction(offer_of_exchange, [], [system_privKey], 'SINGLE|ANYONECANPAY')
-            offer_details = client.decoderawexchange(signed_offer_exchange['hex'])
-
-            unsigned_offer_acceptance = client.createrawsendfrom(issuer_address, {issuer_address: {'xbc': 2}}, [tx_id], 'lock')
-            signed_offer_acceptance = client.signrawtransaction(unsigned_offer_acceptance, [], [issuer_privkey])
-            offer_txid_acceptance = client.sendrawtransaction(signed_offer_acceptance['hex'])
-            full_exchange_transaction = client.appendrawtransaction(signed_offer_exchange['hex'],
-                                                                    [{"txid": offer_txid_acceptance, "vout": 0}], {issuer_address: {"creds": 1}}, [], 'lock')
-            full_exchange_transaction_signed = client.signrawtransaction(full_exchange_transaction, [], [issuer_privkey])
-            completed_exchange_txid = client.sendrawtransaction(full_exchange_transaction_signed['hex'])
-
-            unsigned_tx = client.createrawsendfrom(issuer_address, {holder_address: {'creds': 1}}, [file_hashed])
-            signed_tx = client.signrawtransaction(unsigned_tx, [], [issuer_privkey])
+            unsigned_tx = client.createrawsendfrom(issuer_address, {system_address: {'xbc': 1}, holder_address: {'creds': 1}})
+            signed_tx = client.signrawtransaction(unsigned_tx, [], [privkey])
             txid = client.sendrawtransaction(signed_tx['hex'])
 
             certificate_info = _verify(file_hashed)
             _send_email(certificate_info)
-            return render(request, 'creds/certificate.html', context=certificate_info)
+            return render(request, 'creds/certificate.html', context = certificate_info)
         else:
  #           issue_url = reverse('issue-cert', args=form, current_app='creds', host='creds')
-            return render(request, 'creds/issue-certificate.html', context={'form': form})
+            return render(request, 'creds/issue-certificate.html', context = {'form': form})
 
     else:
         form = StudentForm()
 #        issue_url = reverse('issue-cert', args=form, current_app='creds', host='creds')
-        return render(request, 'creds/issue-certificate.html', context={'form': form})
+        return render(request, 'creds/issue-certificate.html', context = {'form': form})
 
 
 def download_cert(request, cert_name):
@@ -210,7 +194,7 @@ def download_cert(request, cert_name):
 def qr_cert(request, cert_name):
     key = _file_hash('/tmp/' + cert_name)
     id = Files.objects.get(file_hashed=key).id
-    short = short_url.encode_url(id)
+    short = short_url.encode_url(id, 12)
     url = "www.blockcred.io/creds/verifylink/" + short
     qr = _generate_qr_code(url, 10, 2)
     response = HttpResponse(content_type="image/jpeg")
@@ -232,7 +216,7 @@ def url_cert(request, cert_name):
 
     key = _file_hash('/tmp/' + cert_name)
     id = Files.objects.get(file_hashed=key).id
-    short = short_url.encode_url(id)
+    short = short_url.encode_url(id,12)
 
     return HttpResponse("www.blockcred.io/creds/verifylink/" + short)
 
@@ -248,7 +232,7 @@ def verify(request):
          try:
              context = _verify(file_hash)
              id = Files.objects.get(file_hashed=file_hash).id
-             context['url'] = short_url.encode_url(id)
+             context['url'] = short_url.encode_url(id, 12)
              return render_to_response('creds/verify-success.html', context=context)
          except:
             return render_to_response('creds/verify-unsuccess.html')
@@ -260,7 +244,7 @@ def verify(request):
             id = short_url.decode_url(url[url.find('link/')+5:])
             try:
                 key = Files.objects.get(id=id).file_hashed
-                url = short_url.encode_url(id)
+                url = short_url.encode_url(id, 12)
                 context = _verify(key)
                 context['url'] = url
                 return render(request, 'creds/verify-success.html', context=context)

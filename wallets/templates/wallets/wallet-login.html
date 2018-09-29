@@ -1,0 +1,249 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Blockcred - Your Credentials On Top Of Blockchain</title>
+
+        <!-- META SECTION -->
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" type="image/x-icon">
+        <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+        <!-- END META SECTION -->
+
+        <!-- CSS INCLUDE -->
+
+        <link rel="stylesheet" href="{% static 'css/wallet.css' %}">
+
+        <!-- EOF CSS INCLUDE -->
+
+        <!-- IMPORTANT SCRIPTS -->
+        <script type="text/javascript" src="{% static 'js/vendor/jquery/jquery.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/jquery/jquery-migrate.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/jquery/jquery-ui.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/bootstrap/bootstrap.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/moment/moment.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/customscrollbar/jquery.mCustomScrollbar.min.js' %}"></script>
+        <!-- END IMPORTANT SCRIPTS -->
+        <!-- THIS PAGE SCRIPTS -->
+        <script type="text/javascript" src="{% static 'js/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.js' %}"></script>
+
+        <script type="text/javascript" src="{% static 'js/vendor/jvectormap/jquery-jvectormap.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/jvectormap/jquery-jvectormap-world-mill-en.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/jvectormap/jquery-jvectormap-us-aea-en.js' %}"></script>
+
+        <script type="text/javascript" src="{% static 'js/vendor/rickshaw/d3.v3.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/rickshaw/rickshaw.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/form-validator/jquery.form-validator.min.js' %}"></script>
+        <!-- END THIS PAGE SCRIPTS -->
+        <!-- APP SCRIPTS -->
+        <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/app_plugins.js' %}"></script>
+        <!-- END APP SCRIPTS -->
+        <script type="text/javascript" src="{% static 'js/app_demo_dashboard.js' %}"></script>
+
+        <script src="{% static 'js/bitcore-lib/bitcore-lib.min.js' %}"></script>
+        <script src="{% static 'js/bitcore-mnemonic/bitcore-mnemonic.min.js' %}"></script>
+        <script src="{% static 'js/bitcore-explorers/bitcore-explorers.min.js' %}"></script>
+        <script src="{% static 'js/app_wallet.js' %}"></script>
+
+        <!--script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script-->
+        <script type="text/javascript" src="{% static 'js/qrcode.js' %}"></script>
+        
+    </head>
+    <body>
+
+        <!-- APP WRAPPER -->
+        <div class="app">
+
+            <!-- START APP CONTAINER -->
+            <div class="app-container">
+                <!-- START SIDEBAR -->
+                <div class="app-sidebar app-navigation app-navigation-fixed scroll app-navigation-style-default app-navigation-open-hover dir-left" data-type="close-other">
+                    <a href="{% url 'home' %}" class="app-navigation-logo">
+                        Blockcred - Your Credentials On Top Of Blockchain
+                    </a>
+
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="{% url 'home' %}"><span class="fa fa-home"></span> Home</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'wallet-landing' %}" class="active"><span class="fa fa-money"></span> Wallet</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'issue-cert' %}"><span class="fa fa-plus"></span> Issue Credential</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'verify-cert' %}"><span class="fa fa-check"></span> Verify Credential</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- END SIDEBAR -->
+
+                <!-- START APP CONTENT -->
+                <div class="app-content app-sidebar-left">
+                    <!-- START APP HEADER -->
+                    <div class="app-header app-header-design-default">
+                        <ul class="app-header-buttons">
+                            <li class="visible-mobile"><a href="#" class="btn btn-link btn-icon" data-sidebar-toggle=".app-sidebar.dir-left"><span class="icon-menu"></span></a></li>
+                            <li class="hidden-mobile"><a href="#" class="btn btn-link btn-icon" data-sidebar-minimize=".app-sidebar.dir-left"><span class="icon-menu"></span></a></li>
+                        </ul>
+                    </div>
+                    <!-- END APP HEADER  -->
+
+                    <!-- START PAGE HEADING -->
+
+                    <div class="app-heading-container app-heading-bordered bottom">
+                        <div class="app-heading app-heading-bordered app-heading-page">
+                            <div class="icon icon-lg">
+                                <span class="fa fa-money"></span>
+                            </div>
+                            <div class="title">
+                                <h1>Wallet</h1>
+                                <p>Wallet managment</p>
+                            </div>
+                            <!--
+                            <div class="heading-elements">
+                                <a href="#" class="btn btn-danger" id="page-like"><span class="app-spinner loading"></span> loading...</a>
+                                <a href="https://themeforest.net/item/boooya-revolution-admin-template/17227946?ref=aqvatarius&license=regular&open_purchase_for_item_id=17227946" class="btn btn-success btn-icon-fixed"><span class="icon-text">$24</span> Purchase</a>
+                            </div>
+                            -->
+                        </div>
+                    </div>
+                    <!-- END PAGE HEADING -->
+
+                    <!-- START PAGE CONTAINER -->
+                    <div class="container">
+                        <div class="block pas text-center wallet">
+                            <div class="row">
+                                <div class="col-xs-offset-1 col-xs-10">
+                                    <p class="text-left">Please enter your XBC wallet public and private keys.</p>
+
+                                    <div class="alert alert-danger alert-icon-block alert-dismissible text-left" role="alert">
+                                        <div class="alert-icon">
+                                            <span class="icon-menu-circle"></span>
+                                        </div>
+                                        <strong>Notice:</strong> This page uses javascript to authenticate you within your browser to be able to manage your XBC wallet, this means we never store your private key.
+                                    </div>
+
+                                    <form class="form-horizontal" onsubmit="authenticateUser()" method="get">
+                                        <div class="form-group">
+                                            <div class="col-md-8">
+                                                <input type="text" class="form-control" data-validation="required" placeholder="Enter Your XBC Public Key" id='pub'>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-md-8">
+                                                <input type="text" class="form-control" data-validation="required" placeholder="Enter Your XBC Private Key" id='prv'>
+                                            </div>
+                                        </div>
+                                        <div class="form-group text-left">
+                                            <div class="col-md-4">
+                                                <button type="submit" class="btn btn-primary">Manage XBC Wallet</button>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END PAGE CONTAINER -->
+
+                </div>
+                <!-- END APP CONTENT -->
+
+            </div>
+            <!-- END APP CONTAINER -->
+
+            <!-- START APP FOOTER -->
+            <div class="app-footer app-footer-default" id="footer">
+                <div class="app-footer-line">
+                    <div class="copyright">&copy; 2018 Blockcred. All right reserved</div>
+                </div>
+            </div>
+            <!-- END APP FOOTER -->
+
+            <div class="modal fade" id="send-popup" tabindex="-1" role="dialog" aria-labelledby="modal-primary-header">
+                <div class="modal-dialog modal-primary" role="document">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="icon-cross"></span></button>
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="modal-primary-header"><i class="fa fa-envelope margin-right-10"></i>Email Me</h4>
+                        </div>
+                        <div class="modal-body text-center">
+                            <div class="row">
+                                <div class="col-xs-offset-2 col-xs-8">
+                                    <p class="text-left text-danger">
+                                        <strong>Notice:</strong> be sure that you are the only one has access to the provided Email address, the upcoming Email contains a critical information about your XBC wallet access, if you will lose this info, we will not be able to restore your wallet and there is no reset option.
+                                        <br>
+                                        <br>
+                                        We highly recommend to print the Email contents and save it in a safe place, then permanently delete the message.
+                                    </p>
+
+                                    <form class="form-horizontal" action="#">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <input type="email" class="form-control" data-validation="required" placeholder="My Email">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group text-center">
+                                            <div>
+                                                <button type="submit" class="btn btn-primary">Send Now</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- END MODAL PRIMARY -->
+
+        </div>
+        <!-- END APP WRAPPER -->
+
+        
+
+        <script type="text/javascript">
+            function authenticateUser(){
+            var pubKey = document.getElementById("pub").value;
+            var prv = document.getElementById("prv").value;
+            var privKey = getPrivateKeyFromString(prv);
+            
+            
+            if (prv != "" ){
+                if (pubKey == privKey.hdPublicKey){                    
+                    //var addr = privKey.derive("m/0'/0'").privateKey.toAddress();
+                    var child_priv = privKey.derive(0).derive(1).derive(2, true);
+                    var addr = child_priv.privateKey.toAddress()                
+                    var date = new Date();
+                    date.setTime(date.getTime()+(5*60*1000));
+                    var expires = "; expires="+date.toGMTString();                   
+                    document.cookie = 'address=' + addr+expires+"; path=/";             
+                }
+                else{
+                    alert("Your credentials are not matched")
+                }              
+            }
+            else {
+                alert ("Please Enter your credentials")
+            }
+        };
+        </script>
+
+    </body>
+</html>

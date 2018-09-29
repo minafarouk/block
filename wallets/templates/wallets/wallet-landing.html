@@ -1,5 +1,5 @@
-<!DOCTYPE html>
 {% load staticfiles %}
+<!DOCTYPE html>
 <html lang="en">
     <head>                        
         <title>Blockcred - Your Credentials On Top Of Blockchain</title>            
@@ -10,14 +10,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" type="image/x-icon">
-        <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+        <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+        <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
         
         <!-- END META SECTION -->
         
         <!-- CSS INCLUDE -->        
         
-        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <link rel="stylesheet" href="{% static 'css/wallet.css' %}">
         
         <!-- EOF CSS INCLUDE -->
     </head>
@@ -30,7 +30,7 @@
             <div class="app-container">
                 <!-- START SIDEBAR -->
                 <div class="app-sidebar app-navigation app-navigation-fixed scroll app-navigation-style-default app-navigation-open-hover dir-left" data-type="close-other">
-                    <a href="{% url 'home' %}" class="app-navigation-logo">
+                    <a href="home.html" class="app-navigation-logo">
                         Blockcred - Your Credentials On Top Of Blockchain
                     </a>
                     
@@ -40,10 +40,10 @@
                                 <a href="{% url 'home' %}"><span class="fa fa-home"></span> Home</a>
                             </li>
                             <li>
-                                <a href="{% url 'wallet-landing' %}" ><span class="fa fa-money"></span> Wallet</a>
+                                <a href="{% url 'wallet-landing' %}" class="active"><span class="fa fa-money"></span> Wallet</a>
                             </li>
                             <li>
-                                <a href="{% url 'issue-cert' %}" class="active"><span class="fa fa-plus"></span> Issue Credential</a>
+                                <a href="{% url 'issue-cert' %}"><span class="fa fa-plus"></span> Issue Credential</a>
                             </li>
                             <li>
                                 <a href="{% url 'verify-cert' %}"><span class="fa fa-check"></span> Verify Credential</a>
@@ -69,11 +69,11 @@
                     <div class="app-heading-container app-heading-bordered bottom">
                         <div class="app-heading app-heading-bordered app-heading-page">  
                             <div class="icon icon-lg">
-                                <span class="fa fa-plus"></span>
+                                <span class="fa fa-money"></span>
                             </div>
                             <div class="title">
-                                <h1>Issue Credential</h1>
-                                <p>Enter credential's information to publish it on the blockchain.</p>
+                                <h1>Wallet</h1>
+                                <p>Wallet managment.</p>
                             </div>
                             <!--
                             <div class="heading-elements">
@@ -87,96 +87,19 @@
                     
                     <!-- START PAGE CONTAINER -->
                     <div class="container">
-                        <div class="block how">
+                        <div class="block pas text-center wallet">
                             <div class="row">
-                                <div class="col-xs-12">
-                                    <div class="title">
-                                        <h1>How it works ?</h1>
-                                    </div>
-                                    <p>
-                                        For the proof of concept purposes, please follow the following steps:
-                                    </p>
-                                    <ul>
-                                        <li>Enter credentials information.</li>
-                                        <li>Sign with your's child_private key ( You can get your keys from <a href="{% url 'create'%}"> Wallet</a>) and issue a certificate.</li>
-                                        <li>The student will get an Email with the credential information on the blockchain.</li>
-                                        
-                                    </ul>
+                                <div class="col-xs-offset-1 col-xs-10">
+                                    <p>If you are a new user, please click on the Create XBC wallet, if you already have a wallet and want to login then click Login to XBC wallet.</p>
                                     
-                                </div>
-                            </div>
-                        </div>
-                        <div class="block">
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <div class="title">
-                                        <h1>Fill Below Form</h1>
+                                    <div class="alert alert-danger alert-icon-block alert-dismissible text-left" role="alert"> 
+                                        <div class="alert-icon">
+                                            <span class="icon-menu-circle"></span> 
+                                        </div>                                        
+                                        <strong>Notice:</strong> This page uses javascript to generate your addresses and sign your transactions within your browser, this means we never receive your private keys.
                                     </div>
-                                </div>
-                            </div>
-                            
-                            <form class="form-horizontal" method="POST">
-                                {% csrf_token %}
-                                <div class="form-group">                                        
-                                    <div class="col-md-4">
-                                        <input type="text" name="student_name" class="form-control" data-validation="required" placeholder="Student Name">
-                                    </div>
-                                    
-                                    <div class="col-md-4">
-                                        <input type="text"  name="student_email" class="form-control" data-validation="required" data-validation="email" placeholder="Student Email">
-                                    </div>
-                                    
-                                    <div class="col-md-4">
-                                        <input type="text" name="mobile" class="form-control" data-validation="required" placeholder="Student Mobile">
-                                    </div>
-                                </div>
-                                
-                                <div class="form-group">                                        
-                                    <div class="col-md-4">
-                                        <input type="text" name="course_name" class="form-control" data-validation="required" placeholder="Course Name">
-                                    </div>
-                                    
-                                    <div class="col-md-4">
-                                        <input type="text" name="department" class="form-control" data-validation="required" placeholder="Department">
-                                    </div>
-                                    
-                                    <div class="col-md-4">
-                                        <input type="text" name="grade" class="form-control" data-validation="required" placeholder="Grade">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                	
-                                	<div class="col-md-4">
-                                        <input type="text" name="issuer_address" class="form-control" data-validation="required" placeholder="Issuer's Address">
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <input type="text" name="holder_address" class="form-control" data-validation="required" placeholder="Holder's Address">
-                                    </div>
-
-
-                                    <div class="col-md-4">
-                                        <input type="text" name="privkey" class="form-control" data-validation="required" placeholder="sign with Issuer's child_private key">
-                                    </div>
-                                </div>
-
-
-                                
-                                <div class="form-group text-right">                                        
-                                    <div class="col-md-4 col-md-offset-8">
-                                        <button id="issue-btn" type="submit" class="btn btn-primary">Issue Certificate</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                                                
-                        <div>
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <div class="title text-center margin-bottom-30 loading-sec">
-                                        <h1><div class="app-spinner pulse pulse-success"></div> Generating credential's information .. Please Wait</h1>
-                                    </div>
+                                    <a href="{% url 'create' %}" class="btn btn-primary margin-left-10 margin-top-10"><i class="fa fa-plus margin-right-10"></i>Create XBC wallet</a>
+                                    <a href="{% url 'login' %}" class="btn btn-primary margin-left-10 margin-top-10"><i class="fa fa-undo margin-right-10"></i>Login to XBC wallet</a>
                                 </div>
                             </div>
                         </div>
@@ -196,11 +119,14 @@
                 </div>
             </div>
             <!-- END APP FOOTER -->
+            
+            <!-- END MODAL PRIMARY -->
+            
         </div>        
         <!-- END APP WRAPPER -->                
         
         <!-- IMPORTANT SCRIPTS -->
-        <script type="text/javascript" src="{% static 'js/vendor/jquery/jquery.min.js' %}"></script>
+         <script type="text/javascript" src="{% static 'js/vendor/jquery/jquery.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/vendor/jquery/jquery-migrate.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/vendor/jquery/jquery-ui.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/vendor/bootstrap/bootstrap.min.js' %}"></script>
@@ -209,11 +135,11 @@
         <!-- END IMPORTANT SCRIPTS -->
         <!-- THIS PAGE SCRIPTS -->
         <script type="text/javascript" src="{% static 'js/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.js' %}"></script>
-        
+
         <script type="text/javascript" src="{% static 'js/vendor/jvectormap/jquery-jvectormap.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/vendor/jvectormap/jquery-jvectormap-world-mill-en.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/vendor/jvectormap/jquery-jvectormap-us-aea-en.js' %}"></script>
-        
+
         <script type="text/javascript" src="{% static 'js/vendor/rickshaw/d3.v3.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/vendor/rickshaw/rickshaw.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/vendor/form-validator/jquery.form-validator.min.js' %}"></script>
@@ -223,6 +149,8 @@
         <script type="text/javascript" src="{% static 'js/app_plugins.js' %}"></script>
         <!-- END APP SCRIPTS -->
         <script type="text/javascript" src="{% static 'js/app_demo_dashboard.js' %}"></script>
+
+        
         
         <script type="text/javascript">
             $(function(){
@@ -236,20 +164,11 @@
 
                     }
                 });
-                
                 $(".block-refresh-example").on("click",function(){
                     var block = $(this).data("block");
                     app.block.loading.start("#"+block);
                     setTimeout(function(){
                         app.block.loading.finish("#"+block);
-                    },3000);
-                });
-                
-                $("#issue-btn").on("click",function(e){
-                    e.preventDefault();
-                    $('.loading-sec').show();
-                     setTimeout(function(){
-                        window.location = {% url 'issue-cert' %};
                     },3000);
                 });
             });

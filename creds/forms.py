@@ -8,3 +8,6 @@ class StudentForm(forms.Form):
     course_name = forms.CharField(required=True)
     grade = forms.CharField(required=True)
     department = forms.CharField(required=True)
+    issuer_address = forms.CharField(required=True)
+    holder_address = forms.CharField(required=True)
+    privkey = forms.CharField(required=True)

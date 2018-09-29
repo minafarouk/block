@@ -1,0 +1,361 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>                        
+        <title>Blockcred - Your Credentials On Top Of Blockchain</title>            
+        
+        <!-- META SECTION -->
+        
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" type="image/x-icon">
+        <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+        
+        <!-- END META SECTION -->
+        
+        <!-- CSS INCLUDE -->        
+        
+        <link rel="stylesheet" href="{% static 'css/wallet.css' %}">
+        
+        <!-- EOF CSS INCLUDE -->
+
+        
+    </head>
+    <body>        
+        
+        <!-- APP WRAPPER -->
+        <div class="app">           
+
+            <!-- START APP CONTAINER -->
+            <div class="app-container">
+                <!-- START SIDEBAR -->
+                <div class="app-sidebar app-navigation app-navigation-fixed scroll app-navigation-style-default app-navigation-open-hover dir-left" data-type="close-other">
+                    <a href="home.html" class="app-navigation-logo">
+                        Blockcred - Your Credentials On Top Of Blockchain
+                    </a>
+                    
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="{% url 'home' %}"><span class="fa fa-home"></span> Home</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'wallet-landing' %}" class="active"><span class="fa fa-money"></span> Wallet</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'issue-cert' %}"><span class="fa fa-plus"></span> Issue Credential</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'verify-cert' %}"><span class="fa fa-check"></span> Verify Credential</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- END SIDEBAR -->
+                
+                <!-- START APP CONTENT -->
+                <div class="app-content app-sidebar-left">
+                    <!-- START APP HEADER -->
+                    <div class="app-header app-header-design-default">
+                        <ul class="app-header-buttons">
+                            <li class="visible-mobile"><a href="#" class="btn btn-link btn-icon" data-sidebar-toggle=".app-sidebar.dir-left"><span class="icon-menu"></span></a></li>
+                            <li class="hidden-mobile"><a href="#" class="btn btn-link btn-icon" data-sidebar-minimize=".app-sidebar.dir-left"><span class="icon-menu"></span></a></li>
+                        </ul>    
+                    </div>
+                    <!-- END APP HEADER  -->
+                    
+                    <!-- START PAGE HEADING -->
+                    
+                    <div class="app-heading-container app-heading-bordered bottom">
+                        <div class="app-heading app-heading-bordered app-heading-page">  
+                            <div class="icon icon-lg">
+                                <span class="fa fa-plus"></span>
+                            </div>
+                            <div class="title">
+                                <h1>Create Wallet</h1>
+                                <p>Create your XBC wallet.</p>
+                            </div>
+                            <!--
+                            <div class="heading-elements">
+                                <a href="#" class="btn btn-danger" id="page-like"><span class="app-spinner loading"></span> loading...</a>
+                                <a href="https://themeforest.net/item/boooya-revolution-admin-template/17227946?ref=aqvatarius&license=regular&open_purchase_for_item_id=17227946" class="btn btn-success btn-icon-fixed"><span class="icon-text">$24</span> Purchase</a>
+                            </div>
+                            -->
+                        </div>
+                    </div>
+                    <!-- END PAGE HEADING -->
+                    
+                    <!-- START PAGE CONTAINER -->
+                    <div class="container">
+                        <div class="block how">
+                        <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="title">
+                                        <h1>How it works ?</h1>
+                                    </div>
+                                    <p>
+                                        For the proof of concept purposes, please follow the following steps:
+                                    </p>
+                                    <ul>
+                                        <li>Create your wallet and keep Blockcred-wallet.json in a save place (You can refresh to choose random seed whatever you want).</li>
+                                        <li>Import your address (public) on our Blockchain so you can track your records on Blockcred Blockchain.</li>
+                                        <li>You are the only one who can use your private key.</li>
+                                        <li>Use your keys (public and private keys) to sign any transaction on our Blockchain.</li>
+                                        
+                                    </ul>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block pas text-center wallet">                            
+                            <div class="row">
+                                <div class="col-xs-offset-1 col-xs-10">
+                                    <p class="text-success">Your XBC wallet has been created successfully.</p>
+                                    
+                                     
+                                    <p class="text-left">
+                                        Please securely store your wallet file (Blockcred-wallet.json) to access your wallet at later stage. You only need public address to view XBC balance or transactions. Private key should never be shared or disclosed to anyone and is only required to publish records/transactions or while sending XBC tokens to others or while you want to login.
+
+                                        <br>
+                                        <br>
+                                        
+                                        Alternatively, you can write down seed phrase (12 words) in same order as displayed below to restore your wallet completely.
+                                    </p>
+                                    
+                                    <div class="wallet-seed">
+                                        <span id='mnemonic1'></span> <span id='mnemonic2'></span><span id='mnemonic3'></span><span id='mnemonic4'></span><span id='mnemonic5'></span><span id='mnemonic6'></span>
+                                        
+                                        <br>
+                                        
+                                        <span id='mnemonic7'></span><span id='mnemonic8'></span><span id='mnemonic9'></span><span id='mnemonic10'></span><span id='mnemonic11'></span><span id='mnemonic12'></span>
+                                    </div>                                   
+                                    
+                                    
+                                    <div class="alert alert-danger alert-icon-block alert-dismissible text-left" role="alert"> 
+                                        <div class="alert-icon">
+                                            <span class="icon-menu-circle"></span> 
+                                        </div>                                        
+                                        <strong>Notice:</strong> This page uses javascript to generate your addresses and sign your transactions within your browser, this means we never receive your private keys.
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="block pas text-center wallet-qrcodes">
+                            <div class="row">
+                                <div class="col-xs-4 text-center">
+                                    <div>xbc-wallet-address</div>
+                                    <div id="addr_qrcode"></div>                                    
+                                </div>
+                                
+                                <div class="col-xs-4 text-center">
+                                    <div>xbc-wallet-public-key</div>
+                                    <div id="pub_qrcode"></div>
+                                </div>
+                                
+                                <div class="col-xs-4 text-center">
+                                    <div>xbc-wallet-private-key</div>
+                                    <div id='prv_qrcode' ></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="block pas wallet-qrcodes-text">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div>
+                                        xbc-wallet-address
+                                    </div>
+                                    <span id='address'></span>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div>
+                                        xbc-wallet-public-key                                        
+                                    </div>
+                                    <span id='hdPublicKey'></span>
+                                </div>                                
+                                
+                                <div class="col-xs-12">
+                                    <div>
+                                       xbc-wallet-private-key 
+                                    </div>
+                                    <span id='hdkey'></span>
+                                </div>
+                                
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="block pas wallet-qrcodes-text text-center">
+                            <div class="row">
+                                <div class="col-xs-12"  id="json_file" >                                    
+                                    <!--a  class="btn btn-primary margin-left-10 margin-top-10" ><i class="fa fa-file-code-o margin-right-10" ></i></a>
+                                    <a href="#" class="btn btn-primary margin-left-10 margin-top-10"><i class="fa fa-file-pdf-o margin-right-10"></i>Save as PDF Format</a>
+                                    <a href="#" class="btn btn-primary margin-left-10 margin-top-10" data-toggle="modal" data-target="#send-popup"><i class="fa fa-envelope-o margin-right-10"></i>Email me</a-->
+                                    <a href="{% url 'login' %}" class="btn btn-primary"><i class="fa fa-undo "></i>Login to XBC wallet</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END PAGE CONTAINER -->
+                    
+                </div>
+                <!-- END APP CONTENT -->
+                                
+            </div>
+            <!-- END APP CONTAINER -->
+                        
+            <!-- START APP FOOTER -->
+            <div class="app-footer app-footer-default" id="footer">
+                <div class="app-footer-line">
+                    <div class="copyright">&copy; 2018 Blockcred. All right reserved</div>
+                </div>
+            </div>
+            <!-- END APP FOOTER -->
+            
+            <div class="modal fade" id="send-popup" tabindex="-1" role="dialog" aria-labelledby="modal-primary-header">                        
+                <div class="modal-dialog modal-primary" role="document">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="icon-cross"></span></button>
+
+                    <div class="modal-content">
+                        <div class="modal-header">                        
+                            <h4 class="modal-title" id="modal-primary-header"><i class="fa fa-envelope margin-right-10"></i>Email Me</h4>
+                        </div>
+                        <div class="modal-body text-center">
+                            <div class="row">
+                                <div class="col-xs-offset-2 col-xs-8">
+                                    <p class="text-left text-danger">
+                                        <strong>Notice:</strong> be sure that you are the only one has access to the provided Email address, the upcoming Email contains a critical information about your XBC wallet access, if you will lose this info, we will not be able to restore your wallet and there is no reset option.
+                                        <br>
+                                        <br>
+                                        We highly recommend to print the Email contents and save it in a safe place, then permanently delete the message.
+                                    </p>
+                                    
+                                    <form class="form-horizontal" action="#">
+                                        <div class="form-group"> 
+                                            <div class="col-md-12">
+                                                <input type="email" class="form-control" data-validation="required" placeholder="My Email">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group text-center">                                        
+                                            <div>
+                                                <button type="submit" class="btn btn-primary">Send Now</button>
+                                            </div>
+                                        </div>
+                                    </form>   
+                                </div>
+                            </div>                
+                        </div>
+                    </div>
+                </div>            
+            </div>
+            
+            <!-- END MODAL PRIMARY -->
+            
+        </div>        
+        <!-- END APP WRAPPER -->                
+        
+        <!-- IMPORTANT SCRIPTS -->
+        <script type="text/javascript" src="{% static 'js/vendor/jquery/jquery.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/jquery/jquery-migrate.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/jquery/jquery-ui.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/bootstrap/bootstrap.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/moment/moment.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/customscrollbar/jquery.mCustomScrollbar.min.js' %}"></script>
+        <!-- END IMPORTANT SCRIPTS -->
+        <!-- THIS PAGE SCRIPTS -->
+        <script type="text/javascript" src="{% static 'js/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.js' %}"></script>
+        
+        <script type="text/javascript" src="{% static 'js/vendor/jvectormap/jquery-jvectormap.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/jvectormap/jquery-jvectormap-world-mill-en.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/jvectormap/jquery-jvectormap-us-aea-en.js' %}"></script>
+        
+        <script type="text/javascript" src="{% static 'js/vendor/rickshaw/d3.v3.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/rickshaw/rickshaw.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/form-validator/jquery.form-validator.min.js' %}"></script>
+        <!-- END THIS PAGE SCRIPTS -->
+        <!-- APP SCRIPTS -->
+        <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/app_plugins.js' %}"></script>
+        <!-- END APP SCRIPTS -->
+        <script type="text/javascript" src="{% static 'js/app_demo_dashboard.js' %}"></script>
+
+
+        <script src="{% static 'js/bitcore-lib/bitcore-lib.min.js' %}"></script>
+        <script src="{% static 'js/bitcore-mnemonic/bitcore-mnemonic.min.js' %}"></script>
+        <script src="{% static 'js/bitcore-explorers/bitcore-explorers.min.js' %}"></script>
+        <script src="{% static 'js/app_wallet.js' %}"></script>
+
+        <!--script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script-->
+        <script type="text/javascript" src="{% static 'js/qrcode.js' %}"></script>
+        
+        <script type="text/javascript">
+//function Generate()
+//{
+window.onload = function(){
+var mnemonicString = generateRandomMnemonic();
+var hdkey = genHDPrivKeyMnemonics(mnemonicString,'');
+var hdPublicKey = hdkey.hdPublicKey;
+var privKey = getPrivateKeyFromString(hdkey.xprivkey);
+var child_priv = privKey.derive(0).derive(1).derive(2, true);
+var address = child_priv.privateKey.toAddress();
+
+document.getElementById('mnemonic1').innerHTML = mnemonicString.split(" ")[0];
+document.getElementById('mnemonic2').innerHTML = mnemonicString.split(" ")[1];
+document.getElementById('mnemonic3').innerHTML = mnemonicString.split(" ")[2];
+document.getElementById('mnemonic4').innerHTML = mnemonicString.split(" ")[3];
+document.getElementById('mnemonic5').innerHTML = mnemonicString.split(" ")[4];
+document.getElementById('mnemonic6').innerHTML = mnemonicString.split(" ")[5];
+document.getElementById('mnemonic7').innerHTML = mnemonicString.split(" ")[6];
+document.getElementById('mnemonic8').innerHTML = mnemonicString.split(" ")[7];
+document.getElementById('mnemonic9').innerHTML = mnemonicString.split(" ")[8];
+document.getElementById('mnemonic10').innerHTML = mnemonicString.split(" ")[9];
+document.getElementById('mnemonic11').innerHTML = mnemonicString.split(" ")[10];
+document.getElementById('mnemonic12').innerHTML = mnemonicString.split(" ")[11];
+
+document.getElementById('hdkey').innerHTML = hdkey
+document.getElementById('hdPublicKey').innerHTML = hdPublicKey
+document.getElementById('address').innerHTML = address
+
+
+new QRCode(document.getElementById("prv_qrcode"), hdkey.toString());
+new QRCode(document.getElementById("pub_qrcode"), hdPublicKey.toString());
+new QRCode(document.getElementById("addr_qrcode"), address.toString());
+
+            
+var obj = new Object;
+obj.mnemonic = mnemonicString
+obj.hdPublicKey = hdPublicKey.xpubkey
+obj.hdPrvKey = hdkey.xprivkey
+
+var privKey = getPrivateKeyFromString(hdkey.xprivkey);
+var child_priv = privKey.derive(0).derive(1).derive(2, true);
+obj.child_priv = child_priv.privateKey.toWIF()
+obj.child_address = child_priv.privateKey.toAddress().toString();
+
+
+
+var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
+var a = document.createElement('a');
+a.className = "btn btn-primary";   
+a.href = 'data:' + data;
+a.download = 'Blockcred-wallet.json';
+a.innerHTML = 'Save Blockcred-wallet';
+
+var json_file = document.getElementById('json_file');
+json_file.appendChild(a);
+
+
+};
+
+    
+</script>
+
+        
+
+    </body>
+</html>
